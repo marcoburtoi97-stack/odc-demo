@@ -1,0 +1,1125 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Officina del Cerchio — Rigenerazione cerchi in lega | Concorezzo (MB)</title>
+<meta name="description" content="Rigenerazione cerchi in lega a Concorezzo (Monza e Brianza). Raddrizzatura, verniciatura a polvere, diamantatura CNC. 4,8★ su 258 recensioni Google. Preventivo in 60 secondi, cerchi pronti in 3 giorni.">
+<meta name="theme-color" content="#08090b">
+<meta property="og:title" content="Officina del Cerchio — Rigenerazione cerchi in lega">
+<meta property="og:description" content="Rigenerare non significa riparare. Significa riportare a nuovo. Concorezzo (MB) — 4,8★ su 258 recensioni.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800;900&family=Archivo+Black&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<style>
+/* ============ DEMO ODC — file unico, nessuna dipendenza esterna oltre ai font e alle FOTO REALI del cliente ============ */
+:root{
+  --ink:#08090b; --panel:#0e1013; --panel2:#14171c; --panel3:#1b1f25;
+  --line:rgba(255,255,255,.10); --line2:rgba(255,255,255,.18);
+  --txt:#eef1f5; --mut:#98a1ad; --mut2:#6d7683;
+  --acc:#FF4D2E; --acc2:#ff7a52;
+  --alu:linear-gradient(135deg,#ffffff 0%,#d7dde6 28%,#8f99a8 52%,#e9eef5 74%,#b8c1cd 100%);
+  --iri:linear-gradient(100deg,#ff5f6d,#ffc371,#7ee8a2,#4facfe,#c471f5,#ff5f6d);
+  --r:18px; --rs:12px;
+  --max:1240px;
+  --ease:cubic-bezier(.22,.61,.36,1);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  background:var(--ink);color:var(--txt);
+  font-family:'Archivo',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;
+  font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden;
+}
+img{max-width:100%;display:block}
+a{color:inherit;text-decoration:none}
+button,input,select,textarea{font:inherit;color:inherit}
+.wrap{width:100%;max-width:var(--max);margin:0 auto;padding:0 24px}
+.mono{font-family:'JetBrains Mono',ui-monospace,monospace}
+
+/* grana + luce ambiente */
+body::before{
+  content:'';position:fixed;inset:0;pointer-events:none;z-index:1;opacity:.035;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+/* ---------- TIPOGRAFIA ---------- */
+.h-xxl{font-family:'Archivo Black','Archivo',sans-serif;font-weight:900;line-height:.95;letter-spacing:-.035em;
+  font-size:clamp(1.9rem,4.25vw,3.85rem);text-transform:uppercase}
+.h-xl{font-family:'Archivo Black','Archivo',sans-serif;font-weight:900;line-height:1;letter-spacing:-.03em;
+  font-size:clamp(2rem,4.6vw,3.5rem);text-transform:uppercase}
+.h-l{font-weight:800;letter-spacing:-.02em;font-size:clamp(1.35rem,2.4vw,1.9rem);line-height:1.15}
+.eyebrow{font-family:'JetBrains Mono',monospace;font-size:.72rem;letter-spacing:.22em;text-transform:uppercase;color:var(--acc);display:flex;align-items:center;gap:10px}
+.eyebrow::before{content:'';width:26px;height:1px;background:var(--acc);display:block}
+.lead{color:var(--mut);font-size:clamp(1rem,1.45vw,1.14rem);max-width:62ch}
+.alu-text{background:var(--alu);-webkit-background-clip:text;background-clip:text;color:transparent}
+.iri-text{background:var(--iri);background-size:300% 100%;-webkit-background-clip:text;background-clip:text;color:transparent;animation:iriflow 9s linear infinite}
+@keyframes iriflow{to{background-position:300% 0}}
+
+/* ---------- NAV ---------- */
+header.nav{position:fixed;top:0;left:0;right:0;z-index:90;transition:.45s var(--ease)}
+.navin{display:flex;align-items:center;gap:18px;height:74px}
+.nav.scrolled{background:rgba(8,9,11,.82);backdrop-filter:blur(18px) saturate(140%);border-bottom:1px solid var(--line)}
+.brand{display:flex;align-items:center;gap:12px;flex-shrink:0}
+.brand img{width:44px;height:44px;border-radius:10px;object-fit:cover;background:#fff}
+.brand b{display:block;font-weight:900;font-size:.95rem;letter-spacing:-.01em;line-height:1.1;text-transform:uppercase}
+.brand span{display:block;font-family:'JetBrains Mono',monospace;font-size:.6rem;letter-spacing:.16em;color:var(--mut2);text-transform:uppercase}
+.navlinks{display:flex;gap:4px;margin-left:auto}
+.navlinks a{padding:9px 14px;border-radius:99px;font-size:.88rem;font-weight:500;color:var(--mut);transition:.25s}
+.navlinks a:hover{color:#fff;background:rgba(255,255,255,.07)}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:9px;padding:12px 22px;border-radius:99px;
+  font-weight:700;font-size:.9rem;border:0;cursor:pointer;transition:.3s var(--ease);white-space:nowrap}
+.btn-p{background:var(--acc);color:#fff;box-shadow:0 8px 30px -8px rgba(255,77,46,.7)}
+.btn-p:hover{background:var(--acc2);transform:translateY(-2px);box-shadow:0 14px 40px -10px rgba(255,77,46,.85)}
+.btn-w{background:#25D366;color:#06240f;box-shadow:0 8px 30px -10px rgba(37,211,102,.6)}
+.btn-w:hover{transform:translateY(-2px);filter:brightness(1.08)}
+.btn-g{background:rgba(255,255,255,.06);border:1px solid var(--line2);color:#fff}
+.btn-g:hover{background:rgba(255,255,255,.12);transform:translateY(-2px)}
+.btn-lg{padding:16px 30px;font-size:1rem}
+.burger{display:none;background:none;border:1px solid var(--line2);border-radius:10px;width:42px;height:42px;cursor:pointer;align-items:center;justify-content:center}
+.burger div{width:18px;height:2px;background:#fff;position:relative}
+.burger div::before,.burger div::after{content:'';position:absolute;left:0;width:18px;height:2px;background:#fff}
+.burger div::before{top:-6px}.burger div::after{top:6px}
+@media(max-width:1000px){.navlinks,.nav .btn-w{display:none}.burger{display:flex}}
+.drawer{position:fixed;inset:0;z-index:95;background:rgba(8,9,11,.97);backdrop-filter:blur(10px);
+  display:flex;flex-direction:column;justify-content:center;gap:6px;padding:40px;transform:translateX(100%);transition:.45s var(--ease)}
+.drawer.open{transform:none}
+.drawer a{font-family:'Archivo Black',sans-serif;font-size:1.9rem;text-transform:uppercase;letter-spacing:-.02em;padding:8px 0;border-bottom:1px solid var(--line)}
+.drawer .x{position:absolute;top:24px;right:24px;font-size:2rem;background:none;border:0;cursor:pointer}
+
+/* ---------- HERO ---------- */
+.hero{position:relative;min-height:100svh;display:block;padding:clamp(104px,14vh,164px) 0 clamp(34px,5vh,54px);overflow:hidden;z-index:2}
+.hero-bg{position:absolute;inset:0;z-index:0}
+.hero-bg img{width:100%;height:100%;object-fit:cover;transform:scale(1.18);animation:kb 30s ease-in-out infinite alternate;
+  filter:saturate(.55) contrast(1.1) brightness(.42) blur(3px)}
+@keyframes kb{to{transform:scale(1.05) translate3d(-2%,-1%,0)}}
+.hero-bg::after{content:'';position:absolute;inset:0;
+  background:radial-gradient(75% 70% at 72% 46%,rgba(255,120,60,.16),transparent 62%),
+             linear-gradient(180deg,rgba(8,9,11,.94) 0%,rgba(8,9,11,.62) 38%,rgba(8,9,11,.8) 74%,var(--ink) 100%)}
+.hero-bg::before{content:'';position:absolute;inset:0;z-index:2;
+  background:radial-gradient(120% 80% at 10% 92%,rgba(255,77,46,.20),transparent 58%)}
+.hero-in{position:relative;z-index:3;width:100%;
+  display:grid;grid-template-columns:minmax(0,1.02fr) minmax(0,.98fr);gap:clamp(20px,4vw,54px);align-items:center}
+.hero h1{margin:14px 0 16px;max-width:15ch}
+@media(max-width:980px){
+  .hero-in{grid-template-columns:1fr;gap:22px}
+  .hero-stage{order:-1;max-width:78vw;margin:0 auto}
+}
+
+/* ---------- DISCO FOTOGRAFICO (cerchi veri) ---------- */
+.hero-stage{position:relative;width:100%;display:grid;place-items:center}
+.hero-stage::before{content:'';position:absolute;width:88%;aspect-ratio:1;border-radius:50%;
+  background:radial-gradient(closest-side,rgba(255,120,70,.30),rgba(255,77,46,.07) 56%,transparent 72%);filter:blur(34px)}
+.disc{position:relative;width:100%;max-width:520px;aspect-ratio:1;border-radius:50%;
+  box-shadow:0 46px 90px -34px rgba(0,0,0,.95),0 0 0 1px rgba(255,255,255,.12)}
+.disc-in{position:absolute;inset:0;border-radius:50%;overflow:hidden}
+.disc-rot{position:absolute;inset:0;
+  animation:launch 3.4s cubic-bezier(.1,.72,.16,1) 1,rot var(--spd,58s) linear 3.4s infinite}
+@keyframes launch{from{transform:rotate(0)}to{transform:rotate(742deg)}}
+@keyframes rot{to{transform:rotate(360deg)}}
+.disc-rot img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transform:scale(1.06);
+  opacity:0;transition:opacity 1.5s var(--ease)}
+.disc-rot img.on{opacity:1}
+.disc-ring{position:absolute;inset:-9px;border-radius:50%;background:var(--iri);background-size:300% 100%;
+  animation:iriflow 9s linear infinite;opacity:.30;filter:blur(9px);z-index:-1}
+.disc-glass{position:absolute;inset:0;border-radius:50%;pointer-events:none;
+  box-shadow:inset 0 0 0 2px rgba(255,255,255,.16),inset 0 -46px 90px rgba(0,0,0,.5),inset 0 34px 70px rgba(255,255,255,.05)}
+.sheen{position:absolute;inset:0;border-radius:50%;pointer-events:none;overflow:hidden;mix-blend-mode:overlay}
+.sheen::after{content:'';position:absolute;top:-30%;left:-60%;width:36%;height:160%;
+  background:linear-gradient(100deg,transparent,rgba(255,255,255,.55),transparent);
+  transform:rotate(14deg);animation:sweep 7s cubic-bezier(.5,0,.5,1) infinite}
+@keyframes sweep{0%{left:-60%}55%,100%{left:135%}}
+.hero-stage .cap{position:absolute;bottom:-30px;left:50%;transform:translateX(-50%);z-index:4;white-space:nowrap;
+  font-family:'JetBrains Mono',monospace;font-size:.62rem;letter-spacing:.2em;text-transform:uppercase;color:var(--mut2);
+  transition:.5s var(--ease)}
+
+/* ---------- SEZIONI ---------- */
+section{position:relative;z-index:2}
+.sec{padding:clamp(70px,9vw,120px) 0}
+.sec-head{margin-bottom:52px;max-width:70ch}
+.sec-head .h-xl{margin:14px 0 16px}
+.grid{display:grid;gap:18px}
+.g2{grid-template-columns:repeat(2,1fr)}
+.g3{grid-template-columns:repeat(3,1fr)}
+.g4{grid-template-columns:repeat(4,1fr)}
+@media(max-width:960px){.g3,.g4{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:660px){.g2,.g3,.g4{grid-template-columns:1fr}}
+.card{background:linear-gradient(180deg,var(--panel2),var(--panel));border:1px solid var(--line);border-radius:var(--r);
+  padding:26px;position:relative;overflow:hidden;transition:.4s var(--ease)}
+.card:hover{border-color:var(--line2);transform:translateY(-4px)}
+.card::after{content:'';position:absolute;inset:0;opacity:0;transition:.4s;pointer-events:none;
+  background:radial-gradient(340px circle at var(--mx,50%) var(--my,0%),rgba(255,77,46,.13),transparent 70%)}
+.card:hover::after{opacity:1}
+
+/* servizi */
+.svc{padding:30px 26px 28px}
+.svc .num{font-family:'JetBrains Mono',monospace;font-size:.68rem;letter-spacing:.2em;color:var(--mut2)}
+.svc h3{margin:14px 0 10px;font-size:1.22rem;font-weight:800;letter-spacing:-.015em;text-transform:uppercase}
+.svc p{color:var(--mut);font-size:.94rem}
+.svc ul{list-style:none;margin-top:16px;display:flex;flex-wrap:wrap;gap:6px}
+.svc ul li{font-family:'JetBrains Mono',monospace;font-size:.66rem;letter-spacing:.06em;padding:5px 10px;border:1px solid var(--line);border-radius:99px;color:var(--mut)}
+.svc .ic{width:52px;height:52px;border-radius:14px;background:rgba(255,77,46,.11);border:1px solid rgba(255,77,46,.28);
+  display:grid;place-items:center;margin-bottom:6px}
+.svc .ic svg{width:26px;height:26px;stroke:var(--acc);fill:none;stroke-width:1.6}
+
+/* ---------- CONFIGURATORE ---------- */
+.cfg{display:grid;grid-template-columns:1.05fr .95fr;gap:34px;align-items:center}
+@media(max-width:940px){.cfg{grid-template-columns:1fr}}
+.cfg-stage{position:relative;border-radius:26px;overflow:hidden;border:1px solid var(--line);
+  background:radial-gradient(72% 72% at 46% 34%,#252a33,#0b0d10 78%);aspect-ratio:1/1;display:grid;place-items:center;padding:6%}
+.cfg-stage::after{content:'';position:absolute;left:12%;right:12%;bottom:6%;height:12%;border-radius:50%;
+  background:radial-gradient(closest-side,rgba(0,0,0,.8),transparent);filter:blur(8px)}
+.cfg-stage .shot{position:relative;width:100%;aspect-ratio:1;border-radius:18px;overflow:hidden;border:1px solid var(--line)}
+.cfg-stage .shot img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity .7s var(--ease);transform:scale(1.02)}
+.cfg-stage .shot img.on{opacity:1}
+.cfg-stage.kick .shot img.on{animation:pop .8s var(--ease)}
+@keyframes pop{from{transform:scale(1.09)}to{transform:scale(1.02)}}
+.sw.photo{background-size:cover;background-position:center}
+.cfg-badge{position:absolute;top:16px;left:16px;z-index:3;font-family:'JetBrains Mono',monospace;font-size:.64rem;
+  letter-spacing:.18em;text-transform:uppercase;padding:7px 12px;border-radius:99px;background:rgba(0,0,0,.55);
+  border:1px solid var(--line2);backdrop-filter:blur(6px)}
+.swatches{display:flex;flex-wrap:wrap;gap:10px;margin:14px 0 4px}
+.sw{width:46px;height:46px;border-radius:13px;border:2px solid transparent;cursor:pointer;position:relative;transition:.25s var(--ease);
+  box-shadow:inset 0 -8px 16px rgba(0,0,0,.35),0 4px 12px rgba(0,0,0,.4)}
+.sw:hover{transform:translateY(-3px)}
+.sw.on{border-color:#fff;transform:translateY(-3px) scale(1.05)}
+.sw::after{content:attr(data-n);position:absolute;left:50%;top:-30px;transform:translateX(-50%);white-space:nowrap;
+  font-family:'JetBrains Mono',monospace;font-size:.6rem;letter-spacing:.1em;text-transform:uppercase;opacity:0;transition:.2s;
+  background:#000;border:1px solid var(--line2);padding:4px 8px;border-radius:6px;pointer-events:none}
+.sw:hover::after{opacity:1}
+.opt-row{display:flex;flex-wrap:wrap;gap:8px;margin-top:6px}
+.chip{padding:10px 16px;border-radius:99px;border:1px solid var(--line);background:rgba(255,255,255,.03);
+  cursor:pointer;font-size:.85rem;font-weight:600;transition:.25s}
+.chip:hover{border-color:var(--line2)}
+.chip.on{background:#fff;color:#0a0a0a;border-color:#fff}
+.chip.iri.on{background:var(--iri);background-size:250%;color:#101010;border-color:transparent;animation:iriflow 6s linear infinite}
+.lbl{font-family:'JetBrains Mono',monospace;font-size:.66rem;letter-spacing:.2em;text-transform:uppercase;color:var(--mut2);margin-top:22px;display:block}
+
+/* ---------- PREVENTIVO ---------- */
+.quote{border:1px solid var(--line);border-radius:26px;overflow:hidden;background:linear-gradient(180deg,var(--panel2),var(--panel))}
+.quote-head{padding:26px 30px;border-bottom:1px solid var(--line);display:flex;align-items:center;gap:16px;flex-wrap:wrap}
+.steps{display:flex;gap:6px;margin-left:auto}
+.steps i{width:26px;height:4px;border-radius:99px;background:var(--line2);transition:.35s;display:block}
+.steps i.on{background:var(--acc);width:38px}
+.qbody{padding:30px}
+.qstep{display:none}.qstep.on{display:block;animation:fade .45s var(--ease)}
+@keyframes fade{from{opacity:0;transform:translateY(10px)}}
+.qgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:10px;margin-top:18px}
+.opt{border:1px solid var(--line);border-radius:var(--rs);padding:16px;cursor:pointer;transition:.25s;background:rgba(255,255,255,.02)}
+.opt:hover{border-color:var(--line2);background:rgba(255,255,255,.05)}
+.opt.on{border-color:var(--acc);background:rgba(255,77,46,.09)}
+.opt b{display:block;font-size:.98rem;margin-bottom:3px}
+.opt span{font-size:.8rem;color:var(--mut)}
+.qnav{display:flex;gap:10px;margin-top:26px;flex-wrap:wrap}
+.result{text-align:center;padding:10px 0}
+.result .big{font-family:'Archivo Black',sans-serif;font-size:clamp(2.4rem,6vw,3.6rem);letter-spacing:-.03em;line-height:1;margin:8px 0}
+.recap{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin:18px 0 22px}
+.recap span{font-family:'JetBrains Mono',monospace;font-size:.68rem;letter-spacing:.08em;padding:6px 12px;border:1px solid var(--line);border-radius:99px;color:var(--mut)}
+.disc{font-size:.78rem;color:var(--mut2);max-width:52ch;margin:16px auto 0}
+
+/* ---------- BEFORE / AFTER ---------- */
+.ba{position:relative;border-radius:26px;overflow:hidden;border:1px solid var(--line);aspect-ratio:16/10;cursor:ew-resize;user-select:none;background:#000}
+.ba img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.ba .after{clip-path:inset(0 0 0 var(--p,50%))}
+.ba .hd{position:absolute;top:16px;font-family:'JetBrains Mono',monospace;font-size:.64rem;letter-spacing:.18em;
+  text-transform:uppercase;background:rgba(0,0,0,.6);border:1px solid var(--line2);padding:6px 12px;border-radius:99px;backdrop-filter:blur(4px)}
+.ba .hd.l{left:16px}.ba .hd.r{right:16px}
+.ba .bar{position:absolute;top:0;bottom:0;left:var(--p,50%);width:2px;background:#fff;box-shadow:0 0 20px rgba(255,255,255,.6)}
+.ba .knob{position:absolute;top:50%;left:var(--p,50%);transform:translate(-50%,-50%);width:52px;height:52px;border-radius:50%;
+  background:rgba(255,255,255,.96);color:#000;display:grid;place-items:center;font-size:1.1rem;font-weight:900;box-shadow:0 8px 26px rgba(0,0,0,.5)}
+
+/* ---------- PROCESSO ---------- */
+.proc{display:grid;grid-template-columns:repeat(5,1fr);gap:14px}
+@media(max-width:1000px){.proc{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:520px){.proc{grid-template-columns:1fr}}
+.pstep{border:1px solid var(--line);border-radius:var(--r);overflow:hidden;background:var(--panel);transition:.4s var(--ease)}
+.pstep:hover{transform:translateY(-6px);border-color:var(--line2)}
+.pstep .ph{aspect-ratio:1/1;overflow:hidden;background:#101317}
+.pstep .ph img{width:100%;height:100%;object-fit:cover;transition:.7s var(--ease)}
+.pstep:hover .ph img{transform:scale(1.07)}
+.pstep .tx{padding:18px}
+.pstep .tx i{font-family:'JetBrains Mono',monospace;font-style:normal;font-size:.66rem;letter-spacing:.2em;color:var(--acc)}
+.pstep .tx b{display:block;margin:8px 0 6px;font-size:1rem;text-transform:uppercase;letter-spacing:-.01em}
+.pstep .tx p{font-size:.85rem;color:var(--mut)}
+
+/* ---------- GALLERY ---------- */
+.filters{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:24px}
+.gal{columns:4;column-gap:14px}
+@media(max-width:1000px){.gal{columns:3}}
+@media(max-width:680px){.gal{columns:2}}
+.gitem{break-inside:avoid;margin-bottom:14px;border-radius:14px;overflow:hidden;position:relative;border:1px solid var(--line);cursor:zoom-in}
+.gitem img{width:100%;transition:.7s var(--ease)}
+.gitem:hover img{transform:scale(1.06)}
+.gitem .cap{position:absolute;inset:auto 0 0 0;padding:26px 14px 12px;font-size:.78rem;font-weight:600;
+  background:linear-gradient(transparent,rgba(0,0,0,.88));opacity:0;transform:translateY(8px);transition:.35s}
+.gitem:hover .cap{opacity:1;transform:none}
+.lightbox{position:fixed;inset:0;z-index:120;background:rgba(4,5,6,.95);backdrop-filter:blur(14px);display:none;place-items:center;padding:30px;cursor:zoom-out}
+.lightbox.on{display:grid}
+.lightbox img{max-width:min(1100px,92vw);max-height:88vh;border-radius:14px;object-fit:contain}
+
+/* ---------- RECENSIONI ---------- */
+.revwrap{overflow:hidden;-webkit-mask-image:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent)}
+.revtrack{display:flex;gap:16px;width:max-content;animation:marq 64s linear infinite}
+.revwrap:hover .revtrack{animation-play-state:paused}
+@keyframes marq{to{transform:translateX(-50%)}}
+.rev{width:370px;flex-shrink:0;background:var(--panel2);border:1px solid var(--line);border-radius:var(--r);padding:24px}
+.rev p{font-size:.92rem;color:#cfd6df;margin:12px 0 16px}
+.rev .who{display:flex;align-items:center;gap:11px;font-size:.85rem}
+.rev .av{width:36px;height:36px;border-radius:50%;background:var(--alu);color:#1a1d22;display:grid;place-items:center;font-weight:900;font-size:.85rem}
+.gscore{display:flex;align-items:center;gap:18px;flex-wrap:wrap;padding:20px 24px;border:1px solid var(--line);border-radius:var(--r);background:var(--panel2)}
+.gscore .n{font-family:'Archivo Black',sans-serif;font-size:2.6rem;line-height:1;letter-spacing:-.03em}
+
+/* ---------- MARQUEE MARCHI ---------- */
+.marq{overflow:hidden;-webkit-mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent);padding:6px 0}
+.marq-t{display:flex;gap:44px;width:max-content;animation:mv 38s linear infinite;align-items:center}
+.marq:hover .marq-t{animation-play-state:paused}
+@keyframes mv{to{transform:translateX(-50%)}}
+.marq-t b{font-family:'Archivo Black',sans-serif;font-size:clamp(1.5rem,3.4vw,2.9rem);letter-spacing:-.02em;text-transform:uppercase;
+  background:var(--alu);-webkit-background-clip:text;background-clip:text;color:transparent;opacity:.62;white-space:nowrap}
+.marq-t i{width:9px;height:9px;border-radius:50%;background:var(--acc);opacity:.7;flex-shrink:0}
+
+/* ---------- CITAZIONE ---------- */
+.quote-big{position:relative;border:1px solid var(--line);border-radius:26px;padding:clamp(28px,5vw,58px);
+  background:linear-gradient(120deg,#15181d,#0b0d10 65%);overflow:hidden}
+.quote-big::before{content:'';position:absolute;inset:0;background:radial-gradient(80% 120% at 100% 0%,rgba(255,77,46,.16),transparent 62%)}
+.quote-big blockquote{position:relative;font-family:'Archivo Black',sans-serif;font-size:clamp(1.5rem,3.5vw,3rem);
+  line-height:1.02;letter-spacing:-.03em;text-transform:uppercase;max-width:19ch}
+.quote-big cite{position:relative;display:block;margin-top:22px;font-style:normal;font-family:'JetBrains Mono',monospace;
+  font-size:.68rem;letter-spacing:.2em;text-transform:uppercase;color:var(--mut2)}
+
+/* ---------- TEAM ---------- */
+.person{text-align:center}
+.person .ph{aspect-ratio:1/1;border-radius:20px;overflow:hidden;border:1px solid var(--line);margin-bottom:14px;
+  background:#101317;position:relative;display:grid;place-items:center}
+.person .ph img{width:100%;height:100%;object-fit:cover;filter:saturate(1.05) contrast(1.04);transition:.6s var(--ease)}
+.person:hover .ph img{transform:scale(1.05)}
+.person .mono-tile{width:100%;height:100%;display:grid;place-items:center;position:relative;
+  background:radial-gradient(70% 70% at 34% 26%,#20242a,#0c0e11 78%)}
+.person .mono-tile span{font-family:'Archivo Black',sans-serif;font-size:3.4rem;letter-spacing:-.04em;
+  background:var(--alu);-webkit-background-clip:text;background-clip:text;color:transparent;transition:.5s var(--ease)}
+.person:hover .mono-tile span{transform:scale(1.08)}
+.person .mono-tile::after{content:'';position:absolute;width:74%;aspect-ratio:1;border-radius:50%;
+  border:1px solid rgba(255,255,255,.10);box-shadow:inset 0 0 0 14px rgba(255,255,255,.03)}
+.person b{font-size:1.02rem;text-transform:uppercase;letter-spacing:-.01em}
+.person span{display:block;font-family:'JetBrains Mono',monospace;font-size:.64rem;letter-spacing:.16em;color:var(--mut2);text-transform:uppercase;margin-top:4px}
+
+/* ---------- B2B ---------- */
+.b2b{border-radius:28px;border:1px solid var(--line);overflow:hidden;position:relative;
+  background:linear-gradient(120deg,#15181d,#0c0e11 60%)}
+.b2b::before{content:'';position:absolute;inset:0;background:radial-gradient(90% 120% at 100% 0%,rgba(255,77,46,.18),transparent 60%)}
+.b2b-in{position:relative;display:grid;grid-template-columns:1.1fr .9fr;gap:36px;padding:clamp(30px,4.5vw,58px)}
+@media(max-width:880px){.b2b-in{grid-template-columns:1fr}}
+.b2b ul{list-style:none;display:grid;gap:12px;margin:22px 0 26px}
+.b2b ul li{display:flex;gap:11px;font-size:.95rem;color:#cbd2db}
+.b2b ul li::before{content:'';flex-shrink:0;width:19px;height:19px;border-radius:6px;margin-top:3px;
+  background:rgba(255,77,46,.15);border:1px solid rgba(255,77,46,.4);
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23FF4D2E' stroke-width='3.4'%3E%3Cpath d='M20 6L9 17l-5-5'/%3E%3C/svg%3E");
+  background-size:12px;background-repeat:no-repeat;background-position:center}
+.mock{border:1px solid var(--line2);border-radius:16px;background:#0a0c0f;overflow:hidden;box-shadow:0 30px 70px -20px rgba(0,0,0,.8)}
+.mock .top{display:flex;gap:6px;padding:11px 14px;border-bottom:1px solid var(--line);background:#12151a}
+.mock .top i{width:9px;height:9px;border-radius:50%;background:#2c313a;display:block}
+.mock .rowz{padding:14px}
+.mock .r{display:flex;align-items:center;gap:11px;padding:11px 12px;border:1px solid var(--line);border-radius:10px;margin-bottom:8px;font-size:.8rem}
+.pill{font-family:'JetBrains Mono',monospace;font-size:.6rem;letter-spacing:.1em;padding:4px 9px;border-radius:99px;margin-left:auto;text-transform:uppercase}
+.pill.a{background:rgba(37,211,102,.15);color:#4ade80;border:1px solid rgba(37,211,102,.35)}
+.pill.b{background:rgba(255,197,49,.14);color:#FFC531;border:1px solid rgba(255,197,49,.32)}
+.pill.c{background:rgba(79,172,254,.14);color:#7cc4ff;border:1px solid rgba(79,172,254,.32)}
+
+/* ---------- FAQ ---------- */
+.faq{border-top:1px solid var(--line)}
+.faq details{border-bottom:1px solid var(--line)}
+.faq summary{list-style:none;cursor:pointer;padding:22px 0;font-weight:700;font-size:1.02rem;display:flex;align-items:center;gap:16px}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:'+';margin-left:auto;font-size:1.5rem;font-weight:400;color:var(--acc);transition:.3s}
+.faq details[open] summary::after{transform:rotate(45deg)}
+.faq p{padding:0 0 22px;color:var(--mut);max-width:78ch}
+
+/* ---------- CONTATTI ---------- */
+.ct{display:grid;grid-template-columns:1fr 1.15fr;gap:22px}
+@media(max-width:900px){.ct{grid-template-columns:1fr}}
+.ct-card{background:var(--panel2);border:1px solid var(--line);border-radius:var(--r);padding:28px}
+.ct-row{display:flex;gap:14px;padding:15px 0;border-bottom:1px solid var(--line)}
+.ct-row:last-child{border:0}
+.ct-row .k{font-family:'JetBrains Mono',monospace;font-size:.64rem;letter-spacing:.18em;color:var(--mut2);text-transform:uppercase;width:92px;flex-shrink:0;padding-top:4px}
+.ct-row .v{font-weight:600}
+.ct-row .v small{display:block;font-weight:400;color:var(--mut);font-size:.84rem}
+.live{display:inline-flex;align-items:center;gap:8px;font-family:'JetBrains Mono',monospace;font-size:.68rem;letter-spacing:.14em;text-transform:uppercase;
+  padding:7px 13px;border-radius:99px;border:1px solid var(--line2)}
+.live i{width:8px;height:8px;border-radius:50%;display:block;animation:pulse 2s infinite}
+.live.open i{background:#4ade80;box-shadow:0 0 0 0 rgba(74,222,128,.7)}
+.live.closed i{background:#f87171}
+@keyframes pulse{70%{box-shadow:0 0 0 9px rgba(74,222,128,0)}}
+iframe.map{width:100%;height:100%;min-height:340px;border:0;filter:grayscale(1) invert(.92) contrast(.86)}
+.mapbox{border-radius:var(--r);overflow:hidden;border:1px solid var(--line)}
+
+/* ---------- FOOTER ---------- */
+footer{border-top:1px solid var(--line);padding:56px 0 40px;background:#060709}
+.fgrid{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:30px}
+@media(max-width:820px){.fgrid{grid-template-columns:1fr 1fr}}
+footer h5{font-family:'JetBrains Mono',monospace;font-size:.64rem;letter-spacing:.2em;text-transform:uppercase;color:var(--mut2);margin-bottom:14px}
+footer a{display:block;color:var(--mut);font-size:.9rem;padding:5px 0;transition:.2s}
+footer a:hover{color:#fff}
+.fbot{margin-top:44px;padding-top:22px;border-top:1px solid var(--line);display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;font-size:.78rem;color:var(--mut2)}
+
+/* ---------- FLOATING ---------- */
+.fab{position:fixed;right:20px;bottom:20px;z-index:80;display:flex;flex-direction:column;gap:10px;align-items:flex-end}
+.fab a{width:56px;height:56px;border-radius:50%;display:grid;place-items:center;box-shadow:0 12px 34px -8px rgba(0,0,0,.7);transition:.3s var(--ease)}
+.fab a:hover{transform:scale(1.08)}
+.fab .wa{background:#25D366}
+.fab .tel{background:rgba(255,255,255,.1);border:1px solid var(--line2);backdrop-filter:blur(10px)}
+.fab svg{width:26px;height:26px}
+
+/* ---------- REVEAL ---------- */
+[data-rv]{opacity:0;transform:translateY(28px);transition:.85s var(--ease)}
+[data-rv].in{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}[data-rv]{opacity:1;transform:none}}
+</style>
+</head>
+<body>
+
+<!-- ================= NAV ================= -->
+<header class="nav" id="nav">
+  <div class="wrap navin">
+    <a href="#top" class="brand">
+      <img src="https://impro.usercontent.one/appid/oneComWsb/domain/officinadelcerchio.it/media/officinadelcerchio.it/onewebmedia/5c5706bb-4742-4040-9daa-57ae2076a185.jpg?sourceContentType=image%2Fjpeg&ignoreAspectRatio&resize=580%2B580&quality=85" alt="Officina del Cerchio">
+      <span><b>Officina del Cerchio</b><span>Rigenerazione cerchi in lega</span></span>
+    </a>
+    <nav class="navlinks">
+      <a href="#servizi">Servizi</a>
+      <a href="#configuratore">Configuratore</a>
+      <a href="#preventivo">Preventivo</a>
+      <a href="#lavori">Lavori</a>
+      <a href="#officina">Officina</a>
+      <a href="#partner">Partner B2B</a>
+      <a href="#contatti">Contatti</a>
+    </nav>
+    <a class="btn btn-w" href="https://wa.me/393517058727?text=Ciao%20Officina%20del%20Cerchio%2C%20vorrei%20un%20preventivo%20per%20i%20miei%20cerchi." target="_blank" rel="noopener">
+      <svg viewBox="0 0 24 24" width="17" height="17" fill="currentColor"><path d="M12 2a10 10 0 00-8.6 15L2 22l5.2-1.4A10 10 0 1012 2zm0 18a8 8 0 01-4.1-1.1l-.3-.2-3.1.8.8-3-.2-.3A8 8 0 1112 20zm4.4-5.8c-.2-.1-1.4-.7-1.6-.8s-.4-.1-.5.1-.6.8-.7 1-.3.2-.5.1a6.5 6.5 0 01-3.2-2.8c-.2-.4.2-.4.6-1.2.1-.2 0-.3 0-.5s-.5-1.3-.7-1.7-.4-.4-.5-.4h-.5a1 1 0 00-.7.3A2.9 2.9 0 006 9c0 1.7 1.2 3.3 1.4 3.5a10.3 10.3 0 004 3.5c1.4.6 2 .6 2.7.5a2.5 2.5 0 001.6-1.2 2 2 0 00.2-1.1c-.1-.1-.3-.2-.5-.3z"/></svg>
+      Preventivo WhatsApp
+    </a>
+    <button class="burger" id="burger" aria-label="Menu"><div></div></button>
+  </div>
+</header>
+<div class="drawer" id="drawer">
+  <button class="x" id="dx" aria-label="Chiudi">&times;</button>
+  <a href="#servizi">Servizi</a><a href="#configuratore">Configuratore</a><a href="#preventivo">Preventivo</a>
+  <a href="#lavori">Lavori</a><a href="#officina">Officina</a><a href="#partner">Partner B2B</a><a href="#contatti">Contatti</a>
+</div>
+
+<!-- ================= HERO ================= -->
+<section class="hero" id="top">
+  <div class="hero-bg">
+    <img src="https://impro.usercontent.one/appid/oneComWsb/domain/officinadelcerchio.it/media/officinadelcerchio.it/onewebmedia/ee7b4951-2a6a-49ae-8913-0913cece3853.jpg?sourceContentType=image%2Fjpeg&quality=85" alt="Officina del Cerchio — laboratorio">
+  </div>
+  <div class="wrap hero-in">
+    <div>
+      <div class="eyebrow">Concorezzo · Monza e Brianza · dal 2019</div>
+      <h1 class="h-xxl">Rigenerare non<br>significa riparare.<em class="alu-text">Significa riportare a nuovo.</em></h1>
+      <p class="lead">Raddrizzatura, verniciatura a polvere e diamantatura CNC su cerchi in lega auto e moto. Ogni lavorazione eseguita <b style="color:#fff">interamente nella nostra officina</b> — nessuna fase delegata all'esterno.</p>
+      <div class="hero-cta">
+        <a class="btn btn-p btn-lg" href="#preventivo">Preventivo in 60 secondi</a>
+        <a class="btn btn-g btn-lg" href="#configuratore">Configura i tuoi cerchi</a>
+      </div>
+      <div class="trustbar">
+        <div><b>4,8<span style="font-size:1rem"> / 5</span></b><span class="stars">★★★★★</span><span>258 recensioni Google</span></div>
+        <div><b class="alu-text" data-count="3">3</b><span>giorni medi di lavorazione</span></div>
+        <div><b class="alu-text" data-count="100">100</b><span>% lavorazioni interne</span></div>
+        <div><b class="alu-text" data-count="2019">2019</b><span>anno di fondazione</span></div>
+      </div>
+    </div>
+    <div class="hero-stage">
+      <div class="disc">
+        <span class="disc-ring"></span>
+        <div class="disc-in"><div class="disc-rot" id="heroRot"></div></div>
+        <div class="disc-glass"></div><div class="sheen"></div>
+      </div>
+      <span class="cap" id="heroCap">&nbsp;</span>
+    </div>
+  </div>
+  <div class="scrollhint">scorri</div>
+</section>
+
+<!-- ================= MARCHI ================= -->
+<section style="padding:clamp(34px,6vh,60px) 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line);background:#0a0c0f">
+  <div class="wrap" style="margin-bottom:20px">
+    <div class="eyebrow">Cerchi passati dalle nostre mani</div>
+  </div>
+  <div class="marq"><div class="marq-t" id="marq"></div></div>
+</section>
+
+<!-- ================= SERVIZI ================= -->
+<section class="sec" id="servizi">
+  <div class="wrap">
+    <div class="sec-head" data-rv>
+      <div class="eyebrow">Cosa facciamo</div>
+      <h2 class="h-xl">Il ciclo completo,<br>sotto lo stesso tetto</h2>
+      <p class="lead">Nella nostra officina non si eseguono "ritocchini": da qui escono solo cerchi perfettamente rigenerati, in linea con gli standard qualitativi imposti dagli stessi produttori.</p>
+    </div>
+    <div class="grid g3">
+
+      <article class="card svc" data-rv>
+        <div class="ic"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 3v18M3 12h18"/></svg></div>
+        <div class="num">01 / STRUTTURA</div>
+        <h3>Raddrizzatura</h3>
+        <p>Hai preso una buca e senti lo sterzo vibrare? Probabilmente si è stortato un cerchio. Lo raddrizziamo nel tempo di offrirti un caffè, con controllo dell'eccentricità su banco.</p>
+        <ul><li>ovalizzazioni</li><li>bordi piegati</li><li>controllo in asse</li><li>auto &amp; moto</li></ul>
+      </article>
+
+      <article class="card svc" data-rv>
+        <div class="ic"><svg viewBox="0 0 24 24"><path d="M4 20l6-6M14 4l6 6-8 8H6v-6z"/></svg></div>
+        <div class="num">02 / SALDATURA</div>
+        <h3>Crepe e ricostruzioni</h3>
+        <p>Crepe, fori e bordi mancanti vengono risolti con saldature e rettifiche accurate. Recuperiamo anche cerchi storici da collezione riportandoli allo splendore originale.</p>
+        <ul><li>saldatura</li><li>rettifica</li><li>cerchi d'epoca</li><li>bordi ricostruiti</li></ul>
+      </article>
+
+      <article class="card svc" data-rv>
+        <div class="ic"><svg viewBox="0 0 24 24"><path d="M12 3v6M8 9h8l2 4v6a2 2 0 01-2 2H8a2 2 0 01-2-2v-6z"/></svg></div>
+        <div class="num">03 / FINITURA</div>
+        <h3>Verniciatura a polvere</h3>
+        <p>Sverniciatura totale, sabbiatura solo se necessario e con grane finissime per non arrotondare i bordi, poi fondo, colore e trasparente a polvere. Copertura su esterno, interno e canale.</p>
+        <ul><li>qualsiasi colore</li><li>a campione</li><li>polimerizzazione 200°</li><li>anti-ossido</li></ul>
+      </article>
+
+      <article class="card svc" data-rv>
+        <div class="ic"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="3.2"/><path d="M12 3v3M12 18v3M3 12h3M18 12h3"/></svg></div>
+        <div class="num">04 / PRECISIONE</div>
+        <h3>Diamantatura CNC</h3>
+        <p>Tornio a controllo numerico con utensile a punta di diamante: asporta con precisione millimetrica il primo strato frontale. È l'unica lavorazione che dà il vero <span class="iri-text" style="font-weight:800">riflesso ad arcobaleno</span>.</p>
+        <ul><li>tornio CNC</li><li>bicolore reale</li><li>trasparente a polvere</li><li>controllo in asse</li></ul>
+      </article>
+
+      <article class="card svc" data-rv>
+        <div class="ic"><svg viewBox="0 0 24 24"><path d="M12 2l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.3 5.9 20.6l1.4-6.8L2.2 9.1l6.9-.8z"/></svg></div>
+        <div class="num">05 / STILE</div>
+        <h3>Personalizzazione</h3>
+        <p>Stanco dei soliti cerchi? Nuovo colore, finitura, bicolore o logo. Siamo in grado di riprodurre e imprimere scritte e loghi come originali oppure completamente personalizzati.</p>
+        <ul><li>loghi impressi</li><li>scritte</li><li>bicolore</li><li>colori a campione</li></ul>
+      </article>
+
+      <article class="card svc" data-rv>
+        <div class="ic"><svg viewBox="0 0 24 24"><path d="M3 7h13v10H3zM16 10h3.5L22 13v4h-6z"/><circle cx="7" cy="18" r="1.8"/><circle cx="18" cy="18" r="1.8"/></svg></div>
+        <div class="num">06 / B2B</div>
+        <h3>Servizio professionisti</h3>
+        <p>Gommisti, carrozzerie, concessionarie e officine: listino riservato, ritiro e consegna concordati, stato lavorazione sempre visibile e fatturazione mensile unica.</p>
+        <ul><li>listino partner</li><li>ritiro/consegna</li><li>tracciamento</li><li>fattura mensile</li></ul>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<!-- ================= CONFIGURATORE ================= -->
+<section class="sec" id="configuratore" style="background:linear-gradient(180deg,transparent,#0b0d10 12%,#0b0d10 88%,transparent)">
+  <div class="wrap">
+    <div class="sec-head" data-rv>
+      <div class="eyebrow">Wow · anteprima live</div>
+      <h2 class="h-xl">Vedi il risultato<br>prima di lasciare i cerchi</h2>
+      <p class="lead">Scegli colore, finitura e diamantatura: la configurazione viene allegata automaticamente al messaggio WhatsApp, così l'officina sa già cosa vuoi.</p>
+    </div>
+
+    <div class="cfg" data-rv>
+      <div class="cfg-stage" id="stage">
+        <div class="cfg-badge mono" id="cfgBadge">Nero lucido</div>
+        <div class="shot" id="cfgShot"></div>
+      </div>
+
+      <div>
+        <span class="lbl">Finitura — ogni anteprima è un lavoro uscito da qui</span>
+        <div class="swatches" id="sws"></div>
+
+        <span class="lbl">Diametro</span>
+        <div class="opt-row" id="dias"></div>
+
+        <div style="margin-top:30px;display:flex;gap:12px;flex-wrap:wrap">
+          <a class="btn btn-w btn-lg" id="cfgWa" target="_blank" rel="noopener">Invia questa configurazione</a>
+          <a class="btn btn-g btn-lg" href="#lavori">Vedi altri lavori</a>
+        </div>
+        <p class="disc" style="margin-left:0">Ogni anteprima è la foto di un cerchio vero rigenerato nella nostra officina. La resa finale dipende dal disegno del cerchio: realizziamo qualsiasi colore standard e a campione, in qualsiasi finitura.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= PREVENTIVO ================= -->
+<section class="sec" id="preventivo">
+  <div class="wrap">
+    <div class="sec-head" data-rv>
+      <div class="eyebrow">Zero attesa</div>
+      <h2 class="h-xl">Preventivo indicativo<br>in 60 secondi</h2>
+      <p class="lead">Quattro domande, una fascia di prezzo immediata e il messaggio WhatsApp già pronto con tutti i dati che servono all'officina. Il preventivo definitivo arriva dopo aver visto le foto.</p>
+    </div>
+
+    <div class="quote" data-rv>
+      <div class="quote-head">
+        <b class="h-l">Configura la tua richiesta</b>
+        <div class="steps" id="steps"><i class="on"></i><i></i><i></i><i></i><i></i></div>
+      </div>
+      <div class="qbody">
+
+        <div class="qstep on" data-s="0">
+          <b style="font-size:1.15rem">Che tipo di intervento ti serve?</b>
+          <div class="qgrid" data-group="job">
+            <div class="opt" data-v="raddrizzatura" data-lo="60" data-hi="90"><b>Raddrizzatura</b><span>Cerchio storto, sterzo che vibra</span></div>
+            <div class="opt" data-v="rigenerazione" data-lo="110" data-hi="150"><b>Rigenerazione completa</b><span>Sverniciatura + verniciatura a polvere</span></div>
+            <div class="opt" data-v="diamantatura" data-lo="160" data-hi="220"><b>Diamantatura CNC</b><span>Include rigenerazione e trasparente</span></div>
+            <div class="opt" data-v="personalizzazione" data-lo="130" data-hi="185"><b>Cambio look / colore</b><span>Nuovo colore, bicolore o logo</span></div>
+          </div>
+        </div>
+
+        <div class="qstep" data-s="1">
+          <b style="font-size:1.15rem">Quanti cerchi?</b>
+          <div class="qgrid" data-group="qty">
+            <div class="opt" data-v="1" data-mult="1"><b>1 cerchio</b><span>Danno singolo</span></div>
+            <div class="opt" data-v="2" data-mult="2"><b>2 cerchi</b><span>Stesso lato o stesso asse</span></div>
+            <div class="opt" data-v="4" data-mult="3.7"><b>Treno completo (4)</b><span>Prezzo agevolato sul set</span></div>
+            <div class="opt" data-v="5+" data-mult="4.6"><b>5 o più</b><span>Anche moto o ruote di scorta</span></div>
+          </div>
+        </div>
+
+        <div class="qstep" data-s="2">
+          <b style="font-size:1.15rem">Diametro del cerchio</b>
+          <div class="qgrid" data-group="size">
+            <div class="opt" data-v='fino a 17"' data-add="0"><b>Fino a 17"</b><span>Utilitarie e compatte</span></div>
+            <div class="opt" data-v='18" – 19"' data-add="15"><b>18" – 19"</b><span>Berline e SUV</span></div>
+            <div class="opt" data-v='20" e oltre' data-add="35"><b>20" e oltre</b><span>Premium e sportive</span></div>
+            <div class="opt" data-v="moto" data-add="10"><b>Cerchio moto</b><span>Anteriore o posteriore</span></div>
+          </div>
+        </div>
+
+        <div class="qstep" data-s="3">
+          <b style="font-size:1.15rem">C'è anche una crepa, un foro o un bordo mancante?</b>
+          <div class="qgrid" data-group="weld">
+            <div class="opt" data-v="no" data-add="0"><b>No</b><span>Solo graffi o deformazione</span></div>
+            <div class="opt" data-v="sì, da valutare" data-add="55"><b>Sì</b><span>Serve saldatura e rettifica</span></div>
+            <div class="opt" data-v="non lo so" data-add="25"><b>Non lo so</b><span>Lo verifichiamo noi in officina</span></div>
+          </div>
+        </div>
+
+        <div class="qstep" data-s="4">
+          <div class="result">
+            <div class="eyebrow" style="justify-content:center">Stima indicativa</div>
+            <div class="big alu-text" id="qPrice">—</div>
+            <div class="recap" id="qRecap"></div>
+            <div style="display:flex;gap:10px;justify-content:center;flex-wrap:wrap">
+              <a class="btn btn-w btn-lg" id="qWa" target="_blank" rel="noopener">Invia su WhatsApp con le foto</a>
+              <a class="btn btn-g btn-lg" href="tel:0392290138">Chiama 039 229 0138</a>
+            </div>
+            <p class="disc">Fascia di prezzo indicativa calcolata su lavorazioni standard. Il preventivo definitivo viene confermato dopo aver visto <b>una foto del cerchio intero</b>, <b>il diametro</b> e <b>qualche foto specifica dei danni</b>. Le richieste inviate via mail non vengono lavorate: usiamo WhatsApp per rispondere più in fretta.</p>
+          </div>
+        </div>
+
+        <div class="qnav">
+          <button class="btn btn-g" id="qBack">Indietro</button>
+          <button class="btn btn-p" id="qNext">Avanti</button>
+          <button class="btn btn-g" id="qReset" style="display:none">Ricomincia</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= BEFORE / AFTER + PROCESSO ================= -->
+<section class="sec" id="processo" style="background:#0b0d10">
+  <div class="wrap">
+    <div class="sec-head" data-rv>
+      <div class="eyebrow">Il processo</div>
+      <h2 class="h-xl">Da così<br>a così</h2>
+      <p class="lead">Trascina la maniglia. Sono cerchi reali passati dalla nostra officina: sverniciati completamente, riverniciati a polvere e ridiamantati al tornio CNC.</p>
+    </div>
+
+    <div class="ba" id="ba" data-rv>
+      <img class="before" src="https://impro.usercontent.one/appid/oneComWsb/domain/officinadelcerchio.it/media/officinadelcerchio.it/onewebmedia/COM%27ERANO.jpg?sourceContentType=image%2Fjpeg&quality=85" alt="Cerchi prima della lavorazione">
+      <img class="after" src="https://impro.usercontent.one/appid/oneComWsb/domain/officinadelcerchio.it/media/officinadelcerchio.it/onewebmedia/IL%20RISULTATO.jpg?sourceContentType=image%2Fjpeg&quality=85" alt="Cerchi dopo la rigenerazione">
+      <span class="hd l">Prima</span><span class="hd r">Dopo</span>
+      <div class="bar"></div><div class="knob">⇔</div>
+    </div>
+
+    <div class="proc" style="margin-top:24px">
+      <article class="pstep" data-rv><div class="ph"><img loading="lazy" src="https://impro.usercontent.one/appid/oneComWsb/domain/officinadelcerchio.it/media/officinadelcerchio.it/onewebmedia/COM%27ERANO.jpg?sourceContentType=image%2Fjpeg&quality=85" alt="Com'erano"></div><div class="tx"><i>FASE 01</i><b>Diagnosi</b><p>Controllo dell'eccentricità, delle crepe e dello stato della finitura. Ti diciamo subito cosa è recuperabile e cosa no.</p></div></article>
+      <article class="pstep" data-rv><div class="ph"><img loading="lazy" src="https://impro.usercontent.one/appid/oneComWsb/domain/officinadelcerchio.it/media/officinadelcerchio.it/onewebmedia/LA%20SVERNICIATURA.jpg?sourceContentType=image%2Fjpeg&quality=85" alt="La sverniciatura"></div><div class="tx"><i>FASE 02</i><b>Sverniciatura</b><p>Rimozione totale della vecchia vernice. Sabbiatura solo se necessario, con grane finissime per non arrotondare i bordi.</p></div></article>
+      <article class="pstep" data-rv><div class="ph"><img loading="lazy" src="https://impro.usercontent.one/appid/oneComWsb/domain/officinadelcerchio.it/media/officinadelcerchio.it/onewebmedia/IL%20FONDO%20A%20POLVERE.jpg?sourceContentType=image%2Fjpeg&quality=85" alt="Il fondo a polvere"></div><div class="tx"><i>FASE 03</i><b>Fondo a polvere</b><p>Primer a polvere su esterno, interno e canale: è lo scudo che protegge il cerchio dall'ossido negli anni.</p></div></article>
+      <article class="pstep" data-rv><div class="ph"><img loading="lazy" src="https://impro.usercontent.one/appid/oneComWsb/domain/officinadelcerchio.it/media/officinadelcerchio.it/onewebmedia/IL%20RISULTATO.jpg?sourceContentType=image%2Fjpeg&quality=85" alt="Il risultato"></div><div class="tx"><i>FASE 04</i><b>Colore e trasparente</b><p>Polimerizzazione a circa 200°: le molecole aggregano e formano un vero scudo. Poi, se richiesta, la diamantatura CNC.</p></div></article>
+      <article class="pstep" data-rv><div class="ph"><img loading="lazy" src="https://impro.usercontent.one/appid/oneComWsb/domain/officinadelcerchio.it/media/officinadelcerchio.it/onewebmedia/LA%20CONSEGNA.jpg?sourceContentType=image%2Fjpeg&quality=85" alt="La consegna"></div><div class="tx"><i>FASE 05</i><b>Consegna</b><p>Mediamente in 3 giorni. Documentiamo tutto il processo sui social: vedi i tuoi cerchi mentre rinascono.</p></div></article>
+    </div>
+  </div>
+</section>
+
+<!-- ================= DIAMANTATURA ================= -->
+<section class="sec" id="diamantatura">
+  <div class="wrap">
+    <div class="grid g2" style="gap:40px;align-items:center">
+      <div data-rv>
+        <div class="eyebrow">Attenzione ai falsi</div>
+        <h2 class="h-xl" style="margin:14px 0 18px">Solo la diamantatura CNC<br><span class="iri-text">riflette l'arcobaleno</span></h2>
+        <p class="lead" style="margin-bottom:18px">La diamantatura si effettua con un tornio a controllo numerico che, tramite un utensile con punta di diamante, asporta con precisione millimetrica il primo strato frontale di materiale. Trattandosi di una rettifica non è possibile intervenire sul singolo graffio: i cerchi vengono sempre completamente rigenerati.</p>
+        <p class="lead">Perché la lavorazione sia sicura, i cerchi devono essere perfettamente dritti e in asse: li controlliamo noi e li raddrizziamo se serve. Chiudiamo con il trasparente a polvere, che protegge e dà profondità ai colori.</p>
+        <div class="grid g2" style="margin-top:26px;gap:12px">
+          <div class="card" style="padding:20px"><b style="display:block;margin-bottom:6px">Verniciatura bicolore</b><span style="color:var(--mut);font-size:.88rem">Simula l'effetto. Piatta, senza profondità, nessun riflesso.</span></div>
+          <div class="card" style="padding:20px;border-color:rgba(255,255,255,.28)"><b class="iri-text" style="display:block;margin-bottom:6px">Diamantatura CNC</b><span style="color:var(--mut);font-size:.88rem">Metallo vivo lavorato al tornio. Riflesso cangiante reale.</span></div>
+        </div>
+      </div>
+      <div data-rv class="grid g2" style="gap:12px">
+        <img loading="lazy" style="border-radius:16px;border:1px solid var(--line)" src="https://impro.usercontent.one/appid/oneComWsb/domain/officinadelcerchio.it/media/officinadelcerchio.it/onewebmedia/4208c293-d4b8-4381-9fa8-df61c295a94e.jpg?sourceContentType=image%2Fjpeg&quality=85" alt="Dettaglio lavorazione">
+        <img loading="lazy" style="border-radius:16px;border:1px solid var(--line)" src="https://impro.usercontent.one/appid/oneComWsb/domain/officinadelcerchio.it/media/officinadelcerchio.it/onewebmedia/b6e1fb59-e23a-422c-9ade-f1d17dd52a38.jpg?sourceContentType=image%2Fjpeg&quality=85" alt="Logo impresso su cerchio">
+        <img loading="lazy" style="border-radius:16px;border:1px solid var(--line)" src="https://impro.usercontent.one/appid/oneComWsb/domain/officinadelcerchio.it/media/officinadelcerchio.it/onewebmedia/368b13e5-ca08-4f87-a1b1-9b35faf6adbf.jpg?sourceContentType=image%2Fjpeg&quality=85" alt="Scritta personalizzata">
+        <img loading="lazy" style="border-radius:16px;border:1px solid var(--line)" src="https://impro.usercontent.one/appid/oneComWsb/domain/officinadelcerchio.it/media/officinadelcerchio.it/onewebmedia/b9ea641c-655d-43c0-b6ca-054deaa7d2f5.jpg?sourceContentType=image%2Fjpeg&quality=85" alt="Finitura personalizzata">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= GALLERY ================= -->
+<section class="sec" id="lavori" style="background:#0b0d10">
+  <div class="wrap">
+    <div class="sec-head" data-rv>
+      <div class="eyebrow">Portfolio</div>
+      <h2 class="h-xl">Lavori usciti<br>da questa officina</h2>
+      <p class="lead">Audi, Volkswagen, Porsche, BBS, OZ Rallye d'epoca, Lamborghini. Ogni set è stato smontato, lavorato e consegnato da noi.</p>
+    </div>
+    <div class="filters" data-rv>
+      <button class="chip on" data-f="all">Tutti</button>
+      <button class="chip" data-f="dia">Diamantatura</button>
+      <button class="chip" data-f="ver">Verniciatura</button>
+      <button class="chip" data-f="rig">Rigenerazione</button>
+    </div>
+    <div class="gal" id="gal"></div>
+  </div>
+</section>
+<div class="lightbox" id="lb"><img id="lbi" alt=""></div>
+
+<!-- ================= RECENSIONI ================= -->
+<section class="sec" id="recensioni">
+  <div class="wrap">
+    <div class="sec-head" data-rv style="display:flex;gap:26px;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;max-width:none">
+      <div style="max-width:56ch">
+        <div class="eyebrow">Dicono di noi</div>
+        <h2 class="h-xl" style="margin:14px 0 0">258 persone<br>l'hanno già scritto</h2>
+      </div>
+      <div class="gscore">
+        <div class="n alu-text">4,8</div>
+        <div>
+          <div class="stars" style="font-size:1.1rem">★★★★★</div>
+          <div style="font-size:.85rem;color:var(--mut)">258 recensioni su Google</div>
+        </div>
+        <a class="btn btn-g" href="https://www.google.com/search?q=officina+del+cerchio+concorezzo" target="_blank" rel="noopener">Leggile tutte</a>
+      </div>
+    </div>
+  </div>
+  <div class="revwrap" data-rv><div class="revtrack" id="revt"></div></div>
+</section>
+
+<!-- ================= OFFICINA / TEAM ================= -->
+<section class="sec" id="officina" style="background:#0b0d10">
+  <div class="wrap">
+    <div class="quote-big" data-rv style="margin-bottom:46px">
+      <blockquote>Diventare il punto di riferimento italiano del mio settore.</blockquote>
+      <cite>Aldo · fondatore · dalla Calabria a Concorezzo, dal 2019</cite>
+    </div>
+
+    <div class="grid g2" style="gap:46px;align-items:center;margin-bottom:60px">
+      <div data-rv>
+        <div class="eyebrow">Il fondatore</div>
+        <h2 class="h-xl" style="margin:14px 0 18px">Mi chiamo Aldo</h2>
+        <p class="lead" style="margin-bottom:16px">Ho aperto Officina del Cerchio nel 2019, con l'obiettivo di portare al Nord la mia passione nata in Calabria quando ero solo un ragazzo con tanti sogni da realizzare. Mi sono sempre divertito a montare, smontare e personalizzare qualsiasi cosa avesse delle ruote, finché ho deciso di trasformare il mio divertimento in una professione.</p>
+        <p class="lead" style="margin-bottom:16px">Ho iniziato a studiare, seguire corsi di formazione e partecipare a ogni evento del settore in Italia e all'estero. Non è stato un percorso facile, ma la determinazione mi ha sempre dato la forza per non arrendermi.</p>
+        <p class="lead">So di avere ancora molto da imparare, ed è per questo che sono sempre in continuo aggiornamento. <b style="color:#fff">Niente di tutto questo sarebbe stato possibile senza il mio team.</b></p>
+      </div>
+      <div data-rv>
+        <img loading="lazy" style="border-radius:22px;border:1px solid var(--line);width:100%;aspect-ratio:4/5;object-fit:cover" src="https://impro.usercontent.one/appid/oneComWsb/domain/officinadelcerchio.it/media/officinadelcerchio.it/onewebmedia/d3907f56-e63a-4248-9fdf-6ec046ab0435.jpg?sourceContentType=image%2Fjpeg&quality=85" alt="Aldo, fondatore di Officina del Cerchio">
+        
+      </div>
+    </div>
+
+    <div class="sec-head" data-rv><div class="eyebrow">Il team</div><h2 class="h-l" style="margin-top:12px">Le persone che toccano i tuoi cerchi</h2></div>
+    <div class="grid g3">
+      <div class="person" data-rv><div class="ph"><img loading="lazy" src="https://impro.usercontent.one/appid/oneComWsb/domain/officinadelcerchio.it/media/officinadelcerchio.it/onewebmedia/20d49e73-e797-4129-b5d0-8645c8cecd64.jpg?sourceContentType=image%2Fjpeg&quality=85" alt="Francesco"></div><b>Francesco</b><span>Senior manager</span></div>
+      <div class="person" data-rv><div class="ph"><img loading="lazy" src="https://impro.usercontent.one/appid/oneComWsb/domain/officinadelcerchio.it/media/officinadelcerchio.it/onewebmedia/cd14034e-7572-4fae-a796-00a4b9a3ec4a.jpg?sourceContentType=image%2Fjpeg&quality=85" alt="Stefania"></div><b>Stefania</b><span>Back office, front office e web marketing</span></div>
+      <div class="person" data-rv><div class="ph"><img loading="lazy" src="https://impro.usercontent.one/appid/oneComWsb/domain/officinadelcerchio.it/media/officinadelcerchio.it/onewebmedia/4ed32c7b-29db-4b00-9747-c83e493e6da4.jpg?sourceContentType=image%2Fjpeg&quality=85" alt="Alessio"></div><b>Alessio</b><span>Assistente tecnico</span></div>
+    </div>
+
+    <div class="grid g2" style="margin-top:26px;gap:22px;align-items:center">
+      <div class="person" data-rv style="text-align:left;display:grid;grid-template-columns:160px 1fr;gap:20px;align-items:center">
+        <div class="ph" style="margin:0;border-radius:18px"><img loading="lazy" src="https://impro.usercontent.one/appid/oneComWsb/domain/officinadelcerchio.it/media/officinadelcerchio.it/onewebmedia/ccb5cf56-f511-4617-873d-a3c78f9f8cfb.jpg?sourceContentType=image%2Fjpeg&quality=85" alt="Peppa, la mascotte"></div>
+        <div><b style="font-size:1.3rem">Peppa</b><span style="margin-bottom:8px">La nostra mascotte · professione rubacuori</span>
+        <p style="color:var(--mut);font-size:.9rem">Con le sue imprese riesce sempre a regalarci un sorriso. Unisciti alla nostra community su Instagram e Facebook per vederla tutti i giorni in azione.</p></div>
+      </div>
+      <div class="card" data-rv style="padding:26px">
+        <div class="eyebrow">Nelle vostre recensioni</div>
+        <p style="margin-top:14px;font-size:1.02rem;color:#cfd6df">“Cortesia del personale da 10 e lode, nonché l'accoglienza del cane stupendo.”</p>
+        <p style="margin-top:10px;color:var(--mut2);font-size:.84rem">— Ale, recensione Google</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= B2B ================= -->
+<section class="sec" id="partner">
+  <div class="wrap">
+    <div class="b2b" data-rv>
+      <div class="b2b-in">
+        <div>
+          <div class="eyebrow">Area professionisti</div>
+          <h2 class="h-xl" style="margin:14px 0 16px">Sei un gommista,<br>una carrozzeria<br>o un concessionario?</h2>
+          <p class="lead">Diventa partner ODC: i tuoi clienti vedono un cerchio come nuovo, tu non sposti un dito. Ritiriamo, lavoriamo, riconsegniamo — e tu vedi lo stato di ogni commessa in tempo reale.</p>
+          <ul>
+            <li>Listino riservato con sconti a scaglioni sul volume mensile</li>
+            <li>Ritiro e riconsegna concordati sulla Brianza e su Milano</li>
+            <li>Stato di ogni cerchio visibile online, senza telefonate</li>
+            <li>Una sola fattura riepilogativa a fine mese</li>
+            <li>Foto del prima/dopo pronte da girare al tuo cliente</li>
+          </ul>
+          <div style="display:flex;gap:10px;flex-wrap:wrap">
+            <a class="btn btn-p btn-lg" href="b2b.html">Entra nell'area partner</a>
+            <a class="btn btn-g btn-lg" href="https://wa.me/393517058727?text=Ciao%2C%20sono%20un%20professionista%20e%20vorrei%20informazioni%20sul%20listino%20partner%20ODC." target="_blank" rel="noopener">Richiedi il listino</a>
+          </div>
+        </div>
+        <div class="mock">
+          <div class="top"><i></i><i></i><i></i><span style="margin-left:10px;font-family:'JetBrains Mono',monospace;font-size:.64rem;color:var(--mut2)">odc · area partner</span></div>
+          <div class="rowz">
+            <div class="r"><b>#2418</b> Audi RS3 · 19" ×4 <span class="pill a">Consegnato</span></div>
+            <div class="r"><b>#2419</b> Golf GTI · 18" ×2 <span class="pill b">In verniciatura</span></div>
+            <div class="r"><b>#2420</b> Porsche 911 · 21" ×4 <span class="pill c">Diamantatura</span></div>
+            <div class="r"><b>#2421</b> Ducati V4 · 17" ×2 <span class="pill b">Raddrizzatura</span></div>
+            <div class="r" style="border-style:dashed;color:var(--mut2)">+ Nuova commessa</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= FAQ ================= -->
+<section class="sec" id="faq" style="background:#0b0d10">
+  <div class="wrap">
+    <div class="sec-head" data-rv><div class="eyebrow">Domande frequenti</div><h2 class="h-xl" style="margin-top:14px">Le risposte<br>che ci chiedete ogni giorno</h2></div>
+    <div class="faq" data-rv>
+      <details open><summary>Quanto tempo ci vuole?</summary><p>Una raddrizzatura semplice si risolve spesso in giornata, a volte in un'ora e mezza. Una rigenerazione completa con verniciatura a polvere richiede mediamente 3 giorni lavorativi. Sui lavori con saldature o diamantatura CNC i tempi vengono confermati in fase di preventivo.</p></details>
+      <details><summary>Come chiedo un preventivo?</summary><p>Solo su WhatsApp al 351 705 8727, inviando una foto del cerchio per intero, il diametro del cerchio e qualche foto specifica dei danni. Le richieste inoltrate via mail non vengono prese in considerazione: WhatsApp ci permette di risponderti molto più in fretta. Per altre necessità chiamaci al 039 229 0138 prima di recarti in officina.</p></details>
+      <details><summary>Un cerchio raddrizzato è sicuro?</summary><p>Sì, se il danno è recuperabile. Controlliamo eccentricità e struttura prima e dopo l'intervento: se un cerchio non è recuperabile in sicurezza te lo diciamo e non lo lavoriamo. La sicurezza viene prima del preventivo.</p></details>
+      <details><summary>Fate anche cerchi moto e cerchi d'epoca?</summary><p>Sì. Lavoriamo cerchi moto e recuperiamo cerchi storici da collezione — OZ, BBS e altri — con saldature e rettifiche, riportandoli allo splendore originale.</p></details>
+      <details><summary>Posso scegliere un colore qualsiasi?</summary><p>Realizziamo qualsiasi colore standard e a campione, in qualsiasi finitura: lucido, opaco, satinato, metallizzato, bicolore. Riproduciamo e imprimiamo anche scritte e loghi, sia come originali sia personalizzati.</p></details>
+      <details><summary>Fate "ritocchini" sul singolo graffio?</summary><p>No. Da qui escono solo cerchi perfettamente rigenerati, in linea con gli standard qualitativi imposti dagli stessi produttori. In particolare la diamantatura è una rettifica: non è tecnicamente possibile intervenire sul singolo graffio.</p></details>
+      <details><summary>Delegate qualche lavorazione all'esterno?</summary><p>No, nessuna. Siamo specializzati in tutti gli ambiti del nostro settore e ci prendiamo cura dei cerchi dall'inizio alla fine all'interno della nostra azienda.</p></details>
+    </div>
+  </div>
+</section>
+
+<!-- ================= CONTATTI ================= -->
+<section class="sec" id="contatti">
+  <div class="wrap">
+    <div class="sec-head" data-rv><div class="eyebrow">Dove siamo</div><h2 class="h-xl" style="margin-top:14px">Via G. Verga 7<br>Concorezzo (MB)</h2></div>
+    <div class="ct" data-rv>
+      <div class="ct-card">
+        <div id="liveBox" class="live closed"><i></i><span id="liveTxt">—</span></div>
+        <div class="ct-row"><div class="k">Preventivi</div><div class="v"><a href="https://wa.me/393517058727" target="_blank" rel="noopener">WhatsApp 351 705 8727</a><small>Foto del cerchio + diametro + foto dei danni</small></div></div>
+        <div class="ct-row"><div class="k">Telefono</div><div class="v"><a href="tel:0392290138">039 229 0138</a><small>Chiama prima di recarti in officina</small></div></div>
+        <div class="ct-row"><div class="k">Indirizzo</div><div class="v"><a href="https://www.google.com/maps/search/?api=1&query=Officina%20del%20Cerchio%2C%20via%20verga%207%2C%2020863%20concorezzo" target="_blank" rel="noopener">Via G. Verga 7 — 20863 Concorezzo (MB)</a><small>Provincia di Monza e della Brianza</small></div></div>
+        <div class="ct-row"><div class="k">Email</div><div class="v"><a href="mailto:officinadelcerchio@pm.me">officinadelcerchio@pm.me</a><small>Solo per amministrazione — non per preventivi</small></div></div>
+        <div class="ct-row"><div class="k">Orari</div><div class="v" id="hoursList"><small>—</small></div></div>
+        <div class="ct-row"><div class="k">Social</div><div class="v" style="display:flex;gap:10px">
+          <a class="btn btn-g" style="padding:9px 16px" href="https://www.instagram.com/_officina_del_cerchio_/" target="_blank" rel="noopener">Instagram</a>
+          <a class="btn btn-g" style="padding:9px 16px" href="https://www.facebook.com/officinadelcerchio/" target="_blank" rel="noopener">Facebook</a>
+        </div></div>
+      </div>
+      <div class="mapbox">
+        <iframe class="map" loading="lazy" title="Mappa Officina del Cerchio"
+          src="https://www.openstreetmap.org/export/embed.html?bbox=9.3199%2C45.5744%2C9.3379%2C45.5844&layer=mapnik&marker=45.57938%2C9.32891"></iframe>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= FOOTER ================= -->
+<footer>
+  <div class="wrap">
+    <div class="fgrid">
+      <div>
+        <a href="#top" class="brand" style="margin-bottom:14px">
+          <img src="https://impro.usercontent.one/appid/oneComWsb/domain/officinadelcerchio.it/media/officinadelcerchio.it/onewebmedia/5c5706bb-4742-4040-9daa-57ae2076a185.jpg?sourceContentType=image%2Fjpeg&ignoreAspectRatio&resize=580%2B580&quality=85" alt="">
+          <span><b>Officina del Cerchio</b><span>Concorezzo · MB</span></span>
+        </a>
+        <p style="color:var(--mut);font-size:.9rem;max-width:34ch">Rigenerazione cerchi in lega per auto e moto. Rigenerare non significa riparare: significa riportare a nuovo.</p>
+      </div>
+      <div><h5>Servizi</h5><a href="#servizi">Raddrizzatura</a><a href="#servizi">Saldature</a><a href="#servizi">Verniciatura a polvere</a><a href="#diamantatura">Diamantatura CNC</a><a href="#servizi">Personalizzazione</a></div>
+      <div><h5>Officina</h5><a href="#officina">Chi siamo</a><a href="#lavori">Lavori</a><a href="#recensioni">Recensioni</a><a href="#faq">Domande frequenti</a></div>
+      <div><h5>Contatti</h5><a href="https://wa.me/393517058727" target="_blank" rel="noopener">WhatsApp 351 705 8727</a><a href="tel:0392290138">039 229 0138</a><a href="#contatti">Via G. Verga 7, Concorezzo</a><a href="#partner">Area partner B2B</a></div>
+    </div>
+    <div class="fbot">
+      <span>© <span id="yr"></span> Officina del Cerchio — Tutti i diritti riservati</span>
+      <span class="mono">Concept &amp; sviluppo · demo non contrattuale</span>
+    </div>
+  </div>
+</footer>
+
+<div class="fab">
+  <a class="tel" href="tel:0392290138" aria-label="Chiama"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.8"><path d="M22 16.9v3a2 2 0 01-2.2 2 19.8 19.8 0 01-8.6-3.1 19.5 19.5 0 01-6-6A19.8 19.8 0 012.1 4.2 2 2 0 014.1 2h3a2 2 0 012 1.7c.1 1 .4 1.9.7 2.8a2 2 0 01-.5 2.1L8.1 9.9a16 16 0 006 6l1.3-1.2a2 2 0 012.1-.5c.9.3 1.8.6 2.8.7a2 2 0 011.7 2z"/></svg></a>
+  <a class="wa" href="https://wa.me/393517058727?text=Ciao%20Officina%20del%20Cerchio%2C%20vorrei%20un%20preventivo." target="_blank" rel="noopener" aria-label="WhatsApp"><svg viewBox="0 0 24 24" fill="#06240f"><path d="M12 2a10 10 0 00-8.6 15L2 22l5.2-1.4A10 10 0 1012 2zm0 18a8 8 0 01-4.1-1.1l-.3-.2-3.1.8.8-3-.2-.3A8 8 0 1112 20zm4.4-5.8c-.2-.1-1.4-.7-1.6-.8s-.4-.1-.5.1-.6.8-.7 1-.3.2-.5.1a6.5 6.5 0 01-3.2-2.8c-.2-.4.2-.4.6-1.2.1-.2 0-.3 0-.5s-.5-1.3-.7-1.7-.4-.4-.5-.4h-.5a1 1 0 00-.7.3A2.9 2.9 0 006 9c0 1.7 1.2 3.3 1.4 3.5a10.3 10.3 0 004 3.5c1.4.6 2 .6 2.7.5a2.5 2.5 0 001.6-1.2 2 2 0 00.2-1.1c-.1-.1-.3-.2-.5-.3z"/></svg></a>
+</div>
+
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"AutoRepair","name":"ODC — Officina del Cerchio","description":"Rigenerazione cerchi in lega: raddrizzatura, saldature, verniciatura a polvere e diamantatura CNC per auto e moto.","url":"https://officinadelcerchio.it/","telephone":"+390392290138","email":"officinadelcerchio@pm.me","foundingDate":"2019","address":{"@type":"PostalAddress","streetAddress":"Via G. Verga, 7","addressLocality":"Concorezzo","addressRegion":"MB","postalCode":"20863","addressCountry":"IT"},"geo":{"@type":"GeoCoordinates","latitude":45.57938,"longitude":9.32891},"aggregateRating":{"@type":"AggregateRating","ratingValue":"4.8","reviewCount":"258"},"sameAs":["https://www.instagram.com/_officina_del_cerchio_/","https://www.facebook.com/officinadelcerchio/"],"areaServed":["Concorezzo","Monza","Milano","Brianza","Lombardia"],"priceRange":"€€"}
+</script>
+
+<script>
+(function(){
+'use strict';
+var WA='393517058727';
+document.getElementById('yr').textContent=new Date().getFullYear();
+
+/* ---------- NAV ---------- */
+var nav=document.getElementById('nav');
+addEventListener('scroll',function(){nav.classList.toggle('scrolled',scrollY>40)},{passive:true});
+var dr=document.getElementById('drawer');
+document.getElementById('burger').onclick=function(){dr.classList.add('open')};
+document.getElementById('dx').onclick=function(){dr.classList.remove('open')};
+dr.querySelectorAll('a').forEach(function(a){a.onclick=function(){dr.classList.remove('open')}});
+
+/* ---------- REVEAL ---------- */
+var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})},{threshold:.12});
+document.querySelectorAll('[data-rv]').forEach(function(el,i){el.style.transitionDelay=(i%4*70)+'ms';io.observe(el)});
+
+/* ---------- CONTATORI ---------- */
+var ioc=new IntersectionObserver(function(es){es.forEach(function(e){
+  if(!e.isIntersecting)return; ioc.unobserve(e.target);
+  var t=+e.target.dataset.count,s=performance.now(),d=1100;
+  (function step(n){var p=Math.min((n-s)/d,1);var v=Math.round(t*(1-Math.pow(1-p,3)));
+   e.target.textContent=v; if(p<1)requestAnimationFrame(step)})(s);
+})},{threshold:.6});
+document.querySelectorAll('[data-count]').forEach(function(el){ioc.observe(el)});
+
+/* ---------- HOVER GLOW ---------- */
+document.querySelectorAll('.card').forEach(function(c){
+  c.addEventListener('mousemove',function(e){var r=c.getBoundingClientRect();
+    c.style.setProperty('--mx',(e.clientX-r.left)+'px');c.style.setProperty('--my',(e.clientY-r.top)+'px')});
+});
+
+/* ================= CERCHI VERI (hero + configuratore) ================= */
+var IMGB='https://impro.usercontent.one/appid/oneComWsb/domain/officinadelcerchio.it/media/officinadelcerchio.it/onewebmedia/';
+var IMGQ='?sourceContentType=image%2Fjpeg&quality=85';
+function IM(f){return IMGB+f+IMGQ}
+
+/* --- HERO: cerchi veri che ruotano e si dissolvono --- */
+var HERO=[
+  {f:'a1c91789-2a54-4489-8cfe-ba42dfbdff4e.jpg',c:'Audi · nero + diamantatura CNC'},
+  {f:'015ce18f-eb70-4a6c-918e-2c3a4b2237c3.jpg',c:'Volkswagen · ridiamantato al tornio CNC'},
+  {f:'ee7b4951-2a6a-49ae-8913-0913cece3853.jpg',c:'BBS · rigenerazione completa, nero lucido'},
+  {f:'c7bfec44-8de4-49a6-bf77-14eb6e8bd026.jpg',c:'Audi · cambio look, rame metallizzato'},
+  {f:'37bf2f21-bdb6-4b1a-b116-b754b5a3dd7b.jpg',c:'OZ Ultraleggera · cambio look, nero'}
+];
+(function(){
+  var rot=document.getElementById('heroRot'),cap=document.getElementById('heroCap');
+  if(!rot)return;
+  rot.innerHTML=HERO.map(function(h,i){return '<img'+(i===0?' class="on"':'')+' src="'+IM(h.f)+'" alt="'+h.c+'" loading="'+(i?'lazy':'eager')+'">'}).join('');
+  cap.textContent=HERO[0].c;
+  var imgs=rot.querySelectorAll('img'),k=0;
+  setInterval(function(){
+    imgs[k].classList.remove('on');k=(k+1)%imgs.length;imgs[k].classList.add('on');
+    cap.style.opacity=0;
+    setTimeout(function(){cap.textContent=HERO[k].c;cap.style.opacity=1},420);
+  },5200);
+})();
+
+/* --- CONFIGURATORE: finiture reali --- */
+var FIN=[
+  {n:'Nero lucido',            f:'ee7b4951-2a6a-49ae-8913-0913cece3853.jpg', sw:'linear-gradient(145deg,#3a3f46,#08090b)', j:'BBS rigenerati completamente'},
+  {n:'Nero opaco',             f:'767535bf-b6ef-4fa7-9880-572593f59649.jpg', sw:'linear-gradient(145deg,#33383e,#191b1f)', j:'BBS, finitura opaca a polvere'},
+  {n:'Antracite',              f:'00ff32a5-a0d8-4941-834c-47afacd49f13.jpg', sw:'linear-gradient(145deg,#6b727c,#33383f)', j:'Volkswagen, antracite a polvere'},
+  {n:'Silver',                 f:'0c7f472c-416a-4ed6-a64e-bc35ebe72615.jpg', sw:'linear-gradient(145deg,#ffffff,#9aa3b0)', j:'Audi, ritorno al silver originale'},
+  {n:'Rame metallizzato',      f:'c7bfec44-8de4-49a6-bf77-14eb6e8bd026.jpg', sw:'linear-gradient(145deg,#e8ab74,#8a4f28)', j:'Audi, cambio look completo'},
+  {n:'Bianco',                 f:'a75a0e64-5dc5-434b-a7c8-826fa3f428cb.jpg', sw:'linear-gradient(145deg,#ffffff,#d5d9df)', j:'OZ Ultraleggera, bianco a polvere'},
+  {n:'Nero + diamantatura CNC',f:'a1c91789-2a54-4489-8cfe-ba42dfbdff4e.jpg', sw:'linear-gradient(145deg,#1a1c20 42%,#c9d2dd)', j:'Audi, tornio a controllo numerico'},
+  {n:'Bicolore diamantato',    f:'9f7d8483-8285-4204-b7df-c09044be5133.jpg', sw:'linear-gradient(145deg,#2b2f35 38%,#e6ebf2)', j:'Volkswagen, faccia lavorata al tornio'}
+];
+var st={fin:0,dim:'19"'};
+var stage=document.getElementById('stage'),badge=document.getElementById('cfgBadge'),shot=document.getElementById('cfgShot');
+shot.innerHTML=FIN.map(function(f,i){return '<img'+(i===0?' class="on"':'')+' src="'+IM(f.f)+'" alt="'+f.n+'" loading="lazy">'}).join('');
+var shots=shot.querySelectorAll('img');
+
+var sws=document.getElementById('sws');
+FIN.forEach(function(f,i){
+  var b=document.createElement('button');
+  b.className='sw'+(i===0?' on':'');b.style.background=f.sw;b.dataset.n=f.n;b.setAttribute('aria-label',f.n);
+  b.onclick=function(){st.fin=i;sws.querySelectorAll('.sw').forEach(function(x){x.classList.remove('on')});b.classList.add('on');paint();kick()};
+  sws.appendChild(b);
+});
+var dims=document.getElementById('dias');
+['16"','17"','18"','19"','20"','21"','22"'].forEach(function(d){
+  var b=document.createElement('button');b.className='chip'+(d==='19"'?' on':'');b.textContent=d;
+  b.onclick=function(){st.dim=d;dims.querySelectorAll('.chip').forEach(function(x){x.classList.remove('on')});b.classList.add('on');paint()};
+  dims.appendChild(b);
+});
+function kick(){stage.classList.add('kick');setTimeout(function(){stage.classList.remove('kick')},820)}
+function paint(){
+  var f=FIN[st.fin];
+  shots.forEach(function(im,i){im.classList.toggle('on',i===st.fin)});
+  badge.textContent=f.n+' · '+f.j;
+  document.getElementById('cfgWa').href='https://wa.me/'+WA+'?text='+encodeURIComponent(
+    'Ciao Officina del Cerchio! Ho scelto la finitura sul vostro sito:\n\n'+
+    '• Finitura: '+f.n+'\n• Diametro: '+st.dim+'\n\n'+
+    'Allego foto dei cerchi e dei danni. Potete confermarmi il preventivo?');
+}
+paint();
+
+/* ================= PREVENTIVO ================= */
+var Q={job:null,qty:null,size:null,weld:null},step=0,MAX=4;
+var stepsEl=document.getElementById('steps');
+function show(){
+  document.querySelectorAll('.qstep').forEach(function(s){s.classList.toggle('on',+s.dataset.s===step)});
+  stepsEl.querySelectorAll('i').forEach(function(i,k){i.classList.toggle('on',k<=step)});
+  document.getElementById('qBack').style.display=step===0?'none':'';
+  document.getElementById('qNext').style.display=step>=MAX?'none':'';
+  document.getElementById('qReset').style.display=step>=MAX?'':'none';
+  document.getElementById('qNext').disabled=false;
+}
+document.querySelectorAll('[data-group]').forEach(function(g){
+  var key=g.dataset.group;
+  g.querySelectorAll('.opt').forEach(function(o){
+    o.onclick=function(){
+      g.querySelectorAll('.opt').forEach(function(x){x.classList.remove('on')});o.classList.add('on');
+      Q[key]={v:o.dataset.v,lo:+(o.dataset.lo||0),hi:+(o.dataset.hi||0),mult:+(o.dataset.mult||1),add:+(o.dataset.add||0),label:o.querySelector('b').textContent};
+      setTimeout(function(){if(step<MAX){step++;show();if(step===MAX)calc()}},210);
+    };
+  });
+});
+document.getElementById('qNext').onclick=function(){var keys=['job','qty','size','weld'];
+  if(step<MAX&&!Q[keys[step]]){var g=document.querySelector('[data-group="'+keys[step]+'"]');g.style.animation='none';g.offsetHeight;g.style.animation='fade .4s';return}
+  step++;show();if(step===MAX)calc()};
+document.getElementById('qBack').onclick=function(){if(step>0){step--;show()}};
+document.getElementById('qReset').onclick=function(){Q={job:null,qty:null,size:null,weld:null};step=0;
+  document.querySelectorAll('.opt').forEach(function(x){x.classList.remove('on')});show()};
+function eur(n){return '€ '+Math.round(n/5)*5}
+function calc(){
+  if(!Q.job||!Q.qty||!Q.size||!Q.weld){document.getElementById('qPrice').textContent='—';return}
+  var lo=(Q.job.lo+Q.size.add+Q.weld.add)*Q.qty.mult;
+  var hi=(Q.job.hi+Q.size.add+Q.weld.add*1.6)*Q.qty.mult;
+  document.getElementById('qPrice').textContent=eur(lo)+' – '+eur(hi);
+  var r=document.getElementById('qRecap');r.innerHTML='';
+  [Q.job.label,Q.qty.label,Q.size.label,'Saldatura: '+Q.weld.v].forEach(function(t){
+    var s=document.createElement('span');s.textContent=t;r.appendChild(s)});
+  document.getElementById('qWa').href='https://wa.me/'+WA+'?text='+encodeURIComponent(
+    'Ciao Officina del Cerchio! Ho usato il preventivatore del sito:\n\n'+
+    '• Intervento: '+Q.job.label+'\n• Numero cerchi: '+Q.qty.label+'\n• Diametro: '+Q.size.label+
+    '\n• Crepe/fori: '+Q.weld.v+'\n• Stima sito: '+eur(lo)+' – '+eur(hi)+
+    '\n\nAllego: foto del cerchio intero + foto dei danni. Mi confermate il preventivo?');
+}
+show();
+
+/* ================= BEFORE / AFTER ================= */
+(function(){
+  var ba=document.getElementById('ba');if(!ba)return;var drag=false;
+  function set(x){var r=ba.getBoundingClientRect();var p=Math.max(2,Math.min(98,(x-r.left)/r.width*100));ba.style.setProperty('--p',p+'%')}
+  ba.addEventListener('pointerdown',function(e){drag=true;ba.setPointerCapture(e.pointerId);set(e.clientX)});
+  ba.addEventListener('pointermove',function(e){if(drag)set(e.clientX)});
+  ba.addEventListener('pointerup',function(){drag=false});
+  ba.addEventListener('pointercancel',function(){drag=false});
+  var seen=false;
+  new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting&&!seen){seen=true;
+    var s=performance.now();(function a(n){var p=Math.min((n-s)/1400,1);
+      ba.style.setProperty('--p',(50+42*Math.sin(p*Math.PI*1.5)*(1-p)).toFixed(1)+'%');
+      if(p<1)requestAnimationFrame(a)})(s)}})},{threshold:.4}).observe(ba);
+})();
+
+/* ================= GALLERY ================= */
+var B='https://impro.usercontent.one/appid/oneComWsb/domain/officinadelcerchio.it/media/officinadelcerchio.it/onewebmedia/';
+var Q85='?sourceContentType=image%2Fjpeg&quality=85';
+var GAL=[
+ {f:'rig',c:'Audi — rigenerazione e cambio look',u:B+'c4510d0f-3201-442c-9751-4591140a98aa.jpg'+Q85},
+ {f:'rig',c:'Audi — set completo',u:B+'501d5364-69bc-4cce-80d3-e91ce0158fb7.jpg'+Q85},
+ {f:'rig',c:'Audi — dettaglio canale',u:B+'0c7f472c-416a-4ed6-a64e-bc35ebe72615.jpg'+Q85},
+ {f:'ver',c:'Finitura a polvere',u:B+'57402a82-4c14-4f5b-8ff2-8ea46733c229.jpg'+Q85},
+ {f:'ver',c:'Colore a campione',u:B+'a1c91789-2a54-4489-8cfe-ba42dfbdff4e.jpg'+Q85},
+ {f:'dia',c:'Volkswagen — ridiamantati al tornio CNC',u:B+'4c08827e-1949-49ad-86c8-966b11c1bc19.jpg'+Q85},
+ {f:'dia',c:'Volkswagen — prima: bicolore simulato',u:B+'9d4a2858-4d9d-4180-86fb-aff5d076cc97.jpg'+Q85},
+ {f:'dia',c:'Diamantatura — dettaglio frontale',u:B+'b932770a-fad7-42b6-a4f9-9757e75fe032.jpg'+Q85},
+ {f:'dia',c:'Diamantatura — riflesso reale',u:B+'00ff32a5-a0d8-4941-834c-47afacd49f13.jpg'+Q85},
+ {f:'ver',c:'Sverniciatura totale',u:B+'9f7d8483-8285-4204-b7df-c09044be5133.jpg'+Q85},
+ {f:'ver',c:'Fondo, colore e trasparente',u:B+'015ce18f-eb70-4a6c-918e-2c3a4b2237c3.jpg'+Q85},
+ {f:'rig',c:'BBS — rigenerazione completa',u:B+'042f0955-3ab0-4a02-8aad-207dc647acf4.jpg'+Q85},
+ {f:'rig',c:'BBS — dettaglio',u:B+'dd47b04b-8e4b-4d14-b5b0-46ff500bdb24.jpg'+Q85},
+ {f:'rig',c:'Lamborghini in officina',u:B+'3e15963b-58b1-471c-b0ff-26fcb2e23553.jpg'+Q85},
+ {f:'rig',c:'Officina del Cerchio',u:B+'409cc6f0-4de5-4050-bcd0-a18585228980.JPG'+Q85},
+ {f:'ver',c:'Cerchio pronto alla consegna',u:B+'be19d5de-e14e-42c5-83bd-80e9fe22495f.JPG'+Q85},
+ {f:'rig',c:'Lavorazione in corso',u:B+'b83d17ef-63eb-4fe5-b78e-f1853353e046.JPG'+Q85},
+ {f:'dia',c:'Tornio a controllo numerico',u:B+'301b69d1-9003-4169-b8a2-6a7589f33ab5.JPG'+Q85},
+ {f:'ver',c:'Logo impresso come originale',u:B+'4208c293-d4b8-4381-9fa8-df61c295a94e.jpg'+Q85},
+ {f:'ver',c:'Scritta personalizzata',u:B+'bb440ddf-ffdd-48ef-830c-c605235a605f.jpg'+Q85}
+];
+var gal=document.getElementById('gal');
+function renderGal(f){
+  gal.innerHTML='';
+  GAL.filter(function(g){return f==='all'||g.f===f}).forEach(function(g){
+    var d=document.createElement('div');d.className='gitem';
+    d.innerHTML='<img loading="lazy" src="'+g.u+'" alt="'+g.c+'"><div class="cap">'+g.c+'</div>';
+    d.onclick=function(){document.getElementById('lbi').src=g.u;document.getElementById('lb').classList.add('on')};
+    gal.appendChild(d);
+  });
+}
+renderGal('all');
+document.querySelectorAll('[data-f]').forEach(function(b){
+  b.onclick=function(){document.querySelectorAll('[data-f]').forEach(function(x){x.classList.remove('on')});b.classList.add('on');renderGal(b.dataset.f)};
+});
+document.getElementById('lb').onclick=function(){this.classList.remove('on')};
+addEventListener('keydown',function(e){if(e.key==='Escape')document.getElementById('lb').classList.remove('on')});
+
+/* ================= RECENSIONI (reali, dal profilo Google) ================= */
+var REV=[
+ ['Filippo P.','Ho chiamato l\'officina chiedendo informazioni, sono stati gentilissimi ed esaustivi. Ho portato i miei cerchi da rifare completamente e in 3 giorni li hanno fatti. Lavoro eseguito a regola d\'arte, verniciatura nero lucido + diamantatura su cerchio da 21" Porsche. Mi hanno trattato da amico come se mi conoscessero da sempre. Consigliatissimo!'],
+ ['Ale','Lasciato la macchina alle 8:30 per un cerchione veramente molto ovalizzato: tempo 1 ora e 30, lavoro fatto e chiavi in mano. Costo neanche elevato, cortesia del personale da 10 e lode, nonché l\'accoglienza del cane stupendo. CONSIGLIATISSIMO.'],
+ ['Gabriele T.','Ho portato i miei OZ Rallye del 1995 a far rigenerare, il lavoro è stato eseguito a regola d\'arte. Aldo è un professionista del settore, un vero appassionato: anche se i cerchi erano conciati ha saputo riportarli allo splendore di un tempo grazie a laboriose saldature e rettifiche. Team preparatissimo.'],
+ ['Gianpiero P.','Gentilezza, professionalità, passione, accoglienza: sono le prime cose che mi vengono in mente se penso all\'esperienza avuta con loro. Aldo ha messo in luce le problematiche reali che si sarebbero potute verificare durante la lavorazione, e il lavoro è stato eseguito a regola d\'arte.'],
+ ['Marco C.','Gentili e super competenti. Hanno sistemato i miei cerchi (raddrizzati e verniciati) secondo le mie esigenze, documentando tutto il processo su Instagram. Non credo si possa trovare di meglio in termini di attenzione al cliente, qualità e convenienza.'],
+ ['Paolo G.','Sensazione unica! Uscire dall\'officina dopo l\'intervento di raddrizzamento ai due cerchi... si guida come se si galleggiasse. Il territorio aveva bisogno di questo tipo di lavorazioni svolte con singolare celerità, tecnologia e professionalità.'],
+ ['Alessandro M.','Avevo un cerchio in lega brunito rovinato dal marciapiede. Aldo e sua moglie mi hanno trattato sin da subito come uno di famiglia. In meno di 48 ore il cerchio è tornato nuovo: non è visibile neanche la differenza con gli altri tre. Cura, precisione e passione.'],
+ ['Alessio M.','Che dire... spettacolo. Cerchi diamantati Golf più belli che gli originali. Ottimo lavoro, gentili e professionali. Ne arrivo da Genova, ma i miei cerchi li porto solo da loro.'],
+ ['Andrea B.','Ho fatto ripristinare i cerchi della Seat Ibiza della mia ragazza. Lavoro impeccabile. Tornerò sicuramente e dirò ai miei amici di andare da loro. Mi hanno anche spiegato bene la lavorazione che avrebbero eseguito. 5 stelle meritate.'],
+ ['Anonimo','Officina super qualificata. I vostri cerchi torneranno come nuovi.']
+];
+var rt=document.getElementById('revt');
+function revCard(r){
+  return '<article class="rev"><div class="stars">★★★★★</div><p>“'+r[1]+'”</p>'+
+    '<div class="who"><span class="av">'+r[0].charAt(0)+'</span><span><b>'+r[0]+'</b><br><span style="color:var(--mut2);font-size:.76rem">Recensione Google</span></span></div></article>';
+}
+rt.innerHTML=REV.map(revCard).join('')+REV.map(revCard).join('');
+
+/* ================= MARQUEE MARCHI ================= */
+(function(){
+  var m=document.getElementById('marq');if(!m)return;
+  var B=['Porsche','Audi','Volkswagen','Golf','BBS','OZ Racing','Lamborghini','Seat','Cerchi moto','Cerchi d\'epoca'];
+  var h=B.map(function(x){return '<b>'+x+'</b><i></i>'}).join('');
+  m.innerHTML=h+h;
+})();
+
+/* ================= ORARI / STATO ================= */
+/* MODIFICABILE: orari indicativi da confermare con l'officina.
+   Formato: [ [apertura,chiusura], ... ] in minuti; giorno 0 = domenica */
+var HRS={1:[[510,750],[840,1080]],2:[[510,750],[840,1080]],3:[[510,750],[840,1080]],
+         4:[[510,750],[840,1080]],5:[[510,750],[840,1080]],6:[],0:[]};
+var DN=['Domenica','Lunedì','Martedì','Mercoledì','Giovedì','Venerdì','Sabato'];
+function hhmm(m){return String(Math.floor(m/60)).padStart(2,'0')+':'+String(m%60).padStart(2,'0')}
+(function(){
+  var now=new Date(),d=now.getDay(),m=now.getHours()*60+now.getMinutes();
+  var open=(HRS[d]||[]).some(function(s){return m>=s[0]&&m<s[1]});
+  var box=document.getElementById('liveBox'),txt=document.getElementById('liveTxt');
+  box.className='live '+(open?'open':'closed');
+  if(open){var nx=HRS[d].find(function(s){return m>=s[0]&&m<s[1]});txt.textContent='Aperto ora · chiude alle '+hhmm(nx[1])}
+  else{
+    var k=d,i=0,found=null;
+    while(i<8){k=(k+(i===0&&(HRS[d]||[]).some(function(s){return m<s[0]})?0:1))%7;
+      if((HRS[k]||[]).length){var slot=(k===d)?HRS[k].find(function(s){return m<s[0]}):HRS[k][0];
+        if(slot){found=[k,slot[0]];break}}
+      i++}
+    txt.textContent=found?('Chiuso · apre '+(found[0]===d?'oggi':DN[found[0]])+' alle '+hhmm(found[1])):'Chiuso';
+  }
+  var hl=document.getElementById('hoursList'),out='';
+  [1,2,3,4,5,6,0].forEach(function(g){
+    var s=(HRS[g]||[]).map(function(x){return hhmm(x[0])+'–'+hhmm(x[1])}).join(' · ')||'chiuso';
+    out+='<small style="display:flex;justify-content:space-between;gap:12px;'+(g===new Date().getDay()?'color:#fff;font-weight:600':'')+'"><span>'+DN[g]+'</span><span>'+s+'</span></small>';
+  });
+  hl.innerHTML=out;
+})();
+})();
+</script>
+</body>
+</html>
