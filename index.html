@@ -350,7 +350,6 @@ section{position:relative;z-index:2}
 .live.open i{background:#4ade80;box-shadow:0 0 0 0 rgba(74,222,128,.7)}
 .live.closed i{background:#f87171}
 @keyframes pulse{70%{box-shadow:0 0 0 9px rgba(74,222,128,0)}}
-iframe.map{width:100%;height:100%;min-height:340px;border:0;filter:grayscale(1) invert(.92) contrast(.86)}
 .mapbox{border-radius:var(--r);overflow:hidden;border:1px solid var(--line)}
 
 /* ---------- FOOTER ---------- */
@@ -416,6 +415,28 @@ img{-webkit-user-drag:none;user-select:none}
   background:conic-gradient(from var(--ia,0deg) at var(--px,50%) var(--py,50%),
     rgba(255,80,80,0),rgba(255,196,92,.55),rgba(126,255,190,.5),rgba(96,196,255,.55),rgba(206,128,255,.48),rgba(255,80,80,0))}
 @media(prefers-reduced-motion:reduce){.disc,.cfg-stage .shot{transform:none;transition:none}.spec,.iri{display:none}}
+
+/* ---------- MAPPA SCURA ---------- */
+.mapbox{position:relative;min-height:360px;background:#0e1116}
+#odcMap{position:absolute;inset:0;z-index:1;background:
+  radial-gradient(60% 60% at 50% 45%,#1a1f27,#0b0d10 78%)}
+.map-fb{position:absolute;left:0;right:0;top:50%;transform:translateY(-50%);z-index:1;text-align:center;padding:0 22px}
+.map-fb b{display:block;font-family:'Archivo Black','Archivo',sans-serif;text-transform:uppercase;letter-spacing:-.02em;font-size:1.1rem}
+.map-fb span{display:block;margin-top:6px;font-family:'JetBrains Mono',monospace;font-size:.62rem;letter-spacing:.14em;text-transform:uppercase;color:var(--mut2)}
+.mapbox.ready .map-fb{display:none}
+.map-cta{position:absolute;right:14px;bottom:14px;z-index:600}
+.odc-pin{position:relative;width:20px;height:20px}
+.odc-pin i{position:absolute;inset:0;border-radius:50%;background:var(--acc);box-shadow:0 0 0 4px rgba(255,77,46,.28),0 6px 16px rgba(0,0,0,.6)}
+.odc-pin em{position:absolute;inset:0;border-radius:50%;border:2px solid var(--acc);animation:pinp 2.4s ease-out infinite}
+@keyframes pinp{0%{transform:scale(1);opacity:.85}70%{transform:scale(3.2);opacity:0}100%{opacity:0}}
+.leaflet-container{background:#0b0d10!important;font-family:inherit}
+.leaflet-control-attribution{background:rgba(11,13,16,.72)!important;color:#6b7280!important;font-size:9px!important}
+.leaflet-control-attribution a{color:#8b95a3!important}
+.leaflet-bar a{background:#12151a!important;color:#e7eaee!important;border-color:rgba(255,255,255,.12)!important}
+.leaflet-bar a:hover{background:#1b2028!important}
+.leaflet-popup-content-wrapper,.leaflet-popup-tip{background:#12151a;color:#e7eaee;box-shadow:0 18px 40px rgba(0,0,0,.6);border:1px solid rgba(255,255,255,.12)}
+.leaflet-popup-content{margin:12px 14px;font-size:.85rem;line-height:1.5}
+.leaflet-popup-content b{display:block;text-transform:uppercase;letter-spacing:.02em}
 </style>
 </head>
 <body>
@@ -866,9 +887,15 @@ img{-webkit-user-drag:none;user-select:none}
         </div></div>
       </div>
       <div class="mapbox">
-        <iframe class="map" loading="lazy" title="Mappa Officina del Cerchio"
-          src="https://www.openstreetmap.org/export/embed.html?bbox=9.3199%2C45.5744%2C9.3379%2C45.5844&layer=mapnik&marker=45.57938%2C9.32891"></iframe>
-      </div>
+          <div id="odcMap" role="img" aria-label="Mappa: Officina del Cerchio, Via G. Verga 7, Concorezzo (MB)"></div>
+          <div class="map-fb">
+            <b>Officina del Cerchio</b>
+            <span>Via G. Verga 7 — 20863 Concorezzo (MB)</span>
+          </div>
+          <div class="map-cta">
+            <a class="btn btn-w" style="padding:9px 15px" href="https://www.google.com/maps/dir/?api=1&amp;destination=Officina+del+Cerchio,+Via+Giovanni+Verga+7,+20863+Concorezzo+MB" target="_blank" rel="noopener">Indicazioni stradali</a>
+          </div>
+        </div>
     </div>
   </div>
 </section>
@@ -1222,6 +1249,62 @@ function hhmm(m){return String(Math.floor(m/60)).padStart(2,'0')+':'+String(m%60
        function(){ return heroCap && /diamant/i.test(heroCap.textContent); });
   bind(document.getElementById('stage'), document.querySelector('#stage .shot'), 6,
        function(){ return cfgBadge && /diamant/i.test(cfgBadge.textContent); });
+})();
+
+/* ================= MAPPA SCURA (Leaflet + tiles dark) ================= */
+(function(){
+  var box=document.querySelector('.mapbox'), host=document.getElementById('odcMap');
+  if(!box||!host) return;
+  var LAT=45.57938, LNG=9.32891, started=false;
+
+  function load(url,isCss){
+    return new Promise(function(res,rej){
+      var el;
+      if(isCss){ el=document.createElement('link'); el.rel='stylesheet'; el.href=url; }
+      else { el=document.createElement('script'); el.src=url; el.async=true; }
+      el.onload=res; el.onerror=rej; document.head.appendChild(el);
+    });
+  }
+
+  function build(){
+    var map=L.map(host,{zoomControl:true,scrollWheelZoom:false,attributionControl:true})
+             .setView([LAT,LNG],15);
+    map.attributionControl.setPosition('bottomleft');
+    map.zoomControl.setPosition('topright');
+    L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png',{
+      maxZoom:19, subdomains:'abcd',
+      attribution:'&copy; OpenStreetMap &middot; &copy; CARTO'
+    }).addTo(map);
+
+    /* area di ritiro e consegna: Brianza e nord Milano */
+    L.circle([LAT,LNG],{radius:11000,color:'#ff4d2e',weight:1,opacity:.5,
+      fillColor:'#ff4d2e',fillOpacity:.07}).addTo(map);
+
+    var icon=L.divIcon({className:'',iconSize:[20,20],iconAnchor:[10,10],
+      html:'<span class="odc-pin"><em></em><i></i></span>'});
+    L.marker([LAT,LNG],{icon:icon,title:'Officina del Cerchio'}).addTo(map)
+      .bindPopup('<b>Officina del Cerchio</b>Via G. Verga 7 — Concorezzo (MB)<br>039 229 0138');
+
+    map.on('click',function(){ map.scrollWheelZoom.enable(); });
+    map.on('mouseout',function(){ map.scrollWheelZoom.disable(); });
+    box.classList.add('ready');
+    setTimeout(function(){ map.invalidateSize(); },250);
+  }
+
+  function start(){
+    if(started) return; started=true;
+    load('https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css',true).catch(function(){});
+    load('https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js',false)
+      .then(function(){ try{ build(); }catch(e){} })
+      .catch(function(){ /* resta la scheda indirizzo + pulsante indicazioni */ });
+  }
+
+  if('IntersectionObserver' in window){
+    var io=new IntersectionObserver(function(es){
+      es.forEach(function(e){ if(e.isIntersecting){ io.disconnect(); start(); } });
+    },{rootMargin:'300px'});
+    io.observe(box);
+  } else { start(); }
 })();
 </script>
 </body>
