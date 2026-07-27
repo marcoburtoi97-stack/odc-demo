@@ -140,6 +140,14 @@ tbody tr:hover{background:rgba(255,255,255,.035)}
 .mobnav button{flex:1;background:none;border:0;padding:9px 4px;border-radius:12px;color:var(--mut);font-size:.6rem;font-weight:700;display:grid;justify-items:center;gap:4px;cursor:pointer}
 .mobnav button.on{background:rgba(255,77,46,.14);color:#fff}
 .mobnav svg{width:18px;height:18px;stroke:currentColor;fill:none;stroke-width:1.8}
+
+/* ---------- FIX OVERFLOW ORIZZONTALE MOBILE ---------- */
+html{overflow-x:clip}
+body{overflow-x:clip;max-width:100%}
+#app{grid-template-columns:246px minmax(0,1fr)}
+main{min-width:0}
+.tw.tscroll{overflow-x:auto;overflow-y:hidden}
+@media(max-width:960px){#app.on{grid-template-columns:minmax(0,1fr)}}
 </style>
 </head>
 <body>

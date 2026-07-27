@@ -116,6 +116,10 @@ td{padding:12px;border-top:1px solid var(--line)}
 .cover{display:grid;grid-template-columns:1.08fr .92fr;gap:clamp(18px,4vw,48px);align-items:center}
 @media(max-width:900px){.cover{grid-template-columns:1fr}.cover .wheelbox{max-width:56vw;order:-1}}
 @media print{html{scroll-snap-type:none}.slide{min-height:auto;page-break-after:always;border:0}.dots,.hint,.prog{display:none}}
+
+/* ---------- FIX OVERFLOW ORIZZONTALE MOBILE ---------- */
+html{overflow-x:clip}
+body{overflow-x:clip;max-width:100%}
 </style>
 </head>
 <body>
