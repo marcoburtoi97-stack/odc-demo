@@ -376,18 +376,21 @@ footer a:hover{color:#fff}
 @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}[data-rv]{opacity:1;transform:none}}
 
 /* ---------- TRUSTBAR HERO ---------- */
-.trustbar{display:flex;flex-wrap:nowrap;margin-top:clamp(38px,5.4vh,62px);padding-top:clamp(22px,3vh,30px);border-top:1px solid rgba(255,255,255,.13);max-width:640px}
-.trustbar>div{display:flex;flex-direction:column;gap:6px;padding:0 clamp(13px,1.9vw,26px);min-width:0;flex:1 1 0}
-.trustbar>div:first-child{padding-left:0;flex:1.35 1 0}
+.hero h1{max-width:20ch}
+.trustbar{display:flex;flex-wrap:nowrap;align-items:flex-start;margin-top:clamp(34px,5vh,58px);padding-top:clamp(20px,2.8vh,28px);border-top:1px solid rgba(255,255,255,.13);max-width:720px}
+.trustbar>div{display:flex;flex-direction:column;gap:7px;padding:0 clamp(14px,2vw,28px);min-width:0;flex:1 1 0}
+.trustbar>div:first-child{padding-left:0;flex:1.1 1 0}
 .trustbar>div+div{border-left:1px solid rgba(255,255,255,.13)}
-.trustbar b{display:flex;align-items:baseline;gap:1px;font-family:'Archivo Black','Archivo',sans-serif;font-weight:900;font-size:clamp(1.4rem,2.25vw,1.95rem);line-height:1;letter-spacing:-.03em;color:#fff}
-.trustbar b i{font-style:normal;font-size:.46em;letter-spacing:0;opacity:.55}
+.trustbar b{display:flex;align-items:baseline;gap:1px;font-family:'Archivo Black','Archivo',sans-serif;font-weight:900;font-size:clamp(1.5rem,2.4vw,2.05rem);line-height:1;letter-spacing:-.03em;color:#fff;text-transform:none}
+.trustbar b span,.trustbar b i{font:inherit;letter-spacing:inherit;text-transform:none;line-height:inherit}
+.trustbar b i{font-size:.45em;opacity:.5;letter-spacing:0}
 .trustbar .alu-text{color:transparent}
-.trustbar span{font-family:'JetBrains Mono',monospace;font-size:.565rem;line-height:1.55;letter-spacing:.13em;text-transform:uppercase;color:rgba(255,255,255,.45)}
-.trustbar .stars{color:#ffc043;font-size:.74rem;letter-spacing:.09em;line-height:1;margin:-2px 0 -1px}
-@media(max-width:860px){
-  .trustbar{display:grid;grid-template-columns:1fr 1fr;gap:18px 0;max-width:none;margin-top:clamp(30px,4.4vh,44px)}
-  .trustbar>div{padding:0 0 0 clamp(14px,4.5vw,22px);border-left:1px solid rgba(255,255,255,.13);flex:none}
+.trustbar>div>span{font-family:'JetBrains Mono',monospace;font-size:.55rem;line-height:1.6;letter-spacing:.11em;text-transform:uppercase;color:rgba(255,255,255,.46)}
+.trustbar .stars{color:#ffc043;font-size:.72rem;letter-spacing:.1em;line-height:1;margin:-3px 0 -2px}
+@media(max-width:900px){
+  .hero h1{max-width:16ch}
+  .trustbar{display:grid;grid-template-columns:1fr 1fr;gap:20px 0;max-width:none;margin-top:clamp(28px,4vh,42px)}
+  .trustbar>div{padding:0 0 0 clamp(16px,5vw,24px);border-left:1px solid rgba(255,255,255,.13);flex:none}
   .trustbar>div:nth-child(2n+1){padding-left:0;border-left:0}
 }
 </style>
