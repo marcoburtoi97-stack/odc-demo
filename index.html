@@ -216,7 +216,7 @@ section{position:relative;z-index:2}
 .result .big{font-family:'Archivo Black',sans-serif;font-size:clamp(2.4rem,6vw,3.6rem);letter-spacing:-.03em;line-height:1;margin:8px 0}
 .recap{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin:18px 0 22px}
 .recap span{font-family:'JetBrains Mono',monospace;font-size:.68rem;letter-spacing:.08em;padding:6px 12px;border:1px solid var(--line);border-radius:99px;color:var(--mut)}
-.disc{font-size:.78rem;color:var(--mut2);max-width:52ch;margin:16px auto 0}
+
 
 /* ---------- BEFORE / AFTER ---------- */
 .ba{position:relative;border-radius:26px;overflow:hidden;border:1px solid var(--line);aspect-ratio:16/10;cursor:ew-resize;user-select:none;background:#000}
@@ -397,6 +397,25 @@ footer a:hover{color:#fff}
 /* ---------- FIX OVERFLOW ORIZZONTALE MOBILE ---------- */
 html{overflow-x:clip}
 body{overflow-x:clip;max-width:100%}
+
+/* ---------- FIX: disclaimer non deve ereditare lo stile del disco ---------- */
+.discl{font-size:.78rem;color:var(--mut2);max-width:52ch;margin:16px auto 0;line-height:1.65}
+/* niente drag fantasma sulle foto */
+img{-webkit-user-drag:none;user-select:none}
+.disc-rot img,.disc-in img{pointer-events:none}
+
+/* ---------- WOW: prospettiva, luce speculare e riflesso diamantatura ---------- */
+.hero-stage{perspective:1400px}
+.disc{transform:rotateX(var(--tx,0deg)) rotateY(var(--ty,0deg));transition:transform .55s cubic-bezier(.2,.8,.2,1)}
+.cfg-stage{perspective:1200px}
+.cfg-stage .shot{transform:rotateX(var(--tx,0deg)) rotateY(var(--ty,0deg));transition:transform .55s cubic-bezier(.2,.8,.2,1)}
+.spec,.iri{position:absolute;inset:0;border-radius:inherit;pointer-events:none;overflow:hidden}
+.spec{z-index:5;opacity:var(--so,0);transition:opacity .5s var(--ease);mix-blend-mode:screen;
+  background:radial-gradient(34% 34% at var(--px,50%) var(--py,40%),rgba(255,255,255,.5),rgba(255,255,255,.09) 44%,transparent 70%)}
+.iri{z-index:6;opacity:var(--io,0);transition:opacity .6s var(--ease);mix-blend-mode:overlay;filter:blur(7px);
+  background:conic-gradient(from var(--ia,0deg) at var(--px,50%) var(--py,50%),
+    rgba(255,80,80,0),rgba(255,196,92,.55),rgba(126,255,190,.5),rgba(96,196,255,.55),rgba(206,128,255,.48),rgba(255,80,80,0))}
+@media(prefers-reduced-motion:reduce){.disc,.cfg-stage .shot{transform:none;transition:none}.spec,.iri{display:none}}
 </style>
 </head>
 <body>
@@ -559,7 +578,7 @@ body{overflow-x:clip;max-width:100%}
           <a class="btn btn-w btn-lg" id="cfgWa" target="_blank" rel="noopener">Invia questa configurazione</a>
           <a class="btn btn-g btn-lg" href="#lavori">Vedi altri lavori</a>
         </div>
-        <p class="disc" style="margin-left:0">Ogni anteprima è la foto di un cerchio vero rigenerato nella nostra officina. La resa finale dipende dal disegno del cerchio: realizziamo qualsiasi colore standard e a campione, in qualsiasi finitura.</p>
+        <p class="discl" style="margin-left:0">Ogni anteprima è la foto di un cerchio vero rigenerato nella nostra officina. La resa finale dipende dal disegno del cerchio: realizziamo qualsiasi colore standard e a campione, in qualsiasi finitura.</p>
       </div>
     </div>
   </div>
@@ -629,7 +648,7 @@ body{overflow-x:clip;max-width:100%}
               <a class="btn btn-w btn-lg" id="qWa" target="_blank" rel="noopener">Invia su WhatsApp con le foto</a>
               <a class="btn btn-g btn-lg" href="tel:0392290138">Chiama 039 229 0138</a>
             </div>
-            <p class="disc">Fascia di prezzo indicativa calcolata su lavorazioni standard. Il preventivo definitivo viene confermato dopo aver visto <b>una foto del cerchio intero</b>, <b>il diametro</b> e <b>qualche foto specifica dei danni</b>. Le richieste inviate via mail non vengono lavorate: usiamo WhatsApp per rispondere più in fretta.</p>
+            <p class="discl">Fascia di prezzo indicativa calcolata su lavorazioni standard. Il preventivo definitivo viene confermato dopo aver visto <b>una foto del cerchio intero</b>, <b>il diametro</b> e <b>qualche foto specifica dei danni</b>. Le richieste inviate via mail non vengono lavorate: usiamo WhatsApp per rispondere più in fretta.</p>
           </div>
         </div>
 
@@ -1143,6 +1162,66 @@ function hhmm(m){return String(Math.floor(m/60)).padStart(2,'0')+':'+String(m%60
   });
   hl.innerHTML=out;
 })();
+})();
+
+/* ================= WOW: luce che segue il dito / il mouse ================= */
+(function(){
+  var reduce = window.matchMedia && matchMedia('(prefers-reduced-motion:reduce)').matches;
+  if(reduce) return;
+  var coarse = window.matchMedia && matchMedia('(pointer:coarse)').matches;
+
+  function layers(el){
+    if(el.querySelector(':scope > .spec')) return;
+    var s=document.createElement('div'); s.className='spec';
+    var i=document.createElement('div'); i.className='iri';
+    el.appendChild(s); el.appendChild(i);
+  }
+  function apply(el,px,py,tx,ty,so,io){
+    var s=el.style;
+    s.setProperty('--px',px.toFixed(1)+'%');
+    s.setProperty('--py',py.toFixed(1)+'%');
+    s.setProperty('--tx',tx.toFixed(2)+'deg');
+    s.setProperty('--ty',ty.toFixed(2)+'deg');
+    s.setProperty('--so',so.toFixed(2));
+    s.setProperty('--io',io.toFixed(2));
+    s.setProperty('--ia',(px*3.4-60).toFixed(0)+'deg');
+  }
+
+  function bind(host,target,deg,isDiamond){
+    if(!host||!target) return;
+    layers(target);
+    var raf=0,q=null;
+    function flush(){ raf=0; if(!q)return; apply(target,q[0],q[1],q[2],q[3],q[4],q[5]); q=null; }
+    function push(a){ q=a; if(!raf) raf=requestAnimationFrame(flush); }
+
+    if(!coarse){
+      host.addEventListener('pointermove',function(e){
+        if(e.pointerType==='touch') return;
+        var r=host.getBoundingClientRect();
+        var x=(e.clientX-r.left)/r.width, y=(e.clientY-r.top)/r.height;
+        x=Math.min(Math.max(x,0),1); y=Math.min(Math.max(y,0),1);
+        push([x*100,y*100,(0.5-y)*deg*2,(x-0.5)*deg*2,1,isDiamond()?0.85:0.22]);
+      },{passive:true});
+      host.addEventListener('pointerleave',function(){ push([50,40,0,0,0,0]); },{passive:true});
+    }
+
+    /* su telefono la luce si muove con lo scroll: il cerchio resta vivo */
+    var onScroll=function(){
+      var r=host.getBoundingClientRect();
+      if(r.bottom<0||r.top>innerHeight){ return; }
+      var p=1-(r.top+r.height/2)/innerHeight;      /* -0.5 .. 1.5 */
+      p=Math.min(Math.max(p,0),1);
+      push([22+p*58, 78-p*54, (p-0.5)*deg*1.4, (0.5-p)*deg*1.1, .9, isDiamond()?0.7:0.18]);
+    };
+    if(coarse){ addEventListener('scroll',onScroll,{passive:true}); onScroll(); }
+  }
+
+  var heroCap=document.getElementById('heroCap');
+  var cfgBadge=document.getElementById('cfgBadge');
+  bind(document.querySelector('.hero-stage'), document.querySelector('.hero-stage .disc'), 7,
+       function(){ return heroCap && /diamant/i.test(heroCap.textContent); });
+  bind(document.getElementById('stage'), document.querySelector('#stage .shot'), 6,
+       function(){ return cfgBadge && /diamant/i.test(cfgBadge.textContent); });
 })();
 </script>
 </body>
