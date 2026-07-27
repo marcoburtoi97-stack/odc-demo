@@ -1266,7 +1266,8 @@ function hhmm(m){return String(Math.floor(m/60)).padStart(2,'0')+':'+String(m%60
   }
 
   function build(){
-    var map=L.map(host,{zoomControl:true,scrollWheelZoom:false,attributionControl:true})
+    var map=L.map(host,{zoomControl:true,scrollWheelZoom:false,attributionControl:true,
+                       dragging:!L.Browser.mobile,tap:false})
              .setView([LAT,LNG],15);
     map.attributionControl.setPosition('bottomleft');
     map.zoomControl.setPosition('topright');
