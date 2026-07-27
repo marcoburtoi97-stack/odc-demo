@@ -147,6 +147,12 @@ body{overflow-x:clip;max-width:100%}
 main{min-width:0}
 .tw.tscroll{overflow-x:auto;overflow-y:hidden}
 @media(max-width:960px){#app.on{grid-template-columns:minmax(0,1fr)}}
+
+/* ---------- ANTI-SFONDAMENTO GRIGLIE ---------- */
+.grid,.g2,.g3,.g4,.rowadd,main,#app{min-width:0}
+.grid>*,.rowadd>*,#app>*{min-width:0}
+.card,.kpi,.tw{min-width:0}
+.ct-row .v,.card .v{overflow-wrap:anywhere}
 </style>
 </head>
 <body>
@@ -478,14 +484,17 @@ function addRow(){
     '<div class="fld" style="margin:0"><label>Q.tà</label><input class="q" type="number" min="1" max="8" value="1"></div>'+
     '<button class="btn btn-g btn-sm" style="height:44px" title="Rimuovi">✕</button>';
   d.querySelector('button').onclick=function(){if(rows.children.length>1){d.remove();sum()}};
-  d.querySelectorAll('select,input').forEach(function(x){x.oninput=sum});
+  d.querySelectorAll('select,input').forEach(function(x){x.oninput=sum;x.onchange=sum;x.onblur=sum});
   rows.appendChild(d);sum();
 }
 document.getElementById('addRow').onclick=addRow;
 function sum(){
   var pub=0,html='';
   Array.prototype.forEach.call(rows.children,function(r){
-    var w=WORKS[+r.querySelector('.w').value],add=+r.querySelector('.d').value,q=+r.querySelector('.q').value||1;
+    var qi=r.querySelector('.q');
+    var q=Math.floor(+qi.value)||1; if(q<1)q=1; if(q>8)q=8;
+    if(String(q)!==qi.value && document.activeElement!==qi) qi.value=q;
+    var w=WORKS[+r.querySelector('.w').value]||WORKS[0], add=+r.querySelector('.d').value||0;
     var line=(w[1]+add)*q;pub+=line;
     html+='<div style="display:flex;justify-content:space-between;gap:10px;padding:8px 0;border-bottom:1px solid var(--line)"><span>'+
       w[0]+' · '+r.querySelector('.f').value+' <span style="color:var(--mut2)">×'+q+'</span></span><b>'+eur(Math.round(line*(1-SCONTO)))+'</b></div>';

@@ -436,6 +436,44 @@ img{-webkit-user-drag:none;user-select:none}
 .leaflet-popup-content-wrapper,.leaflet-popup-tip{background:#12151a;color:#e7eaee;box-shadow:0 18px 40px rgba(0,0,0,.6);border:1px solid rgba(255,255,255,.12)}
 .leaflet-popup-content{margin:12px 14px;font-size:.85rem;line-height:1.5}
 .leaflet-popup-content b{display:block;text-transform:uppercase;letter-spacing:.02em}
+
+/* ---------- ANTI-SFONDAMENTO GRIGLIE (min-content non detta la larghezza) ---------- */
+.ct,.cfg,.grid,.g2,.g3,.g4,.fgrid,.proc,.qgrid,.hero-in,.trustbar{min-width:0}
+.ct>*,.cfg>*,.grid>*,.fgrid>*,.proc>*,.qgrid>*,.hero-in>*,.trustbar>*{min-width:0}
+.ct-row{min-width:0}
+.ct-row .v{min-width:0;overflow-wrap:anywhere}
+.ct-row .v a{overflow-wrap:anywhere}
+@media(max-width:420px){.ct-row .k{width:78px}.ct-card{padding:22px 18px}}
+
+/* ---------- FIX LARGHEZZE ESTREME ---------- */
+.navlinks{min-width:0}
+@media(max-width:1140px){.navlinks,.nav .btn-w{display:none!important}.burger{display:flex!important}}
+@media(max-width:1240px) and (min-width:1141px){.navlinks a{padding:9px 10px;font-size:.84rem}}
+@media(max-width:370px){
+  .wrap{padding:0 16px}
+  .burger{width:38px;height:38px}
+  .navin{gap:10px}
+  .brand img{width:38px;height:38px}
+}
+@media(max-width:430px){
+  .hero-stage .cap{white-space:normal;text-align:center;max-width:88vw;line-height:1.5}
+}
+
+@media(max-width:370px){
+  .btn{max-width:100%}
+  .btn-lg{padding:13px 18px;font-size:.92rem}
+  .hero-cta{display:flex;flex-wrap:wrap;gap:10px}
+  .hero-cta .btn{flex:1 1 100%;justify-content:center}
+}
+
+/* ---------- TOCCO: drag orizzontale senza bloccare lo scroll verticale ---------- */
+.ba{touch-action:pan-y;-webkit-user-select:none;user-select:none}
+.ba img{pointer-events:none}
+/* su schermi senza mouse l'hover puo' "incollarsi": le scritte non devono restare ferme */
+@media(hover:none){
+  .marq-t,.revtrack{animation-play-state:running!important}
+  .sw::after{display:none}
+}
 </style>
 </head>
 <body>
@@ -880,7 +918,7 @@ img{-webkit-user-drag:none;user-select:none}
         <div class="ct-row"><div class="k">Indirizzo</div><div class="v"><a href="https://www.google.com/maps/search/?api=1&query=Officina%20del%20Cerchio%2C%20via%20verga%207%2C%2020863%20concorezzo" target="_blank" rel="noopener">Via G. Verga 7 — 20863 Concorezzo (MB)</a><small>Provincia di Monza e della Brianza</small></div></div>
         <div class="ct-row"><div class="k">Email</div><div class="v"><a href="mailto:officinadelcerchio@pm.me">officinadelcerchio@pm.me</a><small>Solo per amministrazione — non per preventivi</small></div></div>
         <div class="ct-row"><div class="k">Orari</div><div class="v" id="hoursList"><small>—</small></div></div>
-        <div class="ct-row"><div class="k">Social</div><div class="v" style="display:flex;gap:10px">
+        <div class="ct-row"><div class="k">Social</div><div class="v" style="display:flex;gap:10px;flex-wrap:wrap">
           <a class="btn btn-g" style="padding:9px 16px" href="https://www.instagram.com/_officina_del_cerchio_/" target="_blank" rel="noopener">Instagram</a>
           <a class="btn btn-g" style="padding:9px 16px" href="https://www.facebook.com/officinadelcerchio/" target="_blank" rel="noopener">Facebook</a>
         </div></div>
@@ -1048,19 +1086,24 @@ document.querySelectorAll('[data-group]').forEach(function(g){
     o.onclick=function(){
       g.querySelectorAll('.opt').forEach(function(x){x.classList.remove('on')});o.classList.add('on');
       Q[key]={v:o.dataset.v,lo:+(o.dataset.lo||0),hi:+(o.dataset.hi||0),mult:+(o.dataset.mult||1),add:+(o.dataset.add||0),label:o.querySelector('b').textContent};
-      setTimeout(function(){if(step<MAX){step++;show();if(step===MAX)calc()}},210);
+      clearTimeout(window.__qT);
+      window.__qT=setTimeout(function(){window.__qT=0;if(step<MAX){step++;show();if(step===MAX)calc()}},210);
     };
   });
 });
 document.getElementById('qNext').onclick=function(){var keys=['job','qty','size','weld'];
-  if(step<MAX&&!Q[keys[step]]){var g=document.querySelector('[data-group="'+keys[step]+'"]');g.style.animation='none';g.offsetHeight;g.style.animation='fade .4s';return}
+  if(window.__qT) return;                       /* l'avanzamento automatico e' gia' in corso */
+  if(step>=MAX) return;
+  if(!Q[keys[step]]){var g=document.querySelector('[data-group="'+keys[step]+'"]');g.style.animation='none';g.offsetHeight;g.style.animation='fade .4s';return}
   step++;show();if(step===MAX)calc()};
-document.getElementById('qBack').onclick=function(){if(step>0){step--;show()}};
-document.getElementById('qReset').onclick=function(){Q={job:null,qty:null,size:null,weld:null};step=0;
+document.getElementById('qBack').onclick=function(){clearTimeout(window.__qT);window.__qT=0;if(step>0){step--;show()}};
+document.getElementById('qReset').onclick=function(){clearTimeout(window.__qT);window.__qT=0;
+  Q={job:null,qty:null,size:null,weld:null};step=0;
   document.querySelectorAll('.opt').forEach(function(x){x.classList.remove('on')});show()};
 function eur(n){return '€ '+Math.round(n/5)*5}
 function calc(){
-  if(!Q.job||!Q.qty||!Q.size||!Q.weld){document.getElementById('qPrice').textContent='—';return}
+  var keys=['job','qty','size','weld'];
+  for(var i=0;i<4;i++){ if(!Q[keys[i]]){ step=i; show(); return; } }   /* riporta alla domanda mancante */
   var lo=(Q.job.lo+Q.size.add+Q.weld.add)*Q.qty.mult;
   var hi=(Q.job.hi+Q.size.add+Q.weld.add*1.6)*Q.qty.mult;
   document.getElementById('qPrice').textContent=eur(lo)+' – '+eur(hi);
