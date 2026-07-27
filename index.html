@@ -374,6 +374,22 @@ footer a:hover{color:#fff}
 [data-rv]{opacity:0;transform:translateY(28px);transition:.85s var(--ease)}
 [data-rv].in{opacity:1;transform:none}
 @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}[data-rv]{opacity:1;transform:none}}
+
+/* ---------- TRUSTBAR HERO ---------- */
+.trustbar{display:flex;flex-wrap:nowrap;margin-top:clamp(38px,5.4vh,62px);padding-top:clamp(22px,3vh,30px);border-top:1px solid rgba(255,255,255,.13);max-width:640px}
+.trustbar>div{display:flex;flex-direction:column;gap:6px;padding:0 clamp(13px,1.9vw,26px);min-width:0;flex:1 1 0}
+.trustbar>div:first-child{padding-left:0;flex:1.35 1 0}
+.trustbar>div+div{border-left:1px solid rgba(255,255,255,.13)}
+.trustbar b{display:flex;align-items:baseline;gap:1px;font-family:'Archivo Black','Archivo',sans-serif;font-weight:900;font-size:clamp(1.4rem,2.25vw,1.95rem);line-height:1;letter-spacing:-.03em;color:#fff}
+.trustbar b i{font-style:normal;font-size:.46em;letter-spacing:0;opacity:.55}
+.trustbar .alu-text{color:transparent}
+.trustbar span{font-family:'JetBrains Mono',monospace;font-size:.565rem;line-height:1.55;letter-spacing:.13em;text-transform:uppercase;color:rgba(255,255,255,.45)}
+.trustbar .stars{color:#ffc043;font-size:.74rem;letter-spacing:.09em;line-height:1;margin:-2px 0 -1px}
+@media(max-width:860px){
+  .trustbar{display:grid;grid-template-columns:1fr 1fr;gap:18px 0;max-width:none;margin-top:clamp(30px,4.4vh,44px)}
+  .trustbar>div{padding:0 0 0 clamp(14px,4.5vw,22px);border-left:1px solid rgba(255,255,255,.13);flex:none}
+  .trustbar>div:nth-child(2n+1){padding-left:0;border-left:0}
+}
 </style>
 </head>
 <body>
@@ -415,17 +431,17 @@ footer a:hover{color:#fff}
   <div class="wrap hero-in">
     <div>
       <div class="eyebrow">Concorezzo · Monza e Brianza · dal 2019</div>
-      <h1 class="h-xxl">Rigenerare non<br>significa riparare.<em class="alu-text">Significa riportare a nuovo.</em></h1>
+      <h1 class="h-xxl">Rigenerare non<br>significa riparare.<br><em class="alu-text">Significa riportare a nuovo.</em></h1>
       <p class="lead">Raddrizzatura, verniciatura a polvere e diamantatura CNC su cerchi in lega auto e moto. Ogni lavorazione eseguita <b style="color:#fff">interamente nella nostra officina</b> — nessuna fase delegata all'esterno.</p>
       <div class="hero-cta">
         <a class="btn btn-p btn-lg" href="#preventivo">Preventivo in 60 secondi</a>
         <a class="btn btn-g btn-lg" href="#configuratore">Configura i tuoi cerchi</a>
       </div>
       <div class="trustbar">
-        <div><b>4,8<span style="font-size:1rem"> / 5</span></b><span class="stars">★★★★★</span><span>258 recensioni Google</span></div>
-        <div><b class="alu-text" data-count="3">3</b><span>giorni medi di lavorazione</span></div>
-        <div><b class="alu-text" data-count="100">100</b><span>% lavorazioni interne</span></div>
-        <div><b class="alu-text" data-count="2019">2019</b><span>anno di fondazione</span></div>
+        <div><b class="alu-text">4,8<i>/5</i></b><span class="stars">★★★★★</span><span>258 recensioni Google</span></div>
+        <div><b><span class="alu-text" data-count="3">3</span></b><span>giorni medi di lavorazione</span></div>
+        <div><b><span class="alu-text" data-count="100">100</span><i>%</i></b><span>lavorazioni interne</span></div>
+        <div><b><span class="alu-text" data-count="2019">2019</span></b><span>anno di fondazione</span></div>
       </div>
     </div>
     <div class="hero-stage">
