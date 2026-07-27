@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>ODC Partner — Area riservata professionisti | Officina del Cerchio</title>
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800;900&family=Archivo+Black&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#08090b;--panel:#0e1013;--panel2:#14171c;--panel3:#1b1f26;
+  --line:rgba(255,255,255,.10);--line2:rgba(255,255,255,.19);
+  --txt:#eef1f5;--mut:#98a1ad;--mut2:#6d7683;--acc:#FF4D2E;
+  --ok:#4ade80;--warn:#FFC531;--info:#7cc4ff;--vio:#c084fc;
+  --alu:linear-gradient(135deg,#fff,#d7dde6 28%,#8f99a8 52%,#e9eef5 74%,#b8c1cd);
+  --r:16px;--ease:cubic-bezier(.22,.61,.36,1);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--ink);color:var(--txt);font-family:'Archivo',-apple-system,'Segoe UI',sans-serif;-webkit-font-smoothing:antialiased}
+img{display:block;max-width:100%}a{color:inherit;text-decoration:none}
+button,input,select,textarea{font:inherit;color:inherit}
+.mono{font-family:'JetBrains Mono',ui-monospace,monospace}
+.alu-text{background:var(--alu);-webkit-background-clip:text;background-clip:text;color:transparent}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:11px 20px;border-radius:99px;
+  font-weight:700;font-size:.88rem;border:0;cursor:pointer;transition:.28s var(--ease);white-space:nowrap}
+.btn-p{background:var(--acc);color:#fff;box-shadow:0 8px 26px -10px rgba(255,77,46,.8)}
+.btn-p:hover{filter:brightness(1.08);transform:translateY(-2px)}
+.btn-g{background:rgba(255,255,255,.06);border:1px solid var(--line2)}
+.btn-g:hover{background:rgba(255,255,255,.12)}
+.btn-w{background:#25D366;color:#06240f}
+.btn-sm{padding:7px 14px;font-size:.78rem}
+.pill{font-family:'JetBrains Mono',monospace;font-size:.6rem;letter-spacing:.1em;padding:5px 10px;border-radius:99px;text-transform:uppercase;white-space:nowrap}
+.p-ok{background:rgba(74,222,128,.14);color:var(--ok);border:1px solid rgba(74,222,128,.34)}
+.p-wa{background:rgba(255,197,49,.14);color:var(--warn);border:1px solid rgba(255,197,49,.32)}
+.p-in{background:rgba(124,196,255,.14);color:var(--info);border:1px solid rgba(124,196,255,.32)}
+.p-vi{background:rgba(192,132,252,.14);color:var(--vio);border:1px solid rgba(192,132,252,.32)}
+.p-mu{background:rgba(255,255,255,.06);color:var(--mut);border:1px solid var(--line)}
+
+/* ---------- LOGIN ---------- */
+#login{position:fixed;inset:0;z-index:100;display:grid;grid-template-columns:1.1fr .9fr;background:var(--ink)}
+@media(max-width:900px){#login{grid-template-columns:1fr}#login .side{display:none}}
+#login .side{position:relative;overflow:hidden}
+#login .side img{width:100%;height:100%;object-fit:cover;filter:grayscale(.3) contrast(1.05);transform:scale(1.08);animation:kb 22s ease-in-out infinite alternate}
+@keyframes kb{to{transform:scale(1)}}
+#login .side::after{content:'';position:absolute;inset:0;background:linear-gradient(90deg,var(--ink),rgba(8,9,11,.25) 45%,rgba(8,9,11,.75))}
+#login .side .q{position:absolute;left:44px;bottom:44px;right:44px;z-index:2}
+#login .form{display:grid;place-items:center;padding:40px}
+.lbox{width:100%;max-width:400px}
+.lbox .lg{display:flex;align-items:center;gap:12px;margin-bottom:34px}
+.lbox .lg img{width:52px;height:52px;border-radius:12px;object-fit:cover;background:#fff}
+.lbox h1{font-family:'Archivo Black',sans-serif;font-size:1.9rem;letter-spacing:-.03em;line-height:1.05;text-transform:uppercase;margin-bottom:10px}
+.lbox p{color:var(--mut);font-size:.92rem;margin-bottom:26px}
+.fld{margin-bottom:14px}
+.fld label{display:block;font-family:'JetBrains Mono',monospace;font-size:.62rem;letter-spacing:.18em;text-transform:uppercase;color:var(--mut2);margin-bottom:7px}
+.fld input,.fld select,.fld textarea{width:100%;background:var(--panel2);border:1px solid var(--line);border-radius:11px;padding:13px 15px;font-size:.94rem;transition:.2s;outline:0}
+.fld input:focus,.fld select:focus,.fld textarea:focus{border-color:var(--acc);background:var(--panel3)}
+.demo-hint{margin-top:20px;padding:13px 15px;border:1px dashed var(--line2);border-radius:11px;font-size:.8rem;color:var(--mut)}
+.demo-hint b{color:#fff}
+
+/* ---------- APP ---------- */
+#app{display:none;min-height:100vh;grid-template-columns:246px 1fr}
+#app.on{display:grid}
+@media(max-width:960px){#app.on{grid-template-columns:1fr}aside{display:none!important}}
+aside{background:#0b0d10;border-right:1px solid var(--line);padding:22px 16px;position:sticky;top:0;height:100vh;display:flex;flex-direction:column;gap:5px}
+aside .lg{display:flex;align-items:center;gap:10px;padding:0 8px 22px;border-bottom:1px solid var(--line);margin-bottom:14px}
+aside .lg img{width:38px;height:38px;border-radius:9px;object-fit:cover;background:#fff}
+aside .lg b{font-size:.82rem;text-transform:uppercase;letter-spacing:-.01em;display:block;line-height:1.1}
+aside .lg span{font-family:'JetBrains Mono',monospace;font-size:.55rem;letter-spacing:.14em;color:var(--mut2);text-transform:uppercase}
+.nv{display:flex;align-items:center;gap:11px;padding:11px 13px;border-radius:11px;font-size:.9rem;font-weight:600;color:var(--mut);cursor:pointer;transition:.22s;border:0;background:none;width:100%;text-align:left}
+.nv:hover{background:rgba(255,255,255,.06);color:#fff}
+.nv.on{background:rgba(255,77,46,.12);color:#fff;box-shadow:inset 2px 0 0 var(--acc)}
+.nv svg{width:17px;height:17px;stroke:currentColor;fill:none;stroke-width:1.8;flex-shrink:0}
+.nv .badge{margin-left:auto;background:var(--acc);color:#fff;font-size:.62rem;font-weight:800;padding:2px 7px;border-radius:99px}
+main{padding:26px 30px 60px;max-width:1240px;width:100%}
+@media(max-width:600px){main{padding:20px 16px 50px}}
+.topbar{display:flex;align-items:center;gap:14px;flex-wrap:wrap;margin-bottom:26px}
+.topbar h2{font-family:'Archivo Black',sans-serif;font-size:1.6rem;letter-spacing:-.03em;text-transform:uppercase}
+.topbar .who{margin-left:auto;display:flex;align-items:center;gap:11px;padding:8px 8px 8px 15px;border:1px solid var(--line);border-radius:99px;font-size:.84rem}
+.topbar .who .av{width:32px;height:32px;border-radius:50%;background:var(--alu);color:#12151a;display:grid;place-items:center;font-weight:900;font-size:.8rem}
+.view{display:none;animation:fade .4s var(--ease)}.view.on{display:block}
+@keyframes fade{from{opacity:0;transform:translateY(12px)}}
+.grid{display:grid;gap:14px}
+.g2{grid-template-columns:repeat(2,1fr)}.g3{grid-template-columns:repeat(3,1fr)}.g4{grid-template-columns:repeat(4,1fr)}
+@media(max-width:1000px){.g4{grid-template-columns:repeat(2,1fr)}.g3{grid-template-columns:1fr}}
+@media(max-width:640px){.g2,.g3,.g4{grid-template-columns:1fr}}
+.card{background:linear-gradient(180deg,var(--panel2),var(--panel));border:1px solid var(--line);border-radius:var(--r);padding:20px}
+.kpi .k{font-family:'JetBrains Mono',monospace;font-size:.6rem;letter-spacing:.18em;text-transform:uppercase;color:var(--mut2)}
+.kpi .v{font-family:'Archivo Black',sans-serif;font-size:2rem;letter-spacing:-.03em;line-height:1.05;margin:9px 0 4px}
+.kpi .d{font-size:.78rem;color:var(--mut)}
+.kpi .d b{color:var(--ok)}
+.sec-t{display:flex;align-items:center;gap:12px;margin:30px 0 14px}
+.sec-t h3{font-size:1.02rem;font-weight:800;text-transform:uppercase;letter-spacing:-.01em}
+.sec-t .line{flex:1;height:1px;background:var(--line)}
+table{width:100%;border-collapse:collapse;font-size:.88rem}
+th{text-align:left;font-family:'JetBrains Mono',monospace;font-size:.6rem;letter-spacing:.16em;text-transform:uppercase;color:var(--mut2);padding:0 14px 11px;font-weight:400}
+td{padding:14px;border-top:1px solid var(--line)}
+tbody tr{transition:.2s;cursor:pointer}
+tbody tr:hover{background:rgba(255,255,255,.035)}
+.tw{border:1px solid var(--line);border-radius:var(--r);overflow:hidden;background:var(--panel)}
+.tscroll{overflow-x:auto}
+.thumb{width:40px;height:40px;border-radius:9px;object-fit:cover;background:#15181d;flex-shrink:0}
+.cellflex{display:flex;align-items:center;gap:11px}
+/* timeline */
+.tl{display:flex;gap:0;margin:6px 0 2px}
+.tl i{flex:1;height:5px;background:var(--line2);border-radius:99px;margin-right:3px;position:relative}
+.tl i:last-child{margin:0}
+.tl i.d{background:var(--ok)}
+.tl i.c{background:var(--warn);animation:bl 1.6s ease-in-out infinite}
+@keyframes bl{50%{opacity:.4}}
+.tlab{display:flex;justify-content:space-between;font-family:'JetBrains Mono',monospace;font-size:.54rem;letter-spacing:.08em;color:var(--mut2);text-transform:uppercase;margin-top:6px}
+/* listino */
+.price-t td{font-variant-numeric:tabular-nums}
+.price-t .old{color:var(--mut2);text-decoration:line-through;font-size:.82rem}
+.price-t .new{font-weight:800;color:#fff}
+.tier{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:16px}
+.tier div{flex:1;min-width:150px;border:1px solid var(--line);border-radius:12px;padding:14px 16px;background:var(--panel2)}
+.tier div.on{border-color:var(--acc);background:rgba(255,77,46,.08)}
+.tier b{display:block;font-size:1.28rem;font-family:'Archivo Black',sans-serif;letter-spacing:-.02em}
+.tier span{font-size:.76rem;color:var(--mut)}
+/* nuova commessa */
+.drop{border:1px dashed var(--line2);border-radius:14px;padding:30px;text-align:center;color:var(--mut);cursor:pointer;transition:.25s}
+.drop:hover{border-color:var(--acc);color:#fff;background:rgba(255,77,46,.05)}
+.rowadd{display:grid;grid-template-columns:1.4fr 1fr 1fr .8fr auto;gap:9px;margin-bottom:9px;align-items:end}
+@media(max-width:820px){.rowadd{grid-template-columns:1fr 1fr}}
+.tot{display:flex;align-items:baseline;gap:12px;padding:18px 20px;border:1px solid var(--line2);border-radius:14px;background:var(--panel2);margin-top:16px;flex-wrap:wrap}
+.tot .n{font-family:'Archivo Black',sans-serif;font-size:1.9rem;letter-spacing:-.03em}
+.toast{position:fixed;left:50%;bottom:26px;transform:translate(-50%,120%);background:#fff;color:#0b0d10;padding:14px 24px;border-radius:99px;font-weight:700;font-size:.9rem;z-index:200;transition:.5s var(--ease);box-shadow:0 16px 44px rgba(0,0,0,.5)}
+.toast.on{transform:translate(-50%,0)}
+.note{font-size:.78rem;color:var(--mut2);margin-top:10px}
+.bar{height:8px;border-radius:99px;background:rgba(255,255,255,.07);overflow:hidden;margin-top:9px}
+.bar i{display:block;height:100%;background:linear-gradient(90deg,var(--acc),#ff9a76);border-radius:99px;transition:1.2s var(--ease)}
+.chart{display:flex;align-items:flex-end;gap:7px;height:130px;margin-top:14px}
+.chart div{flex:1;background:linear-gradient(180deg,var(--acc),rgba(255,77,46,.22));border-radius:6px 6px 3px 3px;position:relative;transition:1s var(--ease);min-height:5px}
+.chart div span{position:absolute;bottom:-20px;left:0;right:0;text-align:center;font-family:'JetBrains Mono',monospace;font-size:.55rem;color:var(--mut2)}
+.chart-w{padding-bottom:22px}
+.mobnav{display:none;position:fixed;left:12px;right:12px;bottom:12px;z-index:60;background:rgba(14,16,19,.94);backdrop-filter:blur(16px);border:1px solid var(--line2);border-radius:18px;padding:7px;gap:4px}
+@media(max-width:960px){.mobnav{display:flex}main{padding-bottom:96px}}
+.mobnav button{flex:1;background:none;border:0;padding:9px 4px;border-radius:12px;color:var(--mut);font-size:.6rem;font-weight:700;display:grid;justify-items:center;gap:4px;cursor:pointer}
+.mobnav button.on{background:rgba(255,77,46,.14);color:#fff}
+.mobnav svg{width:18px;height:18px;stroke:currentColor;fill:none;stroke-width:1.8}
+</style>
+</head>
+<body>
+
+<!-- ================= LOGIN ================= -->
+<div id="login">
+  <div class="side">
+    <img src="https://impro.usercontent.one/appid/oneComWsb/domain/officinadelcerchio.it/media/officinadelcerchio.it/onewebmedia/015ce18f-eb70-4a6c-918e-2c3a4b2237c3.jpg?sourceContentType=image%2Fjpeg&quality=85" alt="Officina del Cerchio">
+    <div class="q">
+      <div class="mono" style="font-size:.64rem;letter-spacing:.22em;color:var(--acc);text-transform:uppercase;margin-bottom:12px">Rete partner ODC</div>
+      <p style="font-family:'Archivo Black',sans-serif;font-size:1.7rem;line-height:1.1;letter-spacing:-.03em;text-transform:uppercase;max-width:16ch">I tuoi clienti vedono un cerchio nuovo.<br>Tu non sposti un dito.</p>
+    </div>
+  </div>
+  <div class="form">
+    <div class="lbox">
+      <div class="lg">
+        <img src="https://impro.usercontent.one/appid/oneComWsb/domain/officinadelcerchio.it/media/officinadelcerchio.it/onewebmedia/5c5706bb-4742-4040-9daa-57ae2076a185.jpg?sourceContentType=image%2Fjpeg&ignoreAspectRatio&resize=580%2B580&quality=85" alt="ODC">
+        <div><b style="display:block;font-size:.9rem;text-transform:uppercase">Officina del Cerchio</b><span class="mono" style="font-size:.58rem;letter-spacing:.16em;color:var(--mut2)">AREA PARTNER B2B</span></div>
+      </div>
+      <h1>Accedi al tuo<br>pannello partner</h1>
+      <p>Listino riservato, stato delle commesse in tempo reale e riepilogo mensile. Senza una telefonata.</p>
+      <form id="lform">
+        <div class="fld"><label>Email aziendale</label><input type="email" id="lu" value="info@pneusbrianza.it" required></div>
+        <div class="fld"><label>Password</label><input type="password" id="lp" value="demo1234" required></div>
+        <button class="btn btn-p" style="width:100%;padding:14px" type="submit">Entra</button>
+      </form>
+      <div class="demo-hint">🔒 <b>Demo</b> — credenziali già precompilate. Nessun dato viene inviato: tutto gira nel browser.</div>
+      <p style="margin-top:22px;font-size:.84rem"><a href="index.html" style="color:var(--mut);text-decoration:underline">← Torna al sito</a> · <a href="https://wa.me/393517058727" target="_blank" rel="noopener" style="color:var(--acc)">Diventa partner</a></p>
+    </div>
+  </div>
+</div>
+
+<!-- ================= APP ================= -->
+<div id="app">
+  <aside>
+    <div class="lg">
+      <img src="https://impro.usercontent.one/appid/oneComWsb/domain/officinadelcerchio.it/media/officinadelcerchio.it/onewebmedia/5c5706bb-4742-4040-9daa-57ae2076a185.jpg?sourceContentType=image%2Fjpeg&ignoreAspectRatio&resize=580%2B580&quality=85" alt="ODC">
+      <div><b>ODC Partner</b><span>Concorezzo · MB</span></div>
+    </div>
+    <button class="nv on" data-v="dash"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="9" rx="1.5"/><rect x="14" y="3" width="7" height="5" rx="1.5"/><rect x="14" y="12" width="7" height="9" rx="1.5"/><rect x="3" y="16" width="7" height="5" rx="1.5"/></svg>Dashboard</button>
+    <button class="nv" data-v="comm"><svg viewBox="0 0 24 24"><path d="M4 5h16v14H4z"/><path d="M4 10h16M9 19V10"/></svg>Commesse<span class="badge" id="nbComm">4</span></button>
+    <button class="nv" data-v="new"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 8v8M8 12h8"/></svg>Nuova commessa</button>
+    <button class="nv" data-v="list"><svg viewBox="0 0 24 24"><path d="M8 6h13M8 12h13M8 18h13M3.5 6h.01M3.5 12h.01M3.5 18h.01"/></svg>Listino riservato</button>
+    <button class="nv" data-v="fatt"><svg viewBox="0 0 24 24"><path d="M6 3h12v18l-3-2-3 2-3-2-3 2z"/><path d="M9 8h6M9 12h6"/></svg>Fatturazione</button>
+    <button class="nv" data-v="mat"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="14" rx="2"/><path d="M8 21h8M12 18v3"/></svg>Materiale marketing</button>
+    <div style="margin-top:auto;padding-top:16px;border-top:1px solid var(--line)">
+      <a class="btn btn-w btn-sm" style="width:100%" href="https://wa.me/393517058727?text=Ciao%2C%20scrivo%20dall%27area%20partner%20ODC." target="_blank" rel="noopener">Scrivi all'officina</a>
+      <button class="nv" style="margin-top:6px" id="logout"><svg viewBox="0 0 24 24"><path d="M9 21H5a2 2 0 01-2-2V5a2 2 0 012-2h4M16 17l5-5-5-5M21 12H9"/></svg>Esci</button>
+    </div>
+  </aside>
+
+  <main>
+    <div class="topbar">
+      <h2 id="vTitle">Dashboard</h2>
+      <div class="who"><span>Pneus Brianza <span style="color:var(--mut2)">· Gold</span></span><span class="av">PB</span></div>
+    </div>
+
+    <!-- ---------- DASHBOARD ---------- -->
+    <section class="view on" data-v="dash">
+      <div class="grid g4">
+        <div class="card kpi"><div class="k">Commesse aperte</div><div class="v alu-text">4</div><div class="d">12 cerchi in lavorazione</div></div>
+        <div class="card kpi"><div class="k">Consegne questa settimana</div><div class="v alu-text">3</div><div class="d">prossima <b>mar 28/07</b></div></div>
+        <div class="card kpi"><div class="k">Volume mese</div><div class="v alu-text">38</div><div class="d">cerchi · fascia <b>Gold −18%</b></div></div>
+        <div class="card kpi"><div class="k">Risparmio YTD</div><div class="v alu-text">€ 3.140</div><div class="d">vs listino pubblico</div></div>
+      </div>
+
+      <div class="sec-t"><h3>Prossimo scaglione</h3><div class="line"></div></div>
+      <div class="card">
+        <div style="display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;align-items:baseline">
+          <b>38 / 50 cerchi questo mese</b>
+          <span style="color:var(--mut);font-size:.86rem">ancora <b style="color:#fff">12 cerchi</b> per passare a <b style="color:var(--acc)">Platinum −24%</b></span>
+        </div>
+        <div class="bar"><i id="barTier" style="width:0"></i></div>
+        <p class="note">Gli scaglioni si calcolano sul totale cerchi consegnati nel mese solare e si applicano retroattivamente su tutte le commesse del mese.</p>
+      </div>
+
+      <div class="sec-t"><h3>Commesse in corso</h3><div class="line"></div><a class="btn btn-g btn-sm" data-go="comm">Vedi tutte</a></div>
+      <div class="tw tscroll"><table><thead><tr><th>Commessa</th><th>Veicolo</th><th>Lavorazione</th><th>Avanzamento</th><th>Consegna</th><th>Stato</th></tr></thead><tbody id="tbDash"></tbody></table></div>
+
+      <div class="grid g2" style="margin-top:26px">
+        <div class="card chart-w">
+          <div class="k mono" style="font-size:.6rem;letter-spacing:.18em;color:var(--mut2);text-transform:uppercase">Cerchi lavorati · ultimi 6 mesi</div>
+          <div class="chart" id="chart"></div>
+        </div>
+        <div class="card">
+          <div class="k mono" style="font-size:.6rem;letter-spacing:.18em;color:var(--mut2);text-transform:uppercase;margin-bottom:14px">Ritiro e consegna</div>
+          <div style="display:flex;gap:12px;padding:13px 0;border-bottom:1px solid var(--line)"><b class="mono" style="width:78px;flex-shrink:0;font-size:.7rem">MAR 28/07</b><span style="font-size:.9rem">Ritiro 2 cerchi Golf GTI · consegna 4 cerchi RS3 <span class="pill p-in" style="margin-left:6px">confermato</span></span></div>
+          <div style="display:flex;gap:12px;padding:13px 0;border-bottom:1px solid var(--line)"><b class="mono" style="width:78px;flex-shrink:0;font-size:.7rem">VEN 31/07</b><span style="font-size:.9rem">Consegna 4 cerchi Porsche 911 diamantati <span class="pill p-wa" style="margin-left:6px">da confermare</span></span></div>
+          <div style="display:flex;gap:12px;padding:13px 0"><b class="mono" style="width:78px;flex-shrink:0;font-size:.7rem">MAR 04/08</b><span style="font-size:.9rem">Giro settimanale Brianza · slot libero</span></div>
+          <button class="btn btn-g btn-sm" style="margin-top:14px" onclick="toast('Richiesta di ritiro inviata all\'officina')">Richiedi un ritiro</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ---------- COMMESSE ---------- -->
+    <section class="view" data-v="comm">
+      <div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:16px" id="fComm">
+        <button class="btn btn-g btn-sm on" data-fs="all">Tutte</button>
+        <button class="btn btn-g btn-sm" data-fs="corso">In lavorazione</button>
+        <button class="btn btn-g btn-sm" data-fs="pronto">Pronte</button>
+        <button class="btn btn-g btn-sm" data-fs="chiuso">Consegnate</button>
+      </div>
+      <div id="commList" class="grid" style="gap:12px"></div>
+    </section>
+
+    <!-- ---------- NUOVA COMMESSA ---------- -->
+    <section class="view" data-v="new">
+      <div class="grid g2" style="align-items:start">
+        <div class="card">
+          <b style="font-size:1.02rem">1. Il veicolo</b>
+          <div class="grid g2" style="margin-top:14px;gap:10px">
+            <div class="fld"><label>Marca e modello</label><input id="nVeh" placeholder="Es. Audi RS3"></div>
+            <div class="fld"><label>Riferimento cliente</label><input id="nCli" placeholder="Es. Rossi / targa"></div>
+          </div>
+
+          <b style="font-size:1.02rem;display:block;margin-top:14px">2. I cerchi</b>
+          <div id="rows" style="margin-top:12px"></div>
+          <button class="btn btn-g btn-sm" id="addRow">+ Aggiungi cerchio</button>
+
+          <b style="font-size:1.02rem;display:block;margin-top:22px">3. Foto dei danni</b>
+          <div class="drop" style="margin-top:10px" onclick="toast('Nella versione live si caricano le foto direttamente da qui')">
+            Trascina qui le foto oppure clicca per selezionarle<br><span style="font-size:.78rem">1 foto del cerchio intero + 1 per ogni danno</span>
+          </div>
+
+          <div class="fld" style="margin-top:18px"><label>Note per l'officina</label><textarea id="nNote" rows="3" placeholder="Es. il cliente vuole lo stesso antracite dell'anno scorso"></textarea></div>
+        </div>
+
+        <div class="card" style="position:sticky;top:26px">
+          <b style="font-size:1.02rem">Riepilogo</b>
+          <div id="sum" style="margin-top:14px;font-size:.9rem"></div>
+          <div class="tot">
+            <div><div class="mono" style="font-size:.6rem;letter-spacing:.16em;color:var(--mut2);text-transform:uppercase">Totale partner Gold</div><div class="n alu-text" id="sumTot">€ 0</div></div>
+            <div style="margin-left:auto;text-align:right"><div class="mono" style="font-size:.6rem;letter-spacing:.16em;color:var(--mut2);text-transform:uppercase">Listino pubblico</div><div style="text-decoration:line-through;color:var(--mut)" id="sumPub">€ 0</div><div style="color:var(--ok);font-weight:700;font-size:.86rem" id="sumSave">risparmi € 0</div></div>
+          </div>
+          <button class="btn btn-p" style="width:100%;margin-top:14px;padding:14px" id="sendComm">Invia commessa all'officina</button>
+          <p class="note">Ricevi conferma e data di consegna entro 2 ore lavorative. I prezzi sono indicativi e vengono confermati dopo la visione delle foto.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ---------- LISTINO ---------- -->
+    <section class="view" data-v="list">
+      <div class="tier">
+        <div><b>−10%</b><span>Silver · da 10 cerchi/mese</span></div>
+        <div class="on"><b>−18%</b><span>Gold · da 25 cerchi/mese ← sei qui</span></div>
+        <div><b>−24%</b><span>Platinum · da 50 cerchi/mese</span></div>
+      </div>
+      <div class="tw tscroll"><table class="price-t"><thead><tr><th>Lavorazione</th><th>Diametro</th><th>Listino pubblico</th><th>Il tuo prezzo</th><th>Tempi</th></tr></thead><tbody id="tbList"></tbody></table></div>
+      <p class="note">Prezzi per singolo cerchio, IVA esclusa. Saldature e ricostruzioni bordo quotate a parte dopo visione. Ritiro e riconsegna inclusi in Brianza per ordini da 4 cerchi.</p>
+      <div class="grid g3" style="margin-top:20px">
+        <div class="card"><b>Ritiro &amp; consegna</b><p style="color:var(--mut);font-size:.88rem;margin-top:8px">Giro settimanale su Brianza e Milano nord. Inclusi da 4 cerchi, altrimenti € 25 a viaggio.</p></div>
+        <div class="card"><b>Cerchio sostitutivo</b><p style="color:var(--mut);font-size:.88rem;margin-top:8px">Su richiesta forniamo un cerchio di cortesia per non fermare l'auto del tuo cliente.</p></div>
+        <div class="card"><b>Garanzia</b><p style="color:var(--mut);font-size:.88rem;margin-top:8px">24 mesi sulla finitura a polvere contro distacco e ossidazione, in condizioni d'uso normali.</p></div>
+      </div>
+    </section>
+
+    <!-- ---------- FATTURAZIONE ---------- -->
+    <section class="view" data-v="fatt">
+      <div class="grid g3">
+        <div class="card kpi"><div class="k">Maturato luglio</div><div class="v alu-text">€ 2.418</div><div class="d">38 cerchi · sconto Gold applicato</div></div>
+        <div class="card kpi"><div class="k">Fattura di giugno</div><div class="v alu-text">€ 2.905</div><div class="d"><b>Pagata</b> il 10/07</div></div>
+        <div class="card kpi"><div class="k">Totale 2026</div><div class="v alu-text">€ 17.460</div><div class="d">241 cerchi lavorati</div></div>
+      </div>
+      <div class="sec-t"><h3>Documenti</h3><div class="line"></div></div>
+      <div class="tw tscroll"><table><thead><tr><th>Periodo</th><th>Documento</th><th>Cerchi</th><th>Importo</th><th>Stato</th><th></th></tr></thead><tbody id="tbFatt"></tbody></table></div>
+      <p class="note">Una sola fattura riepilogativa a fine mese con il dettaglio di ogni commessa. Niente scontrini sparsi, niente riconciliazioni a mano.</p>
+    </section>
+
+    <!-- ---------- MARKETING ---------- -->
+    <section class="view" data-v="mat">
+      <p style="color:var(--mut);max-width:70ch;margin-bottom:20px">Materiale pronto da usare in officina e sui tuoi canali. Le foto prima/dopo dei tuoi lavori vengono caricate qui appena la commessa è chiusa: le giri al cliente o le pubblichi a tuo nome.</p>
+      <div class="grid g3" id="mkt"></div>
+    </section>
+  </main>
+</div>
+
+<nav class="mobnav">
+  <button class="on" data-v="dash"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="9" rx="1.5"/><rect x="14" y="3" width="7" height="5" rx="1.5"/><rect x="14" y="12" width="7" height="9" rx="1.5"/><rect x="3" y="16" width="7" height="5" rx="1.5"/></svg>Home</button>
+  <button data-v="comm"><svg viewBox="0 0 24 24"><path d="M4 5h16v14H4z"/><path d="M4 10h16M9 19V10"/></svg>Commesse</button>
+  <button data-v="new"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 8v8M8 12h8"/></svg>Nuova</button>
+  <button data-v="list"><svg viewBox="0 0 24 24"><path d="M8 6h13M8 12h13M8 18h13M3.5 6h.01M3.5 12h.01M3.5 18h.01"/></svg>Listino</button>
+  <button data-v="fatt"><svg viewBox="0 0 24 24"><path d="M6 3h12v18l-3-2-3 2-3-2-3 2z"/><path d="M9 8h6M9 12h6"/></svg>Fatture</button>
+</nav>
+
+<div class="toast" id="toast"></div>
+
+<script>
+(function(){
+'use strict';
+var B='https://impro.usercontent.one/appid/oneComWsb/domain/officinadelcerchio.it/media/officinadelcerchio.it/onewebmedia/',
+    Q='?sourceContentType=image%2Fjpeg&quality=85';
+var IMG={
+  audi:B+'c4510d0f-3201-442c-9751-4591140a98aa.jpg'+Q,
+  vw:B+'4c08827e-1949-49ad-86c8-966b11c1bc19.jpg'+Q,
+  bbs:B+'042f0955-3ab0-4a02-8aad-207dc647acf4.jpg'+Q,
+  dia:B+'00ff32a5-a0d8-4941-834c-47afacd49f13.jpg'+Q,
+  lam:B+'3e15963b-58b1-471c-b0ff-26fcb2e23553.jpg'+Q,
+  fin:B+'57402a82-4c14-4f5b-8ff2-8ea46733c229.jpg'+Q,
+  logo:B+'4208c293-d4b8-4381-9fa8-df61c295a94e.jpg'+Q,
+  prima:B+'9d4a2858-4d9d-4180-86fb-aff5d076cc97.jpg'+Q
+};
+var FASI=['Ricevuto','Diagnosi','Raddrizzatura','Verniciatura','Diamantatura','Controllo','Pronto'];
+
+var COMM=[
+ {id:'2418',veh:'Audi RS3',cli:'Ferrari M.',w:'Rigenerazione + antracite',n:4,dim:'19"',fase:6,st:'chiuso',cons:'consegnata 22/07',img:IMG.audi,tot:512},
+ {id:'2419',veh:'VW Golf GTI',cli:'Bianchi L.',w:'Rigenerazione + nero lucido',n:2,dim:'18"',fase:3,st:'corso',cons:'prevista mar 28/07',img:IMG.vw,tot:246},
+ {id:'2420',veh:'Porsche 911',cli:'Conti A.',w:'Diamantatura CNC + nero',n:4,dim:'21"',fase:4,st:'corso',cons:'prevista ven 31/07',img:IMG.dia,tot:722},
+ {id:'2421',veh:'Ducati V4',cli:'Neri S.',w:'Raddrizzatura + verniciatura',n:2,dim:'17"',fase:2,st:'corso',cons:'prevista mer 29/07',img:IMG.bbs,tot:198},
+ {id:'2422',veh:'BMW M340i',cli:'Villa G.',w:'Rigenerazione completa',n:4,dim:'19"',fase:6,st:'pronto',cons:'pronta al ritiro',img:IMG.fin,tot:476},
+ {id:'2410',veh:'Mercedes GLC',cli:'Rossi P.',w:'Verniciatura a polvere',n:4,dim:'20"',fase:6,st:'chiuso',cons:'consegnata 09/07',img:IMG.lam,tot:498},
+ {id:'2405',veh:'Golf R (BBS)',cli:'Sala D.',w:'Rigenerazione BBS d\'epoca',n:4,dim:'18"',fase:6,st:'chiuso',cons:'consegnata 02/07',img:IMG.bbs,tot:604}
+];
+var LIST=[
+ ['Raddrizzatura','fino a 17"',70,'1 giorno'],['Raddrizzatura','18"–19"',85,'1 giorno'],['Raddrizzatura','20"+',100,'1 giorno'],
+ ['Rigenerazione completa','fino a 17"',120,'3 giorni'],['Rigenerazione completa','18"–19"',135,'3 giorni'],['Rigenerazione completa','20"+',160,'3-4 giorni'],
+ ['Diamantatura CNC','fino a 17"',170,'3-4 giorni'],['Diamantatura CNC','18"–19"',190,'3-4 giorni'],['Diamantatura CNC','20"+',225,'4-5 giorni'],
+ ['Cambio colore / bicolore','tutti',150,'3 giorni'],['Logo o scritta impressa','tutti',45,'incluso nel ciclo'],['Cerchio moto','tutti',110,'2-3 giorni']
+];
+var SCONTO=.18;
+function eur(n){return '€ '+n.toLocaleString('it-IT',{maximumFractionDigits:0})}
+
+/* ---- login ---- */
+document.getElementById('lform').onsubmit=function(e){
+  e.preventDefault();
+  document.getElementById('login').style.display='none';
+  document.getElementById('app').classList.add('on');
+  setTimeout(function(){document.getElementById('barTier').style.width='76%';drawChart()},250);
+};
+document.getElementById('logout').onclick=function(){location.reload()};
+
+/* ---- nav ---- */
+var TIT={dash:'Dashboard',comm:'Le tue commesse',new:'Nuova commessa',list:'Listino riservato',fatt:'Fatturazione',mat:'Materiale marketing'};
+function go(v){
+  document.querySelectorAll('.view').forEach(function(s){s.classList.toggle('on',s.dataset.v===v)});
+  document.querySelectorAll('.nv[data-v],.mobnav button').forEach(function(b){b.classList.toggle('on',b.dataset.v===v)});
+  document.getElementById('vTitle').textContent=TIT[v];
+  window.scrollTo({top:0,behavior:'smooth'});
+  if(v==='dash')setTimeout(drawChart,120);
+}
+document.querySelectorAll('.nv[data-v],.mobnav button').forEach(function(b){b.onclick=function(){go(b.dataset.v)}});
+document.querySelectorAll('[data-go]').forEach(function(b){b.onclick=function(){go(b.dataset.go)}});
+
+/* ---- toast ---- */
+var tEl=document.getElementById('toast'),tT;
+window.toast=function(m){tEl.textContent=m;tEl.classList.add('on');clearTimeout(tT);tT=setTimeout(function(){tEl.classList.remove('on')},2800)};
+
+/* ---- tabella dashboard ---- */
+function tl(f){var h='<div class="tl">';for(var i=0;i<FASI.length;i++){h+='<i class="'+(i<f?'d':i===f?'c':'')+'"></i>'}return h+'</div>'}
+document.getElementById('tbDash').innerHTML=COMM.filter(function(c){return c.st!=='chiuso'}).map(function(c){
+  return '<tr><td><b>#'+c.id+'</b><br><span style="color:var(--mut2);font-size:.76rem">'+c.cli+'</span></td>'+
+   '<td><div class="cellflex"><img class="thumb" loading="lazy" src="'+c.img+'" alt=""><span>'+c.veh+'<br><span style="color:var(--mut2);font-size:.76rem">'+c.dim+' × '+c.n+'</span></span></div></td>'+
+   '<td style="color:var(--mut)">'+c.w+'</td><td style="min-width:150px">'+tl(c.fase)+'<span style="font-size:.72rem;color:var(--mut2)">'+FASI[Math.min(c.fase,6)]+'</span></td>'+
+   '<td style="color:var(--mut)">'+c.cons+'</td><td>'+badge(c)+'</td></tr>';
+}).join('');
+function badge(c){return c.st==='chiuso'?'<span class="pill p-ok">Consegnata</span>':c.st==='pronto'?'<span class="pill p-vi">Pronta</span>':
+  (c.fase>=4?'<span class="pill p-in">'+FASI[c.fase]+'</span>':'<span class="pill p-wa">'+FASI[c.fase]+'</span>')}
+document.getElementById('nbComm').textContent=COMM.filter(function(c){return c.st!=='chiuso'}).length;
+
+/* ---- commesse ---- */
+function renderComm(f){
+  document.getElementById('commList').innerHTML=COMM.filter(function(c){return f==='all'||c.st===f}).map(function(c){
+    return '<div class="card" style="display:grid;grid-template-columns:74px 1fr auto;gap:16px;align-items:center">'+
+      '<img class="thumb" style="width:74px;height:74px;border-radius:12px" loading="lazy" src="'+c.img+'" alt="">'+
+      '<div><div style="display:flex;gap:10px;align-items:baseline;flex-wrap:wrap"><b>#'+c.id+' · '+c.veh+'</b>'+badge(c)+'</div>'+
+      '<div style="color:var(--mut);font-size:.86rem;margin:3px 0 8px">'+c.w+' · '+c.dim+' × '+c.n+' · cliente '+c.cli+'</div>'+
+      tl(c.fase)+'<div class="tlab"><span>'+FASI[0]+'</span><span style="color:#fff">'+FASI[Math.min(c.fase,6)]+'</span><span>'+FASI[6]+'</span></div></div>'+
+      '<div style="text-align:right"><div class="alu-text" style="font-family:\'Archivo Black\',sans-serif;font-size:1.2rem">'+eur(c.tot)+'</div>'+
+      '<div style="color:var(--mut2);font-size:.76rem;margin-bottom:8px">'+c.cons+'</div>'+
+      '<button class="btn btn-g btn-sm" onclick="toast(\'Foto e scheda tecnica della commessa #'+c.id+'\')">Dettaglio</button></div></div>';
+  }).join('');
+}
+renderComm('all');
+document.querySelectorAll('#fComm button').forEach(function(b){
+  b.onclick=function(){document.querySelectorAll('#fComm button').forEach(function(x){x.classList.remove('on')});
+    b.classList.add('on');renderComm(b.dataset.fs)};
+});
+
+/* ---- listino ---- */
+document.getElementById('tbList').innerHTML=LIST.map(function(l){
+  var p=Math.round(l[2]*(1-SCONTO));
+  return '<tr><td><b>'+l[0]+'</b></td><td style="color:var(--mut)">'+l[1]+'</td><td class="old">'+eur(l[2])+'</td><td class="new">'+eur(p)+'</td><td style="color:var(--mut)">'+l[3]+'</td></tr>';
+}).join('');
+
+/* ---- fatture ---- */
+var FATT=[['Luglio 2026','in maturazione','38',2418,'<span class="pill p-wa">Aperta</span>'],
+ ['Giugno 2026','FT 2026/0612','46',2905,'<span class="pill p-ok">Pagata</span>'],
+ ['Maggio 2026','FT 2026/0511','41',2612,'<span class="pill p-ok">Pagata</span>'],
+ ['Aprile 2026','FT 2026/0409','35',2244,'<span class="pill p-ok">Pagata</span>'],
+ ['Marzo 2026','FT 2026/0314','44',2789,'<span class="pill p-ok">Pagata</span>']];
+document.getElementById('tbFatt').innerHTML=FATT.map(function(f){
+  return '<tr><td><b>'+f[0]+'</b></td><td class="mono" style="color:var(--mut)">'+f[1]+'</td><td>'+f[2]+'</td><td><b>'+eur(f[3])+'</b></td><td>'+f[4]+'</td>'+
+  '<td style="text-align:right"><button class="btn btn-g btn-sm" onclick="toast(\'Download PDF · demo\')">PDF</button></td></tr>';
+}).join('');
+
+/* ---- marketing ---- */
+var MKT=[['Foto prima / dopo','Set fotografico di ogni tua commessa chiusa, pronto per WhatsApp e social.',IMG.prima],
+ ['Vetrofania e targa partner','"Centro autorizzato ODC" per la tua vetrina, in formato stampabile.',IMG.logo],
+ ['Schede finiture','Campionario colori e finiture da mostrare al cliente al banco.',IMG.fin],
+ ['Post pronti','Caroselli e reel già montati con i tuoi lavori, da pubblicare a tuo nome.',IMG.dia],
+ ['Preventivatore da banco','La stessa stima del sito, in versione tablet per il tuo bancone.',IMG.audi],
+ ['Listino al pubblico','Il listino consigliato da esporre, coerente con i tuoi margini.',IMG.bbs]];
+document.getElementById('mkt').innerHTML=MKT.map(function(m){
+  return '<div class="card" style="padding:0;overflow:hidden"><img loading="lazy" src="'+m[2]+'" alt="" style="width:100%;aspect-ratio:16/10;object-fit:cover">'+
+  '<div style="padding:18px"><b>'+m[0]+'</b><p style="color:var(--mut);font-size:.86rem;margin:7px 0 12px">'+m[1]+'</p>'+
+  '<button class="btn btn-g btn-sm" onclick="toast(\'Download · demo\')">Scarica</button></div></div>';
+}).join('');
+
+/* ---- grafico ---- */
+var DATA=[[ 'FEB',29],['MAR',44],['APR',35],['MAG',41],['GIU',46],['LUG',38]];
+function drawChart(){
+  var mx=Math.max.apply(null,DATA.map(function(d){return d[1]}));
+  document.getElementById('chart').innerHTML=DATA.map(function(d){
+    return '<div style="height:0" data-h="'+(d[1]/mx*100)+'"><span>'+d[0]+'</span></div>'}).join('');
+  requestAnimationFrame(function(){
+    document.querySelectorAll('#chart div').forEach(function(b,i){setTimeout(function(){b.style.height=b.dataset.h+'%'},i*80)});
+  });
+}
+
+/* ---- nuova commessa ---- */
+var WORKS=[['Raddrizzatura',85],['Rigenerazione completa',135],['Diamantatura CNC',190],['Cambio colore / bicolore',150],['Cerchio moto',110]];
+var rows=document.getElementById('rows'),rowN=0;
+function addRow(){
+  rowN++;
+  var d=document.createElement('div');d.className='rowadd';
+  d.innerHTML='<div class="fld" style="margin:0"><label>Lavorazione</label><select class="w">'+
+      WORKS.map(function(w,i){return '<option value="'+i+'">'+w[0]+'</option>'}).join('')+'</select></div>'+
+    '<div class="fld" style="margin:0"><label>Diametro</label><select class="d"><option value="0">fino a 17"</option><option value="15" selected>18"–19"</option><option value="35">20" e oltre</option></select></div>'+
+    '<div class="fld" style="margin:0"><label>Finitura</label><select class="f"><option>Nero lucido</option><option>Nero opaco</option><option>Antracite</option><option>Silver</option><option>Canna di fucile</option><option>Bronzo</option><option>Come originale</option><option>A campione</option></select></div>'+
+    '<div class="fld" style="margin:0"><label>Q.tà</label><input class="q" type="number" min="1" max="8" value="1"></div>'+
+    '<button class="btn btn-g btn-sm" style="height:44px" title="Rimuovi">✕</button>';
+  d.querySelector('button').onclick=function(){if(rows.children.length>1){d.remove();sum()}};
+  d.querySelectorAll('select,input').forEach(function(x){x.oninput=sum});
+  rows.appendChild(d);sum();
+}
+document.getElementById('addRow').onclick=addRow;
+function sum(){
+  var pub=0,html='';
+  Array.prototype.forEach.call(rows.children,function(r){
+    var w=WORKS[+r.querySelector('.w').value],add=+r.querySelector('.d').value,q=+r.querySelector('.q').value||1;
+    var line=(w[1]+add)*q;pub+=line;
+    html+='<div style="display:flex;justify-content:space-between;gap:10px;padding:8px 0;border-bottom:1px solid var(--line)"><span>'+
+      w[0]+' · '+r.querySelector('.f').value+' <span style="color:var(--mut2)">×'+q+'</span></span><b>'+eur(Math.round(line*(1-SCONTO)))+'</b></div>';
+  });
+  var net=Math.round(pub*(1-SCONTO));
+  document.getElementById('sum').innerHTML=html||'<span style="color:var(--mut)">Aggiungi almeno un cerchio.</span>';
+  document.getElementById('sumTot').textContent=eur(net);
+  document.getElementById('sumPub').textContent=eur(pub);
+  document.getElementById('sumSave').textContent='risparmi '+eur(pub-net);
+}
+addRow();
+document.getElementById('sendComm').onclick=function(){
+  var v=document.getElementById('nVeh').value||'veicolo non indicato';
+  toast('Commessa per '+v+' inviata — conferma entro 2 ore');
+};
+})();
+</script>
+</body>
+</html>

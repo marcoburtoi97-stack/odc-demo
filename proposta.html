@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Proposta — Officina del Cerchio · Sistema digitale ODC</title>
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800;900&family=Archivo+Black&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#08090b;--panel:#0e1013;--panel2:#14171c;
+  --line:rgba(255,255,255,.10);--line2:rgba(255,255,255,.19);
+  --txt:#eef1f5;--mut:#98a1ad;--mut2:#6d7683;--acc:#FF4D2E;--ok:#4ade80;--warn:#FFC531;
+  --alu:linear-gradient(135deg,#fff,#d7dde6 28%,#8f99a8 52%,#e9eef5 74%,#b8c1cd);
+  --iri:linear-gradient(100deg,#ff5f6d,#ffc371,#7ee8a2,#4facfe,#c471f5,#ff5f6d);
+  --ease:cubic-bezier(.22,.61,.36,1);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-snap-type:y mandatory;scroll-behavior:smooth}
+body{background:var(--ink);color:var(--txt);font-family:'Archivo',-apple-system,'Segoe UI',sans-serif;-webkit-font-smoothing:antialiased}
+img{display:block;max-width:100%}a{color:inherit}
+.mono{font-family:'JetBrains Mono',ui-monospace,monospace}
+.alu{background:var(--alu);-webkit-background-clip:text;background-clip:text;color:transparent}
+.iri{background:var(--iri);background-size:300%;-webkit-background-clip:text;background-clip:text;color:transparent;animation:ir 9s linear infinite}
+@keyframes ir{to{background-position:300% 0}}
+body::before{content:'';position:fixed;inset:0;pointer-events:none;z-index:9;opacity:.035;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23n)'/%3E%3C/svg%3E")}
+
+.slide{min-height:100vh;scroll-snap-align:start;scroll-snap-stop:always;display:grid;align-content:center;
+  padding:clamp(70px,10vh,110px) clamp(20px,5vw,72px) clamp(60px,8vh,90px);position:relative;border-bottom:1px solid rgba(255,255,255,.05)}
+.in{width:100%;max-width:1120px;margin:0 auto}
+.num{position:absolute;top:clamp(20px,4vh,38px);right:clamp(20px,5vw,52px);font-family:'JetBrains Mono',monospace;
+  font-size:.66rem;letter-spacing:.2em;color:var(--mut2)}
+.eyebrow{font-family:'JetBrains Mono',monospace;font-size:.68rem;letter-spacing:.22em;text-transform:uppercase;color:var(--acc);display:flex;align-items:center;gap:10px;margin-bottom:18px}
+.eyebrow::before{content:'';width:26px;height:1px;background:var(--acc)}
+h1{font-family:'Archivo Black',sans-serif;font-weight:900;line-height:.96;letter-spacing:-.035em;text-transform:uppercase;font-size:clamp(2rem,5vw,4.2rem)}
+h2{font-family:'Archivo Black',sans-serif;font-weight:900;line-height:1;letter-spacing:-.03em;text-transform:uppercase;font-size:clamp(1.6rem,3.4vw,2.8rem);margin-bottom:20px}
+h3{font-size:1.08rem;font-weight:800;letter-spacing:-.01em;text-transform:uppercase}
+p.lead{color:var(--mut);font-size:clamp(1rem,1.4vw,1.15rem);max-width:66ch}
+.grid{display:grid;gap:14px}
+.g2{grid-template-columns:repeat(2,1fr)}.g3{grid-template-columns:repeat(3,1fr)}.g4{grid-template-columns:repeat(4,1fr)}
+@media(max-width:960px){.g3,.g4{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:640px){.g2,.g3,.g4{grid-template-columns:1fr}}
+.card{background:linear-gradient(180deg,var(--panel2),var(--panel));border:1px solid var(--line);border-radius:16px;padding:22px}
+.card .k{font-family:'JetBrains Mono',monospace;font-size:.6rem;letter-spacing:.18em;text-transform:uppercase;color:var(--mut2)}
+.card p{color:var(--mut);font-size:.9rem;margin-top:8px}
+.big{font-family:'Archivo Black',sans-serif;font-size:clamp(2rem,4.4vw,3.1rem);letter-spacing:-.035em;line-height:1}
+.btn{display:inline-flex;align-items:center;gap:9px;padding:14px 26px;border-radius:99px;font-weight:700;font-size:.94rem;border:0;cursor:pointer;transition:.3s var(--ease);text-decoration:none}
+.btn-p{background:var(--acc);color:#fff;box-shadow:0 10px 32px -10px rgba(255,77,46,.8)}
+.btn-p:hover{transform:translateY(-2px);filter:brightness(1.08)}
+.btn-g{background:rgba(255,255,255,.06);border:1px solid var(--line2);color:#fff}
+.btn-g:hover{background:rgba(255,255,255,.12)}
+ul.chk{list-style:none;display:grid;gap:11px}
+ul.chk li{display:flex;gap:11px;font-size:.95rem;color:#cbd2db;line-height:1.5}
+ul.chk li::before{content:'';flex-shrink:0;width:19px;height:19px;border-radius:6px;margin-top:3px;
+  background:rgba(74,222,128,.13);border:1px solid rgba(74,222,128,.38);
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%234ade80' stroke-width='3.4'%3E%3Cpath d='M20 6L9 17l-5-5'/%3E%3C/svg%3E");background-size:12px;background-repeat:no-repeat;background-position:center}
+ul.x li::before{background:rgba(248,113,113,.13);border-color:rgba(248,113,113,.38);
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23f87171' stroke-width='3.4'%3E%3Cpath d='M18 6L6 18M6 6l12 12'/%3E%3C/svg%3E")}
+.tag{display:inline-block;font-family:'JetBrains Mono',monospace;font-size:.6rem;letter-spacing:.12em;text-transform:uppercase;
+  padding:5px 11px;border-radius:99px;border:1px solid var(--line2);color:var(--mut)}
+.tag.hot{background:rgba(255,77,46,.14);border-color:rgba(255,77,46,.4);color:#ff9c85}
+.tag.ok{background:rgba(74,222,128,.13);border-color:rgba(74,222,128,.36);color:var(--ok)}
+/* prezzi */
+.plans{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;align-items:stretch}
+@media(max-width:900px){.plans{grid-template-columns:1fr}}
+.plan{border:1px solid var(--line);border-radius:18px;padding:24px;background:linear-gradient(180deg,var(--panel2),var(--panel));display:flex;flex-direction:column}
+.plan.best{border-color:var(--acc);box-shadow:0 0 0 1px rgba(255,77,46,.35),0 24px 60px -26px rgba(255,77,46,.5);position:relative}
+.plan.best::before{content:'CONSIGLIATO';position:absolute;top:-10px;left:24px;background:var(--acc);color:#fff;
+  font-family:'JetBrains Mono',monospace;font-size:.56rem;letter-spacing:.18em;padding:4px 10px;border-radius:99px}
+.plan .pn{font-size:1.15rem;font-weight:800;text-transform:uppercase;letter-spacing:-.01em}
+.plan .pp{font-family:'Archivo Black',sans-serif;font-size:2.1rem;letter-spacing:-.035em;margin:12px 0 2px;line-height:1}
+.plan .pp small{font-family:'Archivo',sans-serif;font-size:.82rem;font-weight:600;color:var(--mut);letter-spacing:0}
+.plan ul{list-style:none;display:grid;gap:9px;margin:18px 0;font-size:.86rem;color:#c2c9d3}
+.plan ul li{display:flex;gap:9px}
+.plan ul li::before{content:'';flex-shrink:0;width:16px;height:16px;border-radius:5px;margin-top:2px;background:rgba(255,255,255,.06);border:1px solid var(--line2);
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23eef1f5' stroke-width='3.4'%3E%3Cpath d='M20 6L9 17l-5-5'/%3E%3C/svg%3E");background-size:10px;background-repeat:no-repeat;background-position:center}
+.plan .foot{margin-top:auto;padding-top:14px;border-top:1px solid var(--line);font-size:.78rem;color:var(--mut2)}
+/* timeline */
+.road{display:grid;grid-template-columns:repeat(4,1fr);gap:0;margin-top:12px}
+@media(max-width:820px){.road{grid-template-columns:1fr;gap:14px}}
+.road div{padding:0 20px 0 0;position:relative}
+.road div::before{content:'';position:absolute;left:0;right:0;top:9px;height:2px;background:var(--line2)}
+.road div::after{content:'';position:absolute;left:0;top:4px;width:12px;height:12px;border-radius:50%;background:var(--acc);box-shadow:0 0 0 4px rgba(255,77,46,.18)}
+.road div b{display:block;margin:28px 0 6px;font-size:.95rem;text-transform:uppercase}
+.road div span{font-size:.85rem;color:var(--mut)}
+@media(max-width:820px){.road div::before{display:none}}
+/* progress */
+.prog{position:fixed;left:0;top:0;height:3px;background:var(--acc);z-index:50;width:0;transition:width .2s}
+.dots{position:fixed;right:14px;top:50%;transform:translateY(-50%);z-index:50;display:grid;gap:8px}
+@media(max-width:820px){.dots{display:none}}
+.dots a{width:7px;height:7px;border-radius:50%;background:rgba(255,255,255,.22);transition:.3s;display:block}
+.dots a.on{background:var(--acc);transform:scale(1.6)}
+.hint{position:fixed;left:50%;bottom:16px;transform:translateX(-50%);z-index:50;font-family:'JetBrains Mono',monospace;
+  font-size:.6rem;letter-spacing:.2em;text-transform:uppercase;color:var(--mut2);transition:.4s}
+.hint.hide{opacity:0}
+table{width:100%;border-collapse:collapse;font-size:.9rem}
+th{text-align:left;font-family:'JetBrains Mono',monospace;font-size:.6rem;letter-spacing:.16em;text-transform:uppercase;color:var(--mut2);padding:0 12px 10px;font-weight:400}
+td{padding:12px;border-top:1px solid var(--line)}
+.sub{font-size:.8rem;color:var(--mut2);margin-top:14px}
+.wheelbox{position:relative;width:100%;max-width:430px;aspect-ratio:1;margin:0 auto;border-radius:50%;
+  box-shadow:0 44px 84px -34px rgba(0,0,0,.95),0 0 0 1px rgba(255,255,255,.12)}
+.wheelbox .ring{position:absolute;inset:-9px;border-radius:50%;background:var(--iri);background-size:300% 100%;
+  animation:ir 9s linear infinite;opacity:.32;filter:blur(9px);z-index:-1}
+.wheelbox .in{position:absolute;inset:0;border-radius:50%;overflow:hidden}
+.wheelbox img{width:100%;height:100%;object-fit:cover;transform:scale(1.06);
+  animation:launch 3.4s cubic-bezier(.1,.72,.16,1) 1,rot 58s linear 3.4s infinite}
+.wheelbox .glass{position:absolute;inset:0;border-radius:50%;pointer-events:none;
+  box-shadow:inset 0 0 0 2px rgba(255,255,255,.16),inset 0 -46px 90px rgba(0,0,0,.5)}
+.wheelbox .cap{position:absolute;bottom:-30px;left:50%;transform:translateX(-50%);white-space:nowrap;
+  font-family:'JetBrains Mono',monospace;font-size:.6rem;letter-spacing:.2em;text-transform:uppercase;color:var(--mut2)}
+@keyframes launch{from{transform:rotate(0)}to{transform:rotate(742deg)}}
+@keyframes rot{to{transform:rotate(360deg)}}
+.cover{display:grid;grid-template-columns:1.08fr .92fr;gap:clamp(18px,4vw,48px);align-items:center}
+@media(max-width:900px){.cover{grid-template-columns:1fr}.cover .wheelbox{max-width:56vw;order:-1}}
+@media print{html{scroll-snap-type:none}.slide{min-height:auto;page-break-after:always;border:0}.dots,.hint,.prog{display:none}}
+</style>
+</head>
+<body>
+<div class="prog" id="prog"></div>
+<div class="dots" id="dots"></div>
+<div class="hint" id="hint">↓ scorri o usa le frecce</div>
+
+<!-- 01 COPERTINA -->
+<section class="slide" style="background:radial-gradient(90% 70% at 20% 20%,rgba(255,77,46,.14),transparent 60%)">
+  <div class="num">01</div>
+  <div class="in">
+    <div style="display:flex;align-items:center;gap:14px;margin-bottom:34px">
+      <img src="https://impro.usercontent.one/appid/oneComWsb/domain/officinadelcerchio.it/media/officinadelcerchio.it/onewebmedia/5c5706bb-4742-4040-9daa-57ae2076a185.jpg?sourceContentType=image%2Fjpeg&ignoreAspectRatio&resize=580%2B580&quality=85" alt="ODC" style="width:58px;height:58px;border-radius:13px;object-fit:cover;background:#fff">
+      <div><b style="display:block;text-transform:uppercase;letter-spacing:-.01em">Officina del Cerchio</b><span class="mono" style="font-size:.6rem;letter-spacing:.16em;color:var(--mut2)">CONCOREZZO · MONZA E BRIANZA</span></div>
+    </div>
+    <div class="cover"><div>
+    <div class="eyebrow">Proposta riservata · luglio 2026</div>
+    <h1>Siete i migliori<br>del vostro settore.<br><span class="alu">Online non si vede.</span></h1>
+    <p class="lead" style="margin-top:26px">4,8 su 258 recensioni. Lavorazioni che altri delegano fuori, voi le fate tutte in casa. Un fondatore con una storia vera. E un sito che di tutto questo non racconta quasi niente.</p>
+    <p class="lead" style="margin-top:14px;color:#fff"><b>Questa proposta contiene già il sistema costruito e funzionante.</b> Non un mockup: apritelo, cliccatelo, usatelo.</p>
+    <div style="display:flex;gap:12px;margin-top:34px;flex-wrap:wrap">
+      <a class="btn btn-p" href="index.html">Apri il nuovo sito</a>
+      <a class="btn btn-g" href="b2b.html">Apri l'area partner B2B</a>
+    </div>
+    </div><div class="wheelbox"><span class="ring"></span><div class="in"><img src="https://impro.usercontent.one/appid/oneComWsb/domain/officinadelcerchio.it/media/officinadelcerchio.it/onewebmedia/a1c91789-2a54-4489-8cfe-ba42dfbdff4e.jpg?sourceContentType=image%2Fjpeg&quality=85" alt="Audi nero diamantato"></div><div class="glass"></div><span class="cap">Audi · nero + diamantatura CNC · lavoro ODC</span></div></div>
+  </div>
+</section>
+
+<!-- 02 CHI SIETE -->
+<section class="slide">
+  <div class="num">02</div>
+  <div class="in">
+    <div class="eyebrow">Il punto di partenza</div>
+    <h2>Il patrimonio<br>che avete già</h2>
+    <div class="grid g4" style="margin-top:26px">
+      <div class="card"><div class="k">Reputazione</div><div class="big alu">4,8</div><p>su 258 recensioni Google. Nel vostro settore, in Brianza, è un numero che non ha quasi nessuno.</p></div>
+      <div class="card"><div class="k">Verticalità</div><div class="big alu">100%</div><p>delle lavorazioni interne. Raddrizzatura, saldatura, polvere e tornio CNC sotto lo stesso tetto.</p></div>
+      <div class="card"><div class="k">Velocità</div><div class="big alu">3</div><p>giorni medi di consegna. Una raddrizzatura si chiude anche in un'ora e mezza.</p></div>
+      <div class="card"><div class="k">Storia</div><div class="big alu">2019</div><p>Aldo porta al Nord un mestiere imparato in Calabria. È una storia che vende, e non è raccontata.</p></div>
+    </div>
+    <p class="lead" style="margin-top:26px">Il problema non è l'officina. Il problema è che <b style="color:#fff">tra quello che sapete fare e quello che un cliente nuovo percepisce online c'è un abisso</b>.</p>
+  </div>
+</section>
+
+<!-- 03 AUDIT -->
+<section class="slide" style="background:#0b0d10">
+  <div class="num">03</div>
+  <div class="in">
+    <div class="eyebrow">Audit del sito attuale · verificato il 25/07/2026</div>
+    <h2>Dieci cose che oggi<br>vi costano lavoro</h2>
+    <div class="grid g2" style="margin-top:22px">
+      <ul class="chk x">
+        <li><b>La voce "Servizi" apre una pagina vuota.</b> Le due lavorazioni esistono solo nel menu a tendina: chi clicca sulla voce principale — o chi arriva da telefono, dove il passaggio del mouse non esiste — trova una pagina bianca.</li>
+        <li><b>Tutto il testo è in maiuscolo.</b> Si legge male, si scansiona peggio, e i motori di ricerca non ci trovano parole chiave utili.</li>
+        <li><b>"Le richieste via mail non saranno prese in considerazione".</b> È scritto sul sito. Chiaro per voi, respingente per chi vi conosce da 30 secondi.</li>
+        <li><b>Nessun modo per chiedere un preventivo se non WhatsApp.</b> Chi vi scrive alle 23 di sera senza sapere cosa allegare, non vi scrive proprio.</li>
+        <li><b>Nessun prezzo, nemmeno indicativo.</b> Il visitatore va a cercarlo altrove — e spesso resta dov'è andato a cercarlo.</li>
+      </ul>
+      <ul class="chk x">
+        <li><b>Le 258 recensioni non sono sul sito.</b> Ce ne sono 9 incollate a mano. Il resto del vostro capitale sociale è invisibile.</li>
+        <li><b>Nessun dato strutturato.</b> Google non riceve la vostra scheda azienda dal sito: le stelline non compaiono nei risultati.</li>
+        <li><b>Nessuna area B2B.</b> Gommisti, carrozzerie e concessionarie non hanno un motivo per scegliervi come fornitore fisso.</li>
+        <li><b>Nessun tracciamento.</b> Non sapete quante persone visitano il sito, cosa guardano, dove si fermano.</li>
+        <li><b>Il sito è un template di page builder.</b> Foto pesanti non ottimizzate, impaginazione che su telefono si rompe.</li>
+      </ul>
+    </div>
+    <p class="sub">Fonti: officinadelcerchio.it (home, /servizi/, /NOI, /gallery-1, /contact-1), scheda Google Business, confronto con concorrenti nazionali del settore.</p>
+  </div>
+</section>
+
+<!-- 04 CONCORRENZA -->
+<section class="slide">
+  <div class="num">04</div>
+  <div class="in">
+    <div class="eyebrow">Cosa fa già la concorrenza</div>
+    <h2>Chi lavora meno di voi<br>si vende meglio di voi</h2>
+    <div class="grid g2" style="margin-top:24px;align-items:start">
+      <div class="card" style="border-color:rgba(248,113,113,.3)">
+        <span class="tag hot">Concorrente nazionale</span>
+        <h3 style="margin:14px 0 10px">Cosa comunicano</h3>
+        <ul class="chk" style="gap:9px">
+          <li>"Lavoriamo con carrozzerie, gommisti, concessionarie e privati" — messo in prima pagina</li>
+          <li>Logistica dichiarata in tutta Italia con corrieri e imballaggi protettivi</li>
+          <li>Modulo di preventivo strutturato sul sito, non solo un numero di telefono</li>
+          <li>Pagine separate e ottimizzate per ogni lavorazione</li>
+          <li>Argomenti di vendita chiari: "fino al 70% in meno rispetto al pezzo nuovo"</li>
+        </ul>
+      </div>
+      <div class="card" style="border-color:rgba(74,222,128,.3)">
+        <span class="tag ok">Voi</span>
+        <h3 style="margin:14px 0 10px">Cosa avete davvero</h3>
+        <ul class="chk" style="gap:9px">
+          <li>Tornio CNC vero, non simulazioni di diamantatura con la verniciatura bicolore</li>
+          <li>Ciclo completo interno: nessuna lavorazione data fuori, nessun intermediario</li>
+          <li>258 recensioni reali con clienti che arrivano da Genova apposta</li>
+          <li>Recupero di cerchi da collezione: OZ Rallye del '95 rimessi a nuovo</li>
+          <li>Un fondatore riconoscibile con una storia raccontabile</li>
+        </ul>
+      </div>
+    </div>
+    <p class="lead" style="margin-top:24px"><b style="color:#fff">Hanno un marketing migliore, non un'officina migliore.</b> Questo si ribalta in poche settimane.</p>
+  </div>
+</section>
+
+<!-- 05 IL SISTEMA -->
+<section class="slide" style="background:#0b0d10">
+  <div class="num">05</div>
+  <div class="in">
+    <div class="eyebrow">La proposta</div>
+    <h2>Non un sito.<br>Un sistema che lavora</h2>
+    <div class="grid g3" style="margin-top:26px">
+      <div class="card"><div class="k">01 · Lato cliente privato</div><h3 style="margin:10px 0">Il sito nuovo</h3><p>Configuratore di finiture, preventivatore in 60 secondi, prima/dopo interattivo, tutte le recensioni, processo raccontato, orari in tempo reale. Ogni percorso finisce su WhatsApp con il messaggio già scritto.</p></div>
+      <div class="card"><div class="k">02 · Lato professionisti</div><h3 style="margin:10px 0">L'area partner B2B</h3><p>Listino riservato a scaglioni, invio commesse con foto, stato di ogni cerchio in tempo reale, fattura mensile unica, materiale marketing da girare al cliente finale.</p></div>
+      <div class="card"><div class="k">03 · Lato officina</div><h3 style="margin:10px 0">Meno telefonate</h3><p>Le richieste arrivano già complete: foto, diametro, danni, finitura scelta. Stefania smette di chiedere sempre le stesse tre cose e inizia a rispondere con un preventivo.</p></div>
+      <div class="card"><div class="k">04 · Visibilità</div><h3 style="margin:10px 0">Local SEO e Google</h3><p>Scheda azienda strutturata, stelline nei risultati di ricerca, pagine dedicate a ogni lavorazione e alle zone servite: Concorezzo, Monza, Vimercate, Milano nord.</p></div>
+      <div class="card"><div class="k">05 · Contenuti</div><h3 style="margin:10px 0">Social che vendono</h3><p>Le vostre lavorazioni sono già contenuto perfetto. Serve solo un formato ripetibile: prima/dopo, il tornio che gira, il cliente che ritira. Piano editoriale e testi pronti.</p></div>
+      <div class="card"><div class="k">06 · Reputazione</div><h3 style="margin:10px 0">Le recensioni al lavoro</h3><p>Richiesta automatica alla consegna, risposte a tutte le recensioni, le migliori messe in evidenza su sito e social. Da 258 a 400 nel giro di un anno.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- 06 DEMO -->
+<section class="slide">
+  <div class="num">06</div>
+  <div class="in">
+    <div class="eyebrow">Già costruito</div>
+    <h2>Provatelo adesso</h2>
+    <p class="lead">Quello che segue non è un rendering. È il sistema, funzionante, con le vostre foto, le vostre recensioni, i vostri numeri di telefono.</p>
+    <div class="grid g2" style="margin-top:26px">
+      <div class="card" style="padding:0;overflow:hidden">
+        <img loading="lazy" src="https://impro.usercontent.one/appid/oneComWsb/domain/officinadelcerchio.it/media/officinadelcerchio.it/onewebmedia/015ce18f-eb70-4a6c-918e-2c3a4b2237c3.jpg?sourceContentType=image%2Fjpeg&quality=85" alt="" style="width:100%;aspect-ratio:16/9;object-fit:cover">
+        <div style="padding:22px">
+          <h3>Il sito pubblico</h3>
+          <p style="color:var(--mut);font-size:.9rem;margin:8px 0 14px">Configuratore finiture, preventivatore, prima/dopo, portfolio filtrabile, recensioni, FAQ, mappa e stato apertura live.</p>
+          <a class="btn btn-p" href="index.html">Apri odc-sito.html</a>
+        </div>
+      </div>
+      <div class="card" style="padding:0;overflow:hidden">
+        <img loading="lazy" src="https://impro.usercontent.one/appid/oneComWsb/domain/officinadelcerchio.it/media/officinadelcerchio.it/onewebmedia/00ff32a5-a0d8-4941-834c-47afacd49f13.jpg?sourceContentType=image%2Fjpeg&quality=85" alt="" style="width:100%;aspect-ratio:16/9;object-fit:cover">
+        <div style="padding:22px">
+          <h3>L'area partner B2B</h3>
+          <p style="color:var(--mut);font-size:.9rem;margin:8px 0 14px">Dashboard commesse, tracking per fasi, listino a scaglioni, nuova commessa con calcolo prezzo, fatturazione, materiale marketing.</p>
+          <a class="btn btn-g" href="b2b.html">Apri odc-b2b.html</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 07 IL B2B È IL VERO AFFARE -->
+<section class="slide" style="background:#0b0d10">
+  <div class="num">07</div>
+  <div class="in">
+    <div class="eyebrow">Dove sono i soldi veri</div>
+    <h2>Un privato torna<br>ogni tre anni.<br><span class="alu">Un gommista ogni settimana.</span></h2>
+    <div class="grid g3" style="margin-top:28px">
+      <div class="card"><div class="k">Cliente privato</div><div class="big alu">1–2</div><p>cerchi all'anno, in media. Vi trova per caso dopo una buca, poi sparisce fino alla prossima.</p></div>
+      <div class="card" style="border-color:rgba(255,77,46,.35)"><div class="k">Gommista partner</div><div class="big" style="color:var(--acc)">30–40</div><p>cerchi all'anno da un singolo partner attivo. Non deve trovarvi: vi ha in rubrica.</p></div>
+      <div class="card"><div class="k">Dieci partner</div><div class="big alu">300+</div><p>cerchi all'anno di volume ricorrente e prevedibile, che riempie i buchi tra un privato e l'altro.</p></div>
+    </div>
+    <p class="lead" style="margin-top:26px">In Brianza ci sono centinaia tra gommisti, carrozzerie, autofficine e concessionarie che <b style="color:#fff">oggi il cerchio rovinato lo mandano da qualcun altro o dicono al cliente di comprarne uno nuovo</b>. Non perché voi non siate bravi: perché non sanno che esistete e non hanno un modo semplice per lavorare con voi.</p>
+    <p class="lead" style="margin-top:12px">L'area partner esiste per rendere quel "modo semplice" così comodo da diventare un'abitudine.</p>
+  </div>
+</section>
+
+<!-- 08 COSA CAMBIA IN OFFICINA -->
+<section class="slide">
+  <div class="num">08</div>
+  <div class="in">
+    <div class="eyebrow">Lato vostro</div>
+    <h2>Cosa cambia<br>nella giornata tipo</h2>
+    <div class="grid g2" style="margin-top:24px;align-items:start">
+      <div>
+        <span class="tag hot">Oggi</span>
+        <ul class="chk x" style="margin-top:16px">
+          <li>Arriva un "quanto mi costa?" su WhatsApp, senza foto e senza diametro</li>
+          <li>Tre messaggi per capire cosa ha e cosa vuole</li>
+          <li>Il telefono squilla per sapere se i cerchi sono pronti</li>
+          <li>Chi passa senza chiamare trova chiuso e va altrove</li>
+          <li>Le foto delle lavorazioni restano nel rullino</li>
+          <li>A fine mese non sapete da dove sono arrivati i clienti</li>
+        </ul>
+      </div>
+      <div>
+        <span class="tag ok">Con il sistema</span>
+        <ul class="chk" style="margin-top:16px">
+          <li>Il messaggio arriva già con lavorazione, diametro, quantità, danni e finitura scelta</li>
+          <li>Rispondete con un prezzo, non con altre domande</li>
+          <li>Il partner controlla lo stato da solo, senza chiamare</li>
+          <li>Il sito mostra se siete aperti e quando riaprite</li>
+          <li>Ogni lavorazione diventa un contenuto pubblicato</li>
+          <li>Vedete quanti preventivi partono ogni settimana e da dove</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 09 PREZZI -->
+<section class="slide" style="background:radial-gradient(80% 70% at 80% 30%,rgba(255,77,46,.12),transparent 60%),#0b0d10">
+  <div class="num">09</div>
+  <div class="in">
+    <div class="eyebrow">Investimento</div>
+    <h2>Quanto costa</h2>
+    <p class="lead" style="margin-bottom:26px">Una messa in strada iniziale, poi un canone che tiene il sistema vivo. Nessun costo nascosto: dominio, hosting, certificato e assistenza sono dentro il canone.</p>
+
+    <div class="card" style="border-color:var(--line2);margin-bottom:16px;display:flex;gap:22px;flex-wrap:wrap;align-items:center">
+      <div>
+        <div class="k">Attivazione · una tantum</div>
+        <div class="big alu" style="margin:8px 0 4px">€ 1.900</div>
+        <span style="color:var(--mut);font-size:.85rem">invece di € 2.900 — sconto primo cliente del settore in Brianza</span>
+      </div>
+      <div style="flex:1;min-width:280px">
+        <ul class="chk" style="gap:8px;font-size:.9rem">
+          <li>Sito completo, area partner B2B, configuratore e preventivatore</li>
+          <li>Migrazione dominio, impostazione Google e dati strutturati</li>
+          <li>Sessione di lavoro in officina per foto e video fatti bene</li>
+          <li>Formazione a voi e a Stefania su come gestirlo</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="plans">
+      <div class="plan">
+        <div class="pn">Base</div>
+        <div class="pp">€ 149<small> / mese</small></div>
+        <ul>
+          <li>Hosting, dominio, certificato, backup</li>
+          <li>Manutenzione e sicurezza</li>
+          <li>1 aggiornamento contenuti al mese</li>
+          <li>Monitoraggio scheda Google</li>
+          <li>Assistenza via WhatsApp</li>
+        </ul>
+        <div class="foot">Per tenere tutto acceso e aggiornato.</div>
+      </div>
+      <div class="plan best">
+        <div class="pn">Pro</div>
+        <div class="pp">€ 349<small> / mese</small></div>
+        <ul>
+          <li>Tutto il piano Base</li>
+          <li>8 contenuti social al mese montati dalle vostre foto</li>
+          <li>Area partner attiva, partner illimitati</li>
+          <li>Gestione e risposta alle recensioni</li>
+          <li>Aggiornamento listino e finiture</li>
+          <li>Report mensile con i numeri veri</li>
+        </ul>
+        <div class="foot">Il sistema che cresce da solo. È il piano che consigliamo.</div>
+      </div>
+      <div class="plan">
+        <div class="pn">Enterprise</div>
+        <div class="pp">€ 690<small> / mese</small></div>
+        <ul>
+          <li>Tutto il piano Pro</li>
+          <li>Campagne locali gestite (budget escluso)</li>
+          <li>Ricerca e contatto nuovi partner B2B</li>
+          <li>Automazioni WhatsApp e scheda cliente</li>
+          <li>Pagine dedicate per zona e lavorazione</li>
+          <li>Priorità su ogni richiesta</li>
+        </ul>
+        <div class="foot">Quando l'obiettivo è diventare il riferimento italiano del settore.</div>
+      </div>
+    </div>
+    <p class="sub">Prezzi IVA esclusa. Canone con impegno minimo 12 mesi, poi rinnovo mensile disdicibile con 30 giorni di preavviso. Il codice sorgente e i contenuti restano vostri.</p>
+  </div>
+</section>
+
+<!-- 10 ROI -->
+<section class="slide">
+  <div class="num">10</div>
+  <div class="in">
+    <div class="eyebrow">Il conto della serva</div>
+    <h2>Quando si ripaga</h2>
+    <div style="border:1px solid var(--line);border-radius:16px;overflow:hidden;background:var(--panel);margin-top:22px;overflow-x:auto">
+      <table>
+        <thead><tr><th>Voce</th><th>Valore indicativo</th><th>Nota</th></tr></thead>
+        <tbody>
+          <tr><td>Treno di 4 cerchi diamantati 21"</td><td><b>≈ € 900</b></td><td style="color:var(--mut)">un solo cliente come quello della recensione Porsche</td></tr>
+          <tr><td>Canone Pro mensile</td><td><b>€ 349</b></td><td style="color:var(--mut)">si ripaga con meno di mezza commessa</td></tr>
+          <tr><td>Un gommista partner attivo</td><td><b>≈ € 3.500 / anno</b></td><td style="color:var(--mut)">30-40 cerchi a prezzo partner</td></tr>
+          <tr><td>Cinque partner attivi</td><td><b>≈ € 17.000 / anno</b></td><td style="color:var(--mut)">volume ricorrente, non stagionale</td></tr>
+          <tr><td>Attivazione + 12 mesi Pro</td><td><b>€ 6.088</b></td><td style="color:var(--mut)">coperto da due partner attivi</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="lead" style="margin-top:22px">Non serve che il sistema faccia miracoli. <b style="color:#fff">Serve che porti due gommisti in un anno</b>, e ha già pagato tutto. Ogni privato in più, ogni recensione in più, ogni diamantatura in più è margine.</p>
+  </div>
+</section>
+
+<!-- 11 ROADMAP -->
+<section class="slide" style="background:#0b0d10">
+  <div class="num">11</div>
+  <div class="in">
+    <div class="eyebrow">Come procediamo</div>
+    <h2>Dalla firma<br>all'online in 3 settimane</h2>
+    <div class="road" style="margin-top:34px">
+      <div><b>Settimana 1</b><span>Mezza giornata in officina: foto e video professionali delle lavorazioni, intervista ad Aldo, raccolta listino reale e condizioni B2B.</span></div>
+      <div><b>Settimana 2</b><span>Personalizzazione del sistema con i contenuti veri, listino partner definitivo, revisione dei testi insieme a voi.</span></div>
+      <div><b>Settimana 3</b><span>Migrazione del dominio, messa online, dati strutturati e scheda Google, formazione a voi e a Stefania.</span></div>
+      <div><b>Da lì in poi</b><span>Contenuti mensili, apertura dell'area partner ai primi gommisti, report e aggiustamenti sui numeri reali.</span></div>
+    </div>
+    <p class="lead" style="margin-top:34px">Durante la migrazione il sito attuale resta online: si spegne solo quando il nuovo è pronto e verificato.</p>
+  </div>
+</section>
+
+<!-- 12 GARANZIE -->
+<section class="slide">
+  <div class="num">12</div>
+  <div class="in">
+    <div class="eyebrow">Le condizioni, chiare</div>
+    <h2>Cosa vi garantiamo<br>e cosa no</h2>
+    <div class="grid g2" style="margin-top:24px;align-items:start">
+      <div>
+        <span class="tag ok">Garantito</span>
+        <ul class="chk" style="margin-top:16px">
+          <li>Il sito e i contenuti restano di vostra proprietà, anche se un domani smettete</li>
+          <li>Nessun vincolo tecnico: vi consegniamo tutto, dominio incluso</li>
+          <li>Il sistema è online entro 3 settimane dalla consegna dei materiali</li>
+          <li>Se entro 30 giorni dalla messa online non siete soddisfatti, il canone si ferma</li>
+          <li>Report mensile con numeri reali, non slide colorate</li>
+        </ul>
+      </div>
+      <div>
+        <span class="tag hot">Non garantito</span>
+        <ul class="chk x" style="margin-top:16px">
+          <li>Non promettiamo posizioni su Google: nessuno serio può farlo</li>
+          <li>Non promettiamo un numero preciso di clienti nuovi al mese</li>
+          <li>Senza le vostre foto vere e il vostro listino reale, il sistema vale metà</li>
+          <li>Il B2B funziona se qualcuno in officina risponde ai partner entro poche ore</li>
+        </ul>
+      </div>
+    </div>
+    <p class="lead" style="margin-top:24px">Preferiamo dirvi in anticipo dove il sistema può non funzionare, piuttosto che scoprirlo insieme fra sei mesi.</p>
+  </div>
+</section>
+
+<!-- 13 CHIUSURA -->
+<section class="slide" style="background:radial-gradient(90% 80% at 50% 100%,rgba(255,77,46,.16),transparent 60%)">
+  <div class="num">13</div>
+  <div class="in" style="text-align:center">
+    <div class="eyebrow" style="justify-content:center">Il passo successivo</div>
+    <h1 style="margin:10px 0 22px">Diventare il punto<br>di riferimento italiano<br><span class="iri">era il vostro obiettivo.</span></h1>
+    <p class="lead" style="margin:0 auto 30px">L'ha scritto Aldo sul vostro sito. Serve solo che chi vi cerca online veda la stessa officina che vede chi entra dalla porta.</p>
+    <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap">
+      <a class="btn btn-p" href="index.html">Rivedi il sito</a>
+      <a class="btn btn-g" href="b2b.html">Rivedi l'area partner</a>
+    </div>
+    <p class="sub" style="margin-top:30px">Documento riservato · proposta non contrattuale · luglio 2026<br>Foto, testi e recensioni riprodotti sono di proprietà di Officina del Cerchio e usati a solo scopo dimostrativo.</p>
+  </div>
+</section>
+
+<script>
+(function(){
+var ss=document.querySelectorAll('.slide'),dots=document.getElementById('dots'),prog=document.getElementById('prog'),hint=document.getElementById('hint');
+ss.forEach(function(s,i){s.id='s'+i;var a=document.createElement('a');a.href='#s'+i;a.setAttribute('aria-label','Slide '+(i+1));dots.appendChild(a)});
+var links=dots.querySelectorAll('a');
+var io=new IntersectionObserver(function(es){es.forEach(function(e){
+  if(e.isIntersecting){var i=[].indexOf.call(ss,e.target);
+    links.forEach(function(l,k){l.classList.toggle('on',k===i)});
+    prog.style.width=((i+1)/ss.length*100)+'%';
+    hint.classList.toggle('hide',i>0);}
+})},{threshold:.55});
+ss.forEach(function(s){io.observe(s)});
+addEventListener('keydown',function(e){
+  var cur=0;links.forEach(function(l,k){if(l.classList.contains('on'))cur=k});
+  if(e.key==='ArrowDown'||e.key==='ArrowRight'||e.key===' '){e.preventDefault();if(cur<ss.length-1)ss[cur+1].scrollIntoView()}
+  if(e.key==='ArrowUp'||e.key==='ArrowLeft'){e.preventDefault();if(cur>0)ss[cur-1].scrollIntoView()}
+});
+})();
+</script>
+</body>
+</html>
