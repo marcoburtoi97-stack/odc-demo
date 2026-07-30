@@ -78,6 +78,8 @@ header.nav{position:fixed;top:0;left:0;right:0;z-index:90;transition:.45s var(--
 .btn-g{background:rgba(255,255,255,.06);border:1px solid var(--line2);color:#fff}
 .btn-g:hover{background:rgba(255,255,255,.12);transform:translateY(-2px)}
 .btn-lg{padding:16px 30px;font-size:1rem}
+.hero-cta{display:flex;flex-wrap:wrap;gap:14px;margin-top:26px}
+.hero-cta .btn{flex:0 1 auto}
 .burger{display:none;background:none;border:1px solid var(--line2);border-radius:10px;width:42px;height:42px;cursor:pointer;align-items:center;justify-content:center}
 .burger div{width:18px;height:2px;background:#fff;position:relative}
 .burger div::before,.burger div::after{content:'';position:absolute;left:0;width:18px;height:2px;background:#fff}
@@ -105,7 +107,7 @@ header.nav{position:fixed;top:0;left:0;right:0;z-index:90;transition:.45s var(--
 .hero h1{margin:14px 0 16px;max-width:15ch}
 @media(max-width:980px){
   .hero-in{grid-template-columns:1fr;gap:22px}
-  .hero-stage{order:-1;max-width:72vw;margin:0 auto 46px}
+  .hero-stage{order:-1;max-width:66vw;margin:0 auto 30px}
 }
 
 /* ---------- DISCO FOTOGRAFICO (cerchi veri) ---------- */
@@ -131,9 +133,10 @@ header.nav{position:fixed;top:0;left:0;right:0;z-index:90;transition:.45s var(--
   background:linear-gradient(100deg,transparent,rgba(255,255,255,.55),transparent);
   transform:rotate(14deg);animation:sweep 7s cubic-bezier(.5,0,.5,1) infinite}
 @keyframes sweep{0%{left:-60%}55%,100%{left:135%}}
-.hero-stage .cap{position:absolute;bottom:-30px;left:50%;transform:translateX(-50%);z-index:4;white-space:nowrap;
+.hero-stage{grid-auto-flow:row;justify-items:center}
+.hero-stage .cap{position:static;z-index:4;margin-top:18px;text-align:center;max-width:34ch;
   font-family:'JetBrains Mono',monospace;font-size:.62rem;letter-spacing:.2em;text-transform:uppercase;color:var(--mut2);
-  transition:.5s var(--ease)}
+  line-height:1.6;transition:color .5s var(--ease)}
 
 /* ---------- SEZIONI ---------- */
 section{position:relative;z-index:2}
@@ -456,15 +459,11 @@ img{-webkit-user-drag:none;user-select:none}
   .navin{gap:10px}
   .brand img{width:38px;height:38px}
 }
-@media(max-width:430px){
-  .hero-stage .cap{white-space:normal;text-align:center;max-width:88vw;line-height:1.5}
-}
+
 
 @media(max-width:370px){
   .btn{max-width:100%}
-  .btn-lg{padding:13px 18px;font-size:.92rem}
-  .hero-cta{display:flex;flex-wrap:wrap;gap:10px}
-  .hero-cta .btn{flex:1 1 100%;justify-content:center}
+  .btn-lg{padding:14px 18px;font-size:.94rem}
 }
 
 /* ---------- TOCCO: drag orizzontale senza bloccare lo scroll verticale ---------- */
@@ -535,6 +534,45 @@ img{-webkit-user-drag:none;user-select:none}
 
 /* L'etichetta del campione di colore sporgeva e generava 17px di overflow fantasma. */
 .swatches{overflow-x:clip;overflow-y:visible;padding-top:34px;margin-top:-20px}
+
+/* ================= SECONDA REVISIONE — apertura da telefono ================= */
+
+/* Appena si apriva, la parte bassa della hero finiva sotto la barra Chiama/WhatsApp
+   e la composizione arrivava tagliata. Ora la hero e' alta quanto lo schermo MENO la barra,
+   il cerchio e' proporzionato e in alto entrano titolo, testo e i due pulsanti. */
+@media(max-width:760px){
+  .hero{min-height:0;padding:78px 0 calc(24px + 66px + env(safe-area-inset-bottom,0px))}
+  .hero-stage{max-width:47vw;margin:0 auto 14px}
+  .hero h1{margin:6px 0 10px;max-width:19ch}
+  .hero .lead{font-size:.98rem;line-height:1.6}
+  .hero-cta{gap:11px;margin-top:18px}
+  .hero-cta .btn-lg{padding:15px 22px}
+  .hero-cta .btn{flex:1 1 100%;justify-content:center}
+  .trustbar{margin-top:24px;padding-top:18px}
+  .hero-stage .cap{margin-top:12px;font-size:.68rem;letter-spacing:.13em;max-width:28ch}
+  .hero .eyebrow{font-size:.7rem;letter-spacing:.14em}
+}
+@media(max-width:400px){
+  .hero-stage{max-width:44vw}
+  .hero .eyebrow{letter-spacing:.08em;font-size:.66rem}
+  .hero h1{font-size:clamp(1.72rem,8.2vw,2.2rem)}
+  .hero .lead{font-size:.94rem}
+}
+
+/* "scorri" era un div senza nessuno stile: testo nudo in fondo alla hero.
+   Diventa un indicatore vero, e da telefono sparisce perche' li' la barra occupa quel posto. */
+.scrollhint{position:absolute;left:50%;bottom:18px;transform:translateX(-50%);z-index:3;
+  font-family:'JetBrains Mono',monospace;font-size:.58rem;letter-spacing:.26em;text-transform:uppercase;
+  color:rgba(255,255,255,.34);display:flex;align-items:center;gap:8px;pointer-events:none}
+.scrollhint::after{content:'';width:1px;height:26px;background:linear-gradient(180deg,rgba(255,255,255,.42),transparent);
+  animation:hintdrop 2.1s ease-in-out infinite}
+@keyframes hintdrop{0%,100%{opacity:.25;transform:scaleY(.5)}50%{opacity:1;transform:scaleY(1)}}
+@media(max-width:760px){.scrollhint{display:none}}
+@media(prefers-reduced-motion:reduce){.scrollhint::after{animation:none}}
+
+/* I link del menu portavano il titolo della sezione sotto l'intestazione fissa. */
+html{scroll-padding-top:86px}
+@media(max-width:760px){html{scroll-padding-top:76px}}
 </style>
 </head>
 <body>
